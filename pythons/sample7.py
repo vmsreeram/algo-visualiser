@@ -5,7 +5,13 @@ def write_slogan():
     # get image and display
     image = tk.PhotoImage(file = "Attachment.png")
     imageLabel.configure(image = image)
-    imageLabel.image = image    
+    imageLabel.image = image   
+    
+def write_anotherslogan():
+    # get image and display
+    image = tk.PhotoImage(file = "MST.png")
+    imageLabel.configure(image = image)
+    imageLabel.image = image 
 
 root = tk.Tk()
 frame = tk.Frame(root)
@@ -27,5 +33,11 @@ slogan = tk.Button(frame,
                    fg="blue",
                    command=write_slogan)
 slogan.pack(side=tk.BOTTOM)
+
+anotherslogan = tk.Button(frame,
+                   text="Open",
+                   fg="yellow",
+                   command=write_anotherslogan)
+anotherslogan.pack(side=tk.BOTTOM)
 
 root.mainloop()
