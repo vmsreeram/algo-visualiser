@@ -11,22 +11,21 @@ root = tk.Tk()
 frame = tk.Frame(root)
 frame.pack()
 
+imageLabel = tk.Label(frame)
+imageLabel.pack(side=tk.TOP)
+w = tk.Label(root, text="Visualisation Of Graph Algorithms!", fg="green")
+w.pack(side=tk.TOP)
+
 button = tk.Button(frame, 
-                   text="QUIT", 
+                   text="EXIT", 
                    fg="red",
                    command=quit)
-button.pack(side=tk.TOP)
-slogan = tk.Button(frame,
-                   text="Open",
-                   fg="green",
-                   command=write_slogan)
-slogan.pack(side=tk.TOP)
+button.pack(side=tk.BOTTOM)
 
-imageLabel = tk.Label(frame)
-imageLabel.pack(side=tk.LEFT)
-w = tk.Label(root, text="Hello Tkinter!", fg="green")
-w.pack()
+slogan = tk.Button(frame,
+                   text="View",
+                   fg="blue",
+                   command=write_slogan)
+slogan.pack(side=tk.BOTTOM)
 
 root.mainloop()
-
-#Trial commit
