@@ -4,8 +4,9 @@ from PIL import Image, ImageTk
 from tkinter import filedialog
 
 root = Tkinter.Tk()
+root.configure(background='lightyellow')
 root.title("algo-visualiser")
-root.geometry('700x600')
+root.geometry('1000x1000')
 frame = Tkinter.Frame(root)
 frame.pack()
 global tklc
@@ -70,7 +71,7 @@ def openImg90():
 	# 	filename=browse()
 	# im = Image.open(filename)
 	global im
-	im=im.transpose(Image.ROTATE_270)
+	im=im.transpose(Image.ROTATE_90)
 	# (x0,y0,x1,y1)=im.getbbox() # returns (0,0,w,h)
 	# im.thumbnail((1+x1/1,1+y1/2)) # changes image in place!
 	tkic=ImageTk.PhotoImage(im)
@@ -81,11 +82,6 @@ def openImg90():
 	# tklc.place(x=100.0,y=95.0,anchor="center")
 	root.mainloop() # Start the GUI
 
-slogan2 = Tkinter.Button(frame,
-                   text="Exit",
-                   fg="green",
-                   command=exit)
-slogan2.pack(side=Tkinter.LEFT)
 
 
 slogan = Tkinter.Button(frame,
@@ -99,16 +95,23 @@ slogan.pack(side=Tkinter.LEFT)
 #                    command=openImg90)
 # slogan.pack(side=Tkinter.LEFT)
 slogan1 = Tkinter.Button(frame,
-                   text="Rotate 90",
+                   text="Rotate counter clockwise",
                    fg="green",
                    command=openImg90)
-slogan1.pack(side=Tkinter.TOP)
+slogan1.pack(side=Tkinter.LEFT)
 slogan10 = Tkinter.Button(frame,
-                   text="Rotate 270",
+                   text="Rotate clockwise",
                    fg="green",
                    command=openImg270)
-slogan10.pack(side=Tkinter.TOP)
-root.configure(background='lightyellow')
+slogan10.pack(side=Tkinter.LEFT)
+
+slogan2 = Tkinter.Button(frame,
+                   text="Exit",
+                   fg="green",
+                   command=exit)
+slogan2.pack(side=Tkinter.LEFT)
+
+
 root.mainloop()
 
 
