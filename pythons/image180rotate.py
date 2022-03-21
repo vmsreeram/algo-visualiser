@@ -22,7 +22,7 @@ def browse():
  #                                                        "*.png"),
  #                                                       ("all files",
  #                                                        "*.*")))
-	filename = filedialog.askopenfilename(initialdir = "~",
+	filename = filedialog.askopenfilename(initialdir = "",
                                           title = "Select a File",
                                           filetypes = (("all files",
                                                         "*.*"),
