@@ -1,0 +1,7 @@
+graph my_graph {
+bgcolor=yellow;
+a [label=Foo];
+b [shape=circle];
+a -- b  [color=blue];
+b -- c  [color=blue];
+}
