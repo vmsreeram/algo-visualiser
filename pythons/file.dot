@@ -1,6 +1,13 @@
-graph my_graph {
-   bgcolor="white";
-   a [label="Foo"];
-   b [shape=circle];
-   a -- b -- c [color=blue];
+/*
+digraph my_graph {
+    {
+        node [margin=0 fontcolor=blue fontsize=32 width=0.5 shape=circle style=filled]
+    }
+   a -> {b c};
+   x -> {c y};
+   {b y} -> z;
+   p -- q;
+} */
+graph my {
+    d -- e;
 }
