@@ -44,11 +44,12 @@ def openImg():
     
     global im
     im = Image.open('output.png')
-    imc=im.copy()
-    (x0,y0,x1,y1)=imc.getbbox() # returns (0,0,w,h)
-    imc.thumbnail((1+x1/0.5,1+y1/1)) # changes image in place!
-    im=imc
-    tkic=ImageTk.PhotoImage(imc)
+    # imc=im.copy()
+    # (x0,y0,x1,y1)=imc.getbbox() # returns (0,0,w,h)
+    # imc.thumbnail((1+x1/0.5,1+y1/1)) # changes image in place!
+    # im=imc
+    # tkic=ImageTk.PhotoImage(imc)
+    tkic=ImageTk.PhotoImage(im)
     tklc=Tkinter.Label(root,image=tkic)
     tklc.place(relx=0.5,rely=0.5,anchor="center")
     # tklc.place(x=100.0,y=95.0,anchor="center")

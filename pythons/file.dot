@@ -12,12 +12,13 @@ graph my {
     a -- b;
     b -- x;
     b -- c;
-    a [fontcolor=coral1 style = filled shape=egg label="q"]
+    a [fontcolor=springgreen2 style = filled shape=square label="root"]
     b [style = filled shape=pentagon]
     c -- {d e}
     b -- y;
     x [style=filled]
-    
+    e [shape=diamond]
+    c [style=filled]
 }
 /*digraph g {
     a -- b;
