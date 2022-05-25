@@ -9,5 +9,24 @@ digraph my_graph {
    p -- q;
 } */
 graph my {
-    d -- e;
+    a -- b;
+    b -- x;
+    b -- c;
+    a [fontcolor=coral1 style = filled shape=egg label="q"]
+    b [style = filled shape=pentagon]
+    c -- {d e}
+    b -- y;
+    x [style=filled]
+    
 }
+/*digraph g {
+    a -- b;
+    b -- x;
+    b -- c;
+    a [fontcolor=forestgreen style = filled shape=egg label="q"]
+    b [style = filled shape=pentagon]
+    c -- {d e}
+    b -- y;
+    x [style=filled]
+    e [shape=diamond]
+}*/
