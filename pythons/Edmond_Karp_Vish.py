@@ -16,7 +16,8 @@ def makeGraph(C, F, s, t):
 
     for i in range(n):
         for j in range(n):
-            graph.add_edge(pydot.Edge(str(i), str(j), label="C= "+str(C[i][j])+" : F= "+str(F[i][j])))
+            if (C[i][j]!=0) or (F[i][j]!=0):
+                graph.add_edge(pydot.Edge(str(i), str(j), label="C= "+str(C[i][j])+" : F= "+str(F[i][j])))
     # Or, without using an intermediate variable:
 
     graph.write_png('output.png')
