@@ -8,18 +8,19 @@ digraph my_graph {
    {b y} -> z;
    p -- q;
 } */
-graph my {
+/*graph my {
     a -- b;
     b -- x;
     b -- c;
-    a [fontcolor=springgreen2 style = filled shape=square label="root"]
-    b [style = filled shape=pentagon]
+    a [fontcolor=springgreen2 shape=circle label="root"]
+    b [shape=pentagon]
     c -- {d e}
     b -- y;
-    x [style=filled]
+    x
     e [shape=diamond]
-    c [style=filled]
-}
+    c 
+    d
+}*/
 /*digraph g {
     a -- b;
     b -- x;
@@ -31,3 +32,30 @@ graph my {
     x [style=filled]
     e [shape=diamond]
 }*/
+digraph G {
+
+  subgraph cluster_0 {
+    style=filled;
+    color=lightgrey;
+    node [style=filled,color=white];
+    a0 -> a1 -> a2 -> a3;
+    label = "process #1";
+  }
+
+  subgraph cluster_1 {
+    node [style=filled];
+    b0 -> b1 -> b2 -> b3;
+    label = "process #2";
+    color=blue
+  }
+  start -> a0;
+  start -> b0;
+  a1 -> b3;
+  b2 -> a3;
+  a3 -> a0;
+  a3 -> end;
+  b3 -> end;
+
+  start [shape=Mdiamond];
+  end [shape=Msquare];
+}
