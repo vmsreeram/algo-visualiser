@@ -10,23 +10,19 @@ def loadimg():
       win.geometry("700x500")
 
       frame = Frame(win, width=600, height=400)
-      # frame.pack()
       frame.place(anchor='center', relx=0.5, rely=0.5)
 
       # Create an object of tkinter ImageTk
       img = ImageTk.PhotoImage(Image.open("output.png"))
-      # img1 = ImageTk.PhotoImage(Image.open("minion2.jpg"))
 
       # Create a Label Widget to display the text or Image
       label = Label(frame, image = img)
       label.pack()
 
-      input("Press any key...")
-      # frame.clear_frame()
-      for widgets in frame.winfo_children():
-            widgets.destroy()
-      win.destroy()      
-      # label = Label(frame, image = img1)
-      # label.pack()
+      slogan2 = Button(frame,
+                   text="next",
+                   fg="green",
+                   command=win.destroy)
+      slogan2.pack(side=TOP)
 
       win.mainloop()

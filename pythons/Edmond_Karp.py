@@ -3,10 +3,6 @@ import tkinter as Tkinter
 import Edmond_Karp_Vish
 import imageLoadTry
 
-# root = Tkinter.Tk()
-# frame = Tkinter.Frame(root)
-
-
 def max_flow(C, s, t):
         n = len(C) # C is the capacity matrix
         F = [[0] * n for i in range(n)]
