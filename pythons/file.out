@@ -1,0 +1,32 @@
+/*
+digraph my_graph {
+    {
+        node [margin=0 fontcolor=blue fontsize=32 width=0.5 shape=circle style=filled]
+    }
+   a -> {b c};
+   x -> {c y};
+   {b y} -> z;
+   p -- q;
+} */
+graph my {
+    a -- b;
+    b -- x;
+    b -- c;
+    a [fontcolor=coral1 style = filled shape=egg label="q"]
+    b [style = filled shape=pentagon]
+    c -- {d e}
+    b -- y;
+    x [style=filled]
+    
+}
+/*digraph g {
+    a -- b;
+    b -- x;
+    b -- c;
+    a [fontcolor=forestgreen style = filled shape=egg label="q"]
+    b [style = filled shape=pentagon]
+    c -- {d e}
+    b -- y;
+    x [style=filled]
+    e [shape=diamond]
+}*/
