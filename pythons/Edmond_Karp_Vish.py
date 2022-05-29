@@ -19,7 +19,7 @@ from PIL import Image, ImageTk
 #     return
 def makeGraph(C, F, s, t):
     n = len(C)  
-    graph = pydot.Dot("my_graph", graph_type="graph", bgcolor="yellow")
+    graph = pydot.Dot("my_graph", graph_type="digraph", bgcolor="yellow")
 
     # Add nodes
     for i in range(n):
@@ -36,6 +36,7 @@ def makeGraph(C, F, s, t):
     
 
     graph.write_png('output.png')
+    input("Press any key...")
     # global tklc
     # tklc.config(image='')
     
