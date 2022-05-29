@@ -1,7 +1,14 @@
 #Edmonds-Karp Algorithm
+import tkinter as Tkinter
+import Edmond_Karp_Vish
+
+root = Tkinter.Tk()
+frame = Tkinter.Frame(root)
+
 def max_flow(C, s, t):
         n = len(C) # C is the capacity matrix
         F = [[0] * n for i in range(n)]
+        Edmond_Karp_Vish.makeGraph(C, F, s, t)
         path = bfs(C, F, s, t)
         print (path)
         while path != None:
@@ -10,6 +17,7 @@ def max_flow(C, s, t):
                 F[u][v] += flow
                 F[v][u] -= flow
             print(F)
+            Edmond_Karp_Vish.makeGraph(C, F, s, t)
             path = bfs(C, F, s, t)
             print (path)
         return sum(F[s][i] for i in range(n))
@@ -37,6 +45,8 @@ C = [[ 0, 4, 10, 0],  # s
      [ 0, 0, 2, 7],  # o
      [ 0, 4, 0, 5],  # p
      [ 0, 0, 0, 0]]  # t
+
+
 
 source = 0  # A
 sink = 3    # F
