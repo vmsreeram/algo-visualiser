@@ -36,7 +36,7 @@ def makeGraph(C, F, s, t):
     
 
     graph.write_png('output.png')
-    input("Press any key...")
+    # input("Press any key...")
     # global tklc
     # tklc.config(image='')
     
