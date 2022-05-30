@@ -1,24 +1,24 @@
 #Edmonds-Karp Algorithm
 import tkinter as Tkinter
-import Edmond_Karp_Vish
+import Edmond_Karp_Flow
 import Edmond_Karp_Residual
-import imageLoadTry
+import image_Load
 
 def max_flow(C, s, t):
         n = len(C) # C is the capacity matrix
         F = [[0] * n for i in range(n)]
-        Edmond_Karp_Vish.makeGraph(C, F, s, t)
+        Edmond_Karp_Flow.makeGraph(C, F, s, t)
         Edmond_Karp_Residual.makeGraph(C, F, s, t)
-        imageLoadTry.loadimg()
+        image_Load.loadimg()
         path = bfs(C, F, s, t)
         while path != None:
             flow = min(C[u][v] - F[u][v] for u,v in path)
             for u,v in path:
                 F[u][v] += flow
                 F[v][u] -= flow
-            Edmond_Karp_Vish.makeGraph(C, F, s, t)
+            Edmond_Karp_Flow.makeGraph(C, F, s, t)
             Edmond_Karp_Residual.makeGraph(C, F, s, t)
-            imageLoadTry.loadimg()
+            image_Load.loadimg()
             path = bfs(C, F, s, t)
         return sum(F[s][i] for i in range(n))
 
