@@ -16,7 +16,7 @@ def loadimg():
       frame2.place(anchor='w', relx=0.5, rely=0.5)
       # Create an object of tkinter ImageTk
       img = ImageTk.PhotoImage(Image.open("output.png"))
-      img2 = ImageTk.PhotoImage(Image.open("arrow.png"))
+      img2 = ImageTk.PhotoImage(Image.open("output1.png"))
 
       # Create a Label Widget to display the text or Image
       label = Label(frame, image = img)
