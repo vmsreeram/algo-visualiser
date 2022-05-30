@@ -11,8 +11,8 @@ def makeGraph(C, F, s, t):
     for i in range(n):
         my_node = pydot.Node(str(i))
         graph.add_node(my_node)
-    graph.get_node(str(s))[0].set_label("source")
-    graph.get_node(str(t))[0].set_label("sink")
+    graph.get_node(str(s))[0].set_label("Source")
+    graph.get_node(str(t))[0].set_label("Sink")
 
     for i in range(n):
         for j in range(n):
