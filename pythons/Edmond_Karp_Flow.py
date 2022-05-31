@@ -20,7 +20,10 @@ def makeGraph(C, F, path, s, t):
                 if(i,j) in path:
                     graph.add_edge(pydot.Edge(str(i), str(j), label="C= "+str(C[i][j])+" : F= "+str(F[i][j]), color = "red" ))
                 else:
-                    graph.add_edge(pydot.Edge(str(i), str(j), label="C= "+str(C[i][j])+" : F= "+str(F[i][j]) ))
+                    if (C[i][j] == F[i][j]):
+                        graph.add_edge(pydot.Edge(str(i), str(j), label="C= "+str(C[i][j])+" : F= "+str(F[i][j]) , penwidth = 3))
+                    else:
+                        graph.add_edge(pydot.Edge(str(i), str(j), label="C= "+str(C[i][j])+" : F= "+str(F[i][j]) ))
 
     # Or, without using an intermediate variable:
 
