@@ -48,6 +48,7 @@ win.attributes('-fullscreen', True)
 slogan2 = Button(frame,
             text="exit",
             fg="green",
+            bg = "RED",
             command=win.destroy)
 slogan2.pack(side=TOP)
 
