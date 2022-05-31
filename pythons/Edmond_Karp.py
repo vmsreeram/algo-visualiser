@@ -17,7 +17,7 @@ def max_flow(C, s, t):
                 F[u][v] += flow
                 F[v][u] -= flow
             Edmond_Karp_Flow.makeGraph(C, F, s, t)
-            Edmond_Karp_Residual.makeGraph(C, F, path s, t)
+            Edmond_Karp_Residual.makeGraph(C, F, path, s, t)
             image_Load.loadimg()
             path = bfs(C, F, s, t)
         return sum(F[s][i] for i in range(n))
