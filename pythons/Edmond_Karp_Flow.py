@@ -18,12 +18,12 @@ def makeGraph(C, F, path, s, t):
         for j in range(n):
             if (C[i][j]!=0) or (F[i][j]!=0):
                 if(i,j) in path:
-                    graph.add_edge(pydot.Edge(str(i), str(j), label="C= "+str(C[i][j])+" : F= "+str(F[i][j]), color = "red" ))
-                else:
                     if (C[i][j] == F[i][j]):
-                        graph.add_edge(pydot.Edge(str(i), str(j), label="C= "+str(C[i][j])+" : F= "+str(F[i][j]) , penwidth = 3))
+                        graph.add_edge(pydot.Edge(str(i), str(j), label="C= "+str(C[i][j])+" : F= "+str(F[i][j]), color = "red" , penwidth = 3))    #bottleneck edge
                     else:
-                        graph.add_edge(pydot.Edge(str(i), str(j), label="C= "+str(C[i][j])+" : F= "+str(F[i][j]) ))
+                        graph.add_edge(pydot.Edge(str(i), str(j), label="C= "+str(C[i][j])+" : F= "+str(F[i][j]), color = "red" ))                  #augmenting path but not bottleneck
+                else:
+                    graph.add_edge(pydot.Edge(str(i), str(j), label="C= "+str(C[i][j])+" : F= "+str(F[i][j]) ))
 
     # Or, without using an intermediate variable:
 
