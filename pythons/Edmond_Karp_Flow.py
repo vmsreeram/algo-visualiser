@@ -3,7 +3,7 @@ import pydot
 import tkinter as Tkinter
 from PIL import Image, ImageTk
 
-def makeGraph(C, F, path, s, t, flow):
+def makeGraph(C, F, path, s, t, flow, fGraphName):
     n = len(C)  
     if path != []:
         # flow = min(C[u][v]-F[u][v] for u,v in path)
@@ -32,5 +32,5 @@ def makeGraph(C, F, path, s, t, flow):
 
     # Or, without using an intermediate variable:
 
-    graph.write_png('output.png')
+    graph.write_png(fGraphName)
     

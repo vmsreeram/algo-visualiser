@@ -4,7 +4,7 @@ import pydot
 import tkinter as Tkinter
 from PIL import Image, ImageTk
 
-def makeGraph(C, F, s, t):
+def makeGraph(C, F, s, t, rGraphName):
     n = len(C)  
     graph = pydot.Dot("my_graph", graph_type="digraph", bgcolor="yellow")
 
@@ -21,5 +21,5 @@ def makeGraph(C, F, s, t):
                 graph.add_edge(pydot.Edge(str(i), str(j), label= str(C[i][j] - F[i][j])))
     # Or, without using an intermediate variable:
 
-    graph.write_png('output1.png')
+    graph.write_png(rGraphName)
     
