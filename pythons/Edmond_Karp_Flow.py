@@ -3,9 +3,14 @@ import pydot
 import tkinter as Tkinter
 from PIL import Image, ImageTk
 
-def makeGraph(C, F, path, s, t):
+def makeGraph(C, F, path, s, t, flow):
     n = len(C)  
-    graph = pydot.Dot("my_graph", graph_type="digraph", bgcolor="yellow")
+    if path != []:
+        # flow = min(C[u][v]-F[u][v] for u,v in path)
+        stringg="Length of augmenting path = "+str(len(path))+"\nBottleneck Capacity = "+str(flow)
+        graph = pydot.Dot("my_graph", graph_type="digraph", bgcolor="yellow", label=stringg)
+    else:
+        graph = pydot.Dot("my_graph", graph_type="digraph", bgcolor="yellow")
 
     # Add nodes
     for i in range(n):
