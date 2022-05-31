@@ -3,7 +3,7 @@ import pydot
 import tkinter as Tkinter
 from PIL import Image, ImageTk
 
-def makeGraph(C, F, path, s, t):
+def makeGraph(C, F, s, t):
     n = len(C)  
     graph = pydot.Dot("my_graph", graph_type="digraph", bgcolor="yellow")
 
@@ -17,10 +17,7 @@ def makeGraph(C, F, path, s, t):
     for i in range(n):
         for j in range(n):
             if (C[i][j] - F[i][j])>0 :
-                if(i,j) in path:
-                    graph.add_edge(pydot.Edge(str(i), str(j), label= str(C[i][j] - F[i][j]), color = 'red' ))
-                else:
-                    graph.add_edge(pydot.Edge(str(i), str(j), label= str(C[i][j] - F[i][j])))
+                graph.add_edge(pydot.Edge(str(i), str(j), label= str(C[i][j] - F[i][j])))
     # Or, without using an intermediate variable:
 
     graph.write_png('output1.png')
