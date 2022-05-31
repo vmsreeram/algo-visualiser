@@ -7,8 +7,13 @@ import image_Load
 def max_flow(C, s, t):
         n = len(C) # C is the capacity matrix
         F = [[0] * n for i in range(n)]
-        Edmond_Karp_Flow.makeGraph(C, F, [], s, t, 0)
-        Edmond_Karp_Residual.makeGraph(C, F, s, t)
+
+        index = 1
+        fGraphName = "flowGraph" +str(index) + ".png"
+        rGraphName = "residualGraph" +str(index) + ".png"
+
+        Edmond_Karp_Flow.makeGraph(C, F, [], s, t, 0, fGraphName)
+        Edmond_Karp_Residual.makeGraph(C, F, s, t, rGraphName)
         image_Load.loadimg()
         path = bfs(C, F, s, t)
         while path != None:
@@ -16,8 +21,9 @@ def max_flow(C, s, t):
             for u,v in path:
                 F[u][v] += flow
                 F[v][u] -= flow
-            Edmond_Karp_Flow.makeGraph(C, F, path, s, t, flow)
-            Edmond_Karp_Residual.makeGraph(C, F, s, t)
+            index += index
+            Edmond_Karp_Flow.makeGraph(C, F, path, s, t, flow, fGraphName)
+            Edmond_Karp_Residual.makeGraph(C, F, s, t, rGraphName)
             image_Load.loadimg()
             path = bfs(C, F, s, t)
         return sum(F[s][i] for i in range(n))
