@@ -1,6 +1,7 @@
 import os
-from PIL import ImageTk, Image
+from PIL import ImageTk
 from tkinter import *
+import PIL.Image
 
 win = Tk()
 win.title("Edmond-Karp Visualisation")
@@ -17,12 +18,12 @@ flowImgs=[]
 folder = 'imgs/flow'
 for filename in os.listdir(folder):
     file_path = os.path.join(folder, filename)
-    flowImgs.append(file_path)
+    flowImgs.append(str(file_path))
 
 folder = 'imgs/resi'
 for filename in os.listdir(folder):
     file_path = os.path.join(folder, filename)
-    residualImgs.append(file_path)
+    residualImgs.append(str(file_path))
 
 curr = -1
 print("len flow imgs = ")
@@ -35,16 +36,24 @@ print((residualImgs))
 def showImg():
     global curr
     curr+=1
-    print(curr)
-    assert(curr>=0 and curr<=len(flowImgs))
-    imgRes = ImageTk.PhotoImage(Image.open(str(residualImgs[curr])))
-    imgFlo = ImageTk.PhotoImage(Image.open(str(flowImgs[curr])))
+    print(curr,residualImgs[curr] )
+    try:
+        assert(curr>=0 and curr<len(flowImgs))
+    except:
+        print("wrong index")
+        return
+    imgRes = ImageTk.PhotoImage(PIL.Image.open(residualImgs[curr]))
+    imgFlo = ImageTk.PhotoImage(PIL.Image.open(flowImgs[curr]))
 
+    for widgets in frame.winfo_children():
+      widgets.destroy()
     label = Label(frame, image = imgFlo)
     labell = Label(frame, text='Flow Graph', font="arial 15 underline")
     labell.pack()
     label.pack()
 
+    for widgets in frame2.winfo_children():
+      widgets.destroy()
     label2 = Label(frame2, image=imgRes)
     label22 = Label(frame2, text='Residual Graph', font="arial 15 underline")
     label22.pack()
