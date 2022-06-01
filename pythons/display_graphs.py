@@ -2,7 +2,8 @@ import os
 from PIL import ImageTk
 from tkinter import *
 import PIL.Image
-
+DimHeight = 500
+DimWidth = 500
 def displayAllGraphs():
     win = Tk()
     win.title("Edmond-Karp Visualisation")
@@ -46,8 +47,13 @@ def displayAllGraphs():
         if curr>=len(flowImgs):
             print("wrong index")
             return
-        imgRes = ImageTk.PhotoImage(PIL.Image.open(residualImgs[curr]))
-        imgFlo = ImageTk.PhotoImage(PIL.Image.open(flowImgs[curr]))
+
+        imgResIm = (PIL.Image.open(residualImgs[curr]))
+        imgFloIm = (PIL.Image.open(flowImgs[curr]))
+        resized_image= imgResIm.resize((DimWidth,DimHeight), PIL.Image.ANTIALIAS)
+        imgRes= ImageTk.PhotoImage(resized_image)
+        resized_image= imgFloIm.resize((DimWidth,DimHeight), PIL.Image.ANTIALIAS)
+        imgFlo= ImageTk.PhotoImage(resized_image)
 
 
         for widgets in frame.winfo_children():
@@ -88,8 +94,13 @@ def displayAllGraphs():
         except:
             print("wrong index")
             return
-        imgRes = ImageTk.PhotoImage(PIL.Image.open(residualImgs[curr]))
-        imgFlo = ImageTk.PhotoImage(PIL.Image.open(flowImgs[curr]))
+        
+        imgResIm = (PIL.Image.open(residualImgs[curr]))
+        imgFloIm = (PIL.Image.open(flowImgs[curr]))
+        resized_image= imgResIm.resize((DimWidth,DimHeight), PIL.Image.ANTIALIAS)
+        imgRes= ImageTk.PhotoImage(resized_image)
+        resized_image= imgFloIm.resize((DimWidth,DimHeight), PIL.Image.ANTIALIAS)
+        imgFlo= ImageTk.PhotoImage(resized_image)
 
         for widgets in frame.winfo_children():
             widgets.destroy()
