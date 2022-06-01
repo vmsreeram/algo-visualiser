@@ -23,10 +23,12 @@ def makeGraph(C, F, path, flow, s, t, rGraphName):
 
     for i in range(n-1):
         graph.add_edge(pydot.Edge(str(i), str(i+1), style = 'invis'))
-    subg=pydot.Subgraph(rank='same')
+    subg=pydot.Subgraph(rank='source')
     subg.add_node(pydot.Node(str(s)))
-    subg.add_node(pydot.Node(str(t)))
     graph.add_subgraph(subg)
+    subg2=pydot.Subgraph(rank='sink')
+    subg2.add_node(pydot.Node(str(t)))
+    graph.add_subgraph(subg2)
 
     for i in range(n):
         for j in range(n):
