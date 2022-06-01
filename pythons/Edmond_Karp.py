@@ -84,6 +84,6 @@ for filename in os.listdir(folder2):
 source = 0  
 sink = 3    
 max_flow_value = max_flow(C, source, sink)
-display_graphs.displayAllGraphs()
 print ("Edmonds-Karp algorithm")
 print ("max_flow_value is: ", max_flow_value)
+display_graphs.displayAllGraphs()

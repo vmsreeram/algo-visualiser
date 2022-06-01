@@ -34,13 +34,6 @@ def displayAllGraphs():
 
     global curr
     curr = -1
-    print("len flow imgs = ")
-    print(len(flowImgs))
-    print(" flow imgs = ")
-    print((flowImgs))
-    print(" resi imgs = ")
-    print((residualImgs))
-
     def showImg():
         global curr
         curr+=1
@@ -53,7 +46,6 @@ def displayAllGraphs():
         if curr>=len(flowImgs):
             print("wrong index")
             return
-        print(curr,residualImgs[curr] )
         imgRes = ImageTk.PhotoImage(PIL.Image.open(residualImgs[curr]))
         imgFlo = ImageTk.PhotoImage(PIL.Image.open(flowImgs[curr]))
 
@@ -96,7 +88,6 @@ def displayAllGraphs():
         except:
             print("wrong index")
             return
-        print(curr,residualImgs[curr] )
         imgRes = ImageTk.PhotoImage(PIL.Image.open(residualImgs[curr]))
         imgFlo = ImageTk.PhotoImage(PIL.Image.open(flowImgs[curr]))
 
