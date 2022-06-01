@@ -10,9 +10,9 @@ def makeGraph(C, F, path, flow, s, t, rGraphName):
     if path is not None and path != []:
         # flow = min(C[u][v]-F[u][v] for u,v in path)
         stringg="Length of augmenting path = "+str(len(path))+"\nBottleneck Capacity = "+str(flow)
-        graph = pydot.Dot("my_graph", graph_type="digraph", bgcolor="yellow", label=stringg)
+        graph = pydot.Dot("my_graph", graph_type="digraph", bgcolor="yellow", label=stringg, sep=3, nodesep=0.5)
     else:
-        graph = pydot.Dot("my_graph", graph_type="digraph", bgcolor="yellow", label="No path exists from Source to Sink")
+        graph = pydot.Dot("my_graph", graph_type="digraph", bgcolor="yellow", label="No path exists from \nSource to Sink", sep=3, nodesep=0.5)
 
     # Add nodes
     for i in range(n):
@@ -42,5 +42,7 @@ def makeGraph(C, F, path, flow, s, t, rGraphName):
                     graph.add_edge(pydot.Edge(str(i), str(j), label= str(C[i][j] - F[i][j])))
     # Or, without using an intermediate variable:
 
-    graph.write_png(rGraphName)
+    # graph.write_png(rGraphName)
+    graph.write(rGraphName, prog='fdp', format='png')
+
     

@@ -3,7 +3,7 @@ from PIL import ImageTk
 from tkinter import *
 import PIL.Image
 DimHeight = 500
-DimWidth = 500
+
 def displayAllGraphs():
     win = Tk()
     win.title("Edmond-Karp Visualisation")
@@ -49,9 +49,16 @@ def displayAllGraphs():
             return
 
         imgResIm = (PIL.Image.open(residualImgs[curr]))
-        imgFloIm = (PIL.Image.open(flowImgs[curr]))
+        widRes, heiRes = imgResIm.size
+        ReRatio = widRes/heiRes
+        DimWidth = int(ReRatio * DimHeight)
         resized_image= imgResIm.resize((DimWidth,DimHeight), PIL.Image.ANTIALIAS)
         imgRes= ImageTk.PhotoImage(resized_image)
+
+        imgFloIm = (PIL.Image.open(flowImgs[curr]))
+        widFlo,heiFlo = imgFloIm.size
+        FlRatio = widFlo/heiFlo
+        DimWidth = int(FlRatio * DimHeight)
         resized_image= imgFloIm.resize((DimWidth,DimHeight), PIL.Image.ANTIALIAS)
         imgFlo= ImageTk.PhotoImage(resized_image)
 
@@ -96,9 +103,16 @@ def displayAllGraphs():
             return
         
         imgResIm = (PIL.Image.open(residualImgs[curr]))
-        imgFloIm = (PIL.Image.open(flowImgs[curr]))
+        widRes, heiRes = imgResIm.size
+        ReRatio = widRes/heiRes
+        DimWidth = int(ReRatio * DimHeight)
         resized_image= imgResIm.resize((DimWidth,DimHeight), PIL.Image.ANTIALIAS)
         imgRes= ImageTk.PhotoImage(resized_image)
+
+        imgFloIm = (PIL.Image.open(flowImgs[curr]))
+        widFlo,heiFlo = imgFloIm.size
+        FlRatio = widFlo/heiFlo
+        DimWidth = int(FlRatio * DimHeight)
         resized_image= imgFloIm.resize((DimWidth,DimHeight), PIL.Image.ANTIALIAS)
         imgFlo= ImageTk.PhotoImage(resized_image)
 

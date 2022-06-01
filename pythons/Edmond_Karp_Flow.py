@@ -10,7 +10,7 @@ def makeGraph(C, F, s, t, fGraphName):
     #     stringg="Length of augmenting path = "+str(len(path))+"\nBottleneck Capacity = "+str(flow)
     #     graph = pydot.Dot("my_graph", graph_type="digraph", bgcolor="yellow", label=stringg)
     # else:
-    graph = pydot.Dot("my_graph", graph_type="digraph", bgcolor="yellow")
+    graph = pydot.Dot("my_graph", graph_type="digraph", bgcolor="yellow", sep=3, nodesep=0.5)
 
     # Add nodes
     for i in range(n):
@@ -41,5 +41,6 @@ def makeGraph(C, F, s, t, fGraphName):
 
     # Or, without using an intermediate variable:
 
-    graph.write_png(fGraphName)
+    # graph.write_png(fGraphName)
+    graph.write(fGraphName, prog='fdp', format='png')
     
