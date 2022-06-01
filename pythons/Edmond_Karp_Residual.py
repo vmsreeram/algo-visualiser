@@ -1,4 +1,5 @@
 from cProfile import label
+from click import style
 import pydot
 
 import tkinter as Tkinter
@@ -19,6 +20,13 @@ def makeGraph(C, F, path, flow, s, t, rGraphName):
         graph.add_node(my_node)
     graph.get_node(str(s))[0].set_label("Source")
     graph.get_node(str(t))[0].set_label("Sink")
+
+    for i in range(n-1):
+        graph.add_edge(pydot.Edge(str(i), str(i+1), style = 'invis'))
+    subg=pydot.Subgraph(rank='same')
+    subg.add_node(pydot.Node(str(s)))
+    subg.add_node(pydot.Node(str(t)))
+    graph.add_subgraph(subg)
 
     for i in range(n):
         for j in range(n):

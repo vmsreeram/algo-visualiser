@@ -8,10 +8,10 @@ def displayAllGraphs():
     win = Tk()
     win.title("Edmond-Karp Visualisation")
     win.geometry("1500x1000")                 # changed so as to fit whole window (instead of line28, which isn't working on mac)
-    frame = Frame(win, width=600, height=400)
+    frame = Frame(win, width=500, height=600)
     frame.place(anchor='e', relx=0.5, rely=0.5)
 
-    frame2 = Frame(win, width=600, height=400)
+    frame2 = Frame(win, width=500, height=600)
     frame2.place(anchor='w', relx=0.5, rely=0.5)
 
     frameLabel = Frame(win, width=600, height=100)
