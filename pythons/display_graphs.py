@@ -12,6 +12,9 @@ frame.place(anchor='e', relx=0.5, rely=0.5)
 frame2 = Frame(win, width=600, height=400)
 frame2.place(anchor='w', relx=0.5, rely=0.5)
 
+frameLabel = Frame(win, width=600, height=100)
+frameLabel.place(anchor='n', relx=0.5, rely=0)
+
 residualImgs=[]
 flowImgs=[]
 
@@ -25,6 +28,9 @@ for filename in os.listdir(folder):
     file_path = os.path.join(folder, filename)
     residualImgs.append(str(file_path))
 
+residualImgs.sort()
+flowImgs.sort()
+
 curr = -1
 print("len flow imgs = ")
 print(len(flowImgs))
@@ -36,17 +42,73 @@ print((residualImgs))
 def showImg():
     global curr
     curr+=1
+    if curr == len(flowImgs)-1:
+        slogan2.pack_forget()
+    if curr >= 1:
+        slogan1.pack(side=LEFT)
+
+
+    if curr>=len(flowImgs):
+        print("wrong index")
+        return
     print(curr,residualImgs[curr] )
+    imgRes = ImageTk.PhotoImage(PIL.Image.open(residualImgs[curr]))
+    imgFlo = ImageTk.PhotoImage(PIL.Image.open(flowImgs[curr]))
+
+
+    for widgets in frame.winfo_children():
+      widgets.destroy()
+
+    #### 
+    for widgets in frameLabel.winfo_children():
+      widgets.destroy()
+    labelstring = 'Step '+str(curr+1)
+    labelll = Label(frameLabel, text=labelstring, font="arial 25 underline")
+    labelll.pack()
+    ####
+
+    label = Label(frame, image = imgFlo)
+    labell = Label(frame, text='Flow Graph', font="arial 15 underline")
+    labell.pack()
+    label.pack()
+
+    for widgets in frame2.winfo_children():
+      widgets.destroy()
+    label2 = Label(frame2, image=imgRes)
+    label22 = Label(frame2, text='Residual Graph', font="arial 15 underline")
+    label22.pack()
+    label2.pack() 
+    win.mainloop()
+
+def showPrevImg():
+    global curr
+    curr-=1
+    if curr == 0:
+        slogan1.pack_forget()
+    if curr <= len(flowImgs)-2:
+        slogan2.pack(side=RIGHT)
+
+
     try:
         assert(curr>=0 and curr<len(flowImgs))
     except:
         print("wrong index")
         return
+    print(curr,residualImgs[curr] )
     imgRes = ImageTk.PhotoImage(PIL.Image.open(residualImgs[curr]))
     imgFlo = ImageTk.PhotoImage(PIL.Image.open(flowImgs[curr]))
 
     for widgets in frame.winfo_children():
       widgets.destroy()
+
+    #### 
+    for widgets in frameLabel.winfo_children():
+      widgets.destroy()
+    labelstring = 'Step '+str(curr+1)
+    labelll = Label(frameLabel, text=labelstring, font="arial 25 underline")
+    labelll.pack()
+    ####
+    
     label = Label(frame, image = imgFlo)
     labell = Label(frame, text='Flow Graph', font="arial 15 underline")
     labell.pack()
@@ -61,17 +123,23 @@ def showImg():
     win.mainloop()
 
 
-# slogan1 = Button(win,
-#                 text="Prev",
-#                 fg="green",
-#                 font="arial 20",
-#                 command=showImg(curr-1))
+slogan1 = Button(win,
+                text="Prev",
+                fg="green",
+                font="arial 20",
+                command=showPrevImg)
 slogan2 = Button(win,
                 text="Next",
                 fg="green",
                 font="arial 20",
                 command=showImg)
+slogan3 = Button(win,
+                text="Exit",
+                fg="red",
+                font="arial 20",
+                command=exit)                
 
-# slogan1.pack(side=TOP)
-slogan2.pack(side=TOP)
+slogan1.pack(side=LEFT)
+slogan2.pack(side=RIGHT)
+slogan3.pack(side=BOTTOM)
 win.mainloop()
