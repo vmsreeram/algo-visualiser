@@ -6,7 +6,7 @@ from PIL import Image, ImageTk
 
 def makeGraph(C, F, path, flow, s, t, rGraphName):
     n = len(C)
-    if path != []:
+    if path is not None and path != []:
         # flow = min(C[u][v]-F[u][v] for u,v in path)
         stringg="Length of augmenting path = "+str(len(path))+"\nBottleneck Capacity = "+str(flow)
         graph = pydot.Dot("my_graph", graph_type="digraph", bgcolor="yellow", label=stringg)
@@ -23,7 +23,7 @@ def makeGraph(C, F, path, flow, s, t, rGraphName):
     for i in range(n):
         for j in range(n):
             if (C[i][j] - F[i][j])>0 :
-                if(i,j) in path:
+                if path is not None and ((i,j) in path):
                     if (C[i][j] == flow):
                         graph.add_edge(pydot.Edge(str(i), str(j), label= str(C[i][j] - F[i][j]) , color = "red" , penwidth = 3))    #bottleneck edge
                     else:

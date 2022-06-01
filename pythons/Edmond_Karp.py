@@ -21,7 +21,7 @@ def max_flow(C, s, t):
         while path != None:
             flow = min(C[u][v] - F[u][v] for u,v in path)
             Edmond_Karp_Flow.makeGraph(C, F, s, t, fGraphName)
-            Edmond_Karp_Residual.makeGraph(C, F, path, flow s, t, rGraphName)
+            Edmond_Karp_Residual.makeGraph(C, F, path, flow, s, t, rGraphName)
             for u,v in path:
                 F[u][v] += flow
                 F[v][u] -= flow
@@ -30,8 +30,10 @@ def max_flow(C, s, t):
             rGraphName = "imgs/resi/residualGraph" +str(index) + ".png"
             # image_Load.loadimg()
             path = bfs(C, F, s, t)
-        Edmond_Karp_Flow.makeGraph(C, F, [], s, t, 0, fGraphName)
-        Edmond_Karp_Residual.makeGraph(C, F, s, t, rGraphName)
+        # Edmond_Karp_Flow.makeGraph(C, F, [], s, t, 0, fGraphName)
+        # Edmond_Karp_Residual.makeGraph(C, F, s, t, rGraphName)
+        Edmond_Karp_Flow.makeGraph(C, F, s, t, fGraphName)
+        Edmond_Karp_Residual.makeGraph(C, F, path, flow, s, t, rGraphName)
         return sum(F[s][i] for i in range(n))
 
 #find path by using BFS
