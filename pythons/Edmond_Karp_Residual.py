@@ -34,7 +34,7 @@ def makeGraph(C, F, path, flow, s, t, rGraphName):
         for j in range(n):
             if (C[i][j] - F[i][j])>0 :
                 if path is not None and ((i,j) in path):
-                    if (C[i][j] == flow):
+                    if (C[i][j] - F[i][j] == flow):
                         graph.add_edge(pydot.Edge(str(i), str(j), label= str(C[i][j] - F[i][j]) , color = "red" , penwidth = 3))    #bottleneck edge
                     else:
                         graph.add_edge(pydot.Edge(str(i), str(j), label= str(C[i][j] - F[i][j]) , color = "red" ))                  #augmenting path but not bottleneck
