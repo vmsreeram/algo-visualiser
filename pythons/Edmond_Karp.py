@@ -1,9 +1,7 @@
 #Edmonds-Karp Algorithm
 import shutil
-import tkinter as Tkinter
 import Edmond_Karp_Flow
 import Edmond_Karp_Residual
-import image_Load
 import os
 import display_graphs
 
@@ -15,8 +13,6 @@ def max_flow(C, s, t):
         fGraphName = "imgs/flow/flowGraph" +str(index) + ".png"
         rGraphName = "imgs/resi/residualGraph" +str(index) + ".png"
 
-        
-        # image_Load.loadimg()
         path = bfs(C, F, s, t)
         while path != None:
             flow = min(C[u][v] - F[u][v] for u,v in path)
@@ -28,10 +24,7 @@ def max_flow(C, s, t):
             index += 1
             fGraphName = "imgs/flow/flowGraph" +str(index) + ".png"
             rGraphName = "imgs/resi/residualGraph" +str(index) + ".png"
-            # image_Load.loadimg()
             path = bfs(C, F, s, t)
-        # Edmond_Karp_Flow.makeGraph(C, F, [], s, t, 0, fGraphName)
-        # Edmond_Karp_Residual.makeGraph(C, F, s, t, rGraphName)
         Edmond_Karp_Flow.makeGraph(C, F, s, t, fGraphName)
         Edmond_Karp_Residual.makeGraph(C, F, path, flow, s, t, rGraphName)
         return sum(F[s][i] for i in range(n))
@@ -72,7 +65,6 @@ C = [[ 0, 4, 10, 0],  # 0
 source = 0  
 sink = 3
 
-# TODO : remove all files when 'exit' is called
 # to remove all files in folder = 'imgs/flow' and 'imgs/resi' // assuming imgs, flow, resi exists
 folder = 'imgs/flow'
 for filename in os.listdir(folder):

@@ -157,7 +157,6 @@ def displayAllGraphs():
                     font="arial 20",
                     command=exit)                
 
-    # slogan1.pack(side=LEFT)
     slogan2.pack(side=RIGHT)
     slogan3.pack(side=BOTTOM)
     showImg()
