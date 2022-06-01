@@ -11,7 +11,7 @@ def makeGraph(C, F, path, flow, s, t, rGraphName):
         stringg="Length of augmenting path = "+str(len(path))+"\nBottleneck Capacity = "+str(flow)
         graph = pydot.Dot("my_graph", graph_type="digraph", bgcolor="yellow", label=stringg)
     else:
-        graph = pydot.Dot("my_graph", graph_type="digraph", bgcolor="yellow")
+        graph = pydot.Dot("my_graph", graph_type="digraph", bgcolor="yellow", label="No path exists from Source to Sink")
 
     # Add nodes
     for i in range(n):

@@ -52,12 +52,25 @@ def bfs(C, F, s, t):
                         queue.append(v)
         return None
     
-# make a capacity graph
+""" # make a capacity graph
 # node 0  1  2   3
 C = [[ 0, 4, 10, 0],  # 0
      [ 0, 0, 2,  7],  # 1
      [ 0, 4, 0,  5],  # 2
-     [ 0, 0, 0,  0]]  # 3
+     [ 0, 0, 0,  0]]  # 3 """
+
+C = [[ 0, 6, 5],  # 0
+     [ 2, 0, 7],  # 1
+     [ 3, 1, 0]]  # 3
+
+""" C = [[ 0, 6, 4, 10, 9],  # 0
+     [ 5, 0, 6, 2,  7],  # 1
+     [ 7, 0, 0, 4,  5],  # 2
+     [ 3, 8, 4, 0,  5],  # 3
+     [ 5, 7, 3, 9,  0]]  # 4 """
+
+source = 0  
+sink = 1
 
 # TODO : remove all files when 'exit' is called
 # to remove all files in folder = 'imgs/flow' and 'imgs/resi' // assuming imgs, flow, resi exists
@@ -84,8 +97,6 @@ for filename in os.listdir(folder2):
         print('Failed to delete %s. Reason: %s' % (file_path, e))
 
 
-source = 0  
-sink = 3    
 max_flow_value = max_flow(C, source, sink)
 print ("Edmonds-Karp algorithm")
 print ("max_flow_value is: ", max_flow_value)
