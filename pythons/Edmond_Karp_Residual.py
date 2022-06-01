@@ -4,9 +4,14 @@ import pydot
 import tkinter as Tkinter
 from PIL import Image, ImageTk
 
-def makeGraph(C, F, s, t, rGraphName):
-    n = len(C)  
-    graph = pydot.Dot("my_graph", graph_type="digraph", bgcolor="yellow")
+def makeGraph(C, F, path, flow, s, t, rGraphName):
+    n = len(C)
+    if path != []:
+        # flow = min(C[u][v]-F[u][v] for u,v in path)
+        stringg="Length of augmenting path = "+str(len(path))+"\nBottleneck Capacity = "+str(flow)
+        graph = pydot.Dot("my_graph", graph_type="digraph", bgcolor="yellow", label=stringg)
+    else:
+        graph = pydot.Dot("my_graph", graph_type="digraph", bgcolor="yellow")
 
     # Add nodes
     for i in range(n):
@@ -18,7 +23,13 @@ def makeGraph(C, F, s, t, rGraphName):
     for i in range(n):
         for j in range(n):
             if (C[i][j] - F[i][j])>0 :
-                graph.add_edge(pydot.Edge(str(i), str(j), label= str(C[i][j] - F[i][j])))
+                if(i,j) in path:
+                    if (C[i][j] == flow):
+                        graph.add_edge(pydot.Edge(str(i), str(j), label= str(C[i][j] - F[i][j]) , color = "red" , penwidth = 3))    #bottleneck edge
+                    else:
+                        graph.add_edge(pydot.Edge(str(i), str(j), label= str(C[i][j] - F[i][j]) , color = "red" ))                  #augmenting path but not bottleneck
+                else:
+                    graph.add_edge(pydot.Edge(str(i), str(j), label= str(C[i][j] - F[i][j])))
     # Or, without using an intermediate variable:
 
     graph.write_png(rGraphName)
