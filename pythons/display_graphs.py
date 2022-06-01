@@ -126,12 +126,12 @@ def displayAllGraphs():
 
 
     slogan1 = Button(win,
-                    text="Prev",
+                    text="<< Prev",
                     fg="green",
                     font="arial 20",
                     command=showPrevImg)
     slogan2 = Button(win,
-                    text="Next",
+                    text="Next >>",
                     fg="green",
                     font="arial 20",
                     command=showImg)
@@ -141,7 +141,8 @@ def displayAllGraphs():
                     font="arial 20",
                     command=exit)                
 
-    slogan1.pack(side=LEFT)
+    # slogan1.pack(side=LEFT)
     slogan2.pack(side=RIGHT)
     slogan3.pack(side=BOTTOM)
+    showImg()
     win.mainloop()
