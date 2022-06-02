@@ -18,7 +18,7 @@ def displayAllGraphs():
     frameLabel.place(anchor='n', relx=0.5, rely=0)
 
     frameLegend = Frame(win, width=600, height=600)
-    frameLegend.place(anchor='se', relx=1, rely=1)
+    frameLegend.place(anchor='sw', relx=0.1, rely=0.95)
     lbllegend = Label(frameLegend, text='C/F on edge represents the edge \nwith capacity C, having flow F', font="arial 15", fg="black", bg='green')
     lbllegend.pack()
     residualImgs=[]
