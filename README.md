@@ -9,4 +9,4 @@
 3. If zero capacity edges with non-zero flow be shown in the visualisation, Enter ```n```. Otherwise all zero capacity edges will be hidden.
 4. Use "Next" and "Prev" buttons to move through the generated images, to understand the algorithm.
 
-The generated flow graph images will be stored in ```imgs/flow``` and residual graph images will be stored in ```imgs/resi``` respectively. Also, ```imgs/flow/flowGraph{n}.png``` will be the flow graph image of the $n^th$ step. And, ```imgs/resi/residualGraph{n}.png``` will be the residual graph image of the $n^th$ step.
+The generated graph images will be stored in ```imgs``` folder. Also, ```imgs/flow/flowGraph{n}.png``` will be the flow graph image of the $n^{th}$ step. And, ```imgs/resi/residualGraph{n}.png``` will be the residual graph image of the $n^{th}$ step.
