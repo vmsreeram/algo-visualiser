@@ -11,4 +11,4 @@
 
 The generated graph images will be stored in ```imgs``` folder. Also, ```imgs/flow/flowGraph{n}.png``` will be the flow graph image of the $n^{th}$ step. And, ```imgs/resi/residualGraph{n}.png``` will be the residual graph image of the $n^{th}$ step.
 
-To change the input graph (for running Edmond-Karp algorithm), edit the adjacency matrix C in the file Edmond_Karp.py. ```C[[i][j]]``` is the capacity of edge from i to j.
+To change the input graph (for running Edmond-Karp algorithm), edit the adjacency matrix C in the file Edmond_Karp.py. ```C[i][j]``` is the capacity of edge from i to j.
