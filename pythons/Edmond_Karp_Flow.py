@@ -24,7 +24,8 @@ def makeGraph(C, F, s, t, fGraphName):
     for i in range(n):
         for j in range(n):
             if (C[i][j]!=0) or (F[i][j]!=0):
-                graph.add_edge(pydot.Edge(str(i), str(j), label="C= "+str(C[i][j])+" : F= "+str(F[i][j]) ))
+                # graph.add_edge(pydot.Edge(str(i), str(j), label="C= "+str(C[i][j])+" : F= "+str(F[i][j]) ))
+                graph.add_edge(pydot.Edge(str(i), str(j), label=str(C[i][j])+"/"+str(F[i][j]) ))
 
     graph.write(fGraphName, prog='fdp', format='png')
     
