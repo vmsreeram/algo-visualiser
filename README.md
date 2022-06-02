@@ -14,4 +14,6 @@
 
 The generated graph images will be stored in ```imgs``` folder. Also, for any integer $n$, ```imgs/flow/flowGraph{n}.png``` will be the flow graph image of the $n^{th}$ step. And, ```imgs/resi/residualGraph{n}.png``` will be the residual graph image of the $n^{th}$ step.
 
-To change the input graph, edit the adjacency matrix in the file ```input.txt```. ```C[i][j]``` is the capacity of edge from i to j.
+The input file should be adjacency matrix with entry at  i, j position is ```C[i][j]``` representing the capacity of the edge from i to j.
+
+Two sample inputs are given in the same folder.
