@@ -93,12 +93,9 @@ def Main(C, source, sink, hide0cap):
 
     # ask user to choose whether or not to hide zero capacity edges with non-zero flow
     # hide0cap = input("Should zero capacity edges with non-zero flow be hidden in visualisation? (y(default) / n) : ")
-    print("hide0cap=",hide0cap)
     if(hide0cap==False):
-        print("With False called.")
         max_flow_value = max_flow(C, source, sink, False)
     else:
-        print("With True called.")
         max_flow_value = max_flow(C, source, sink, True)
 
     print ("Edmonds-Karp algorithm")
