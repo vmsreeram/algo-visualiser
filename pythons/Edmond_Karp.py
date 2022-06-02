@@ -47,14 +47,14 @@ def bfs(C, F, s, t):
     
 # make a capacity graph - some example inputs commented for ease
 # node 0  1  2   3
-""" C = [[ 0, 4, 10, 0],  # 0
+C = [[ 0, 4, 10, 0],  # 0
      [ 0, 0, 2,  7],  # 1
      [ 0, 4, 0,  5],  # 2
-     [ 0, 0, 0,  0]]  # 3 """
+     [ 0, 0, 0,  0]]  # 3
 
-C = [[ 0, 6, 5],  # 0
+""" C = [[ 0, 6, 5],  # 0
      [ 2, 0, 7],  # 1
-     [ 3, 1, 0]]  # 2
+     [ 3, 1, 0]]  # 2 """
 
 """ C = [[ 0, 6, 4, 10, 9],  # 0
      [ 5, 0, 6, 2,  7],  # 1
@@ -63,7 +63,7 @@ C = [[ 0, 6, 5],  # 0
      [ 5, 7, 3, 9,  0]]  # 4 """
 
 source = 0  
-sink = 2
+sink = 3
 
 # to remove all files in folder = 'imgs/flow' and 'imgs/resi' // assuming folders imgs, flow, resi exists
 # remove existing files from imgs/flow
