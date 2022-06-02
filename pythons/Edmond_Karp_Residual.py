@@ -15,7 +15,7 @@ def makeGraph(C, F, path, flow, s, t, rGraphName):
     graph.get_node(str(s))[0].set_label("Source")
     graph.get_node(str(t))[0].set_label("Sink")
 
-    # Forcing source to be at top and sink to be at bottom of the graph
+    # Forcing source to be at top and sink to be in opposite sides of the graph
     subg=pydot.Subgraph(rank='source')
     subg.add_node(pydot.Node(str(s)))
     graph.add_subgraph(subg)

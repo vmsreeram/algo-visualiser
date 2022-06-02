@@ -4,7 +4,7 @@ from tkinter import *
 import PIL.Image
 DimHeight = 500
 
-def displayAllGraphs():
+def displayAllGraphs(max_flow_value):
     win = Tk()
     win.title("Edmond-Karp Visualisation")
     win.geometry("1500x1000")                 # changed so as to fit whole window (instead of line28, which isn't working on mac)
@@ -21,6 +21,12 @@ def displayAllGraphs():
     frameLegend.place(anchor='sw', relx=0.1, rely=0.95)
     lbllegend = Label(frameLegend, text='C/F on edge represents the edge \nwith capacity C, having flow F', font="arial 15", fg="black", bg='green')
     lbllegend.pack()
+
+    frameanslbl = Frame(win, width=50, height=50)
+    frameanslbl.place(anchor='se', relx=0.8, rely=0.95)
+    answerlabeltext = 'Edmonds-Karp algorithm\nmax_flow_value is: = '+str(max_flow_value)
+    anslbl = Label(frameanslbl, text=answerlabeltext, font="arial 15", fg="black", bg='green')
+    # anslbl.pack()
     residualImgs=[]
     flowImgs=[]
 
@@ -43,6 +49,7 @@ def displayAllGraphs():
         global curr
         curr+=1
         if curr == len(flowImgs)-1:
+            anslbl.pack()
             slogan2.pack_forget()
         if curr >= 1:
             slogan1.pack(side=LEFT)
@@ -104,6 +111,7 @@ def displayAllGraphs():
         if curr == 0:
             slogan1.pack_forget()
         if curr <= len(flowImgs)-2:
+            anslbl.pack_forget()
             slogan2.pack(side=RIGHT)
 
 

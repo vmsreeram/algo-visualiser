@@ -5,7 +5,7 @@ import Edmond_Karp_Residual
 import os
 import display_graphs
 
-def max_flow(C, s, t):
+def max_flow(C, s, t, hide0cp=False):
         n = len(C) # C is the capacity matrix, defined below
         F = [[0] * n for i in range(n)]
 
@@ -16,7 +16,7 @@ def max_flow(C, s, t):
         path = bfs(C, F, s, t)
         while path != None:
             flow = min(C[u][v] - F[u][v] for u,v in path)
-            Edmond_Karp_Flow.makeGraph(C, F, s, t, fGraphName)
+            Edmond_Karp_Flow.makeGraph(C, F, s, t, fGraphName, hide0cp)
             Edmond_Karp_Residual.makeGraph(C, F, path, flow, s, t, rGraphName)
             for u,v in path:
                 F[u][v] += flow
@@ -25,7 +25,7 @@ def max_flow(C, s, t):
             fGraphName = "imgs/flow/flowGraph" +str(index) + ".png"
             rGraphName = "imgs/resi/residualGraph" +str(index) + ".png"
             path = bfs(C, F, s, t)
-        Edmond_Karp_Flow.makeGraph(C, F, s, t, fGraphName)
+        Edmond_Karp_Flow.makeGraph(C, F, s, t, fGraphName, hide0cp)
         Edmond_Karp_Residual.makeGraph(C, F, path, flow, s, t, rGraphName)
         return sum(F[s][i] for i in range(n))
 
@@ -90,8 +90,13 @@ for filename in os.listdir(folder2):
     except Exception as e:
         print('Failed to delete %s. Reason: %s' % (file_path, e))
 
+hide0cap = input("Should 0 capacity edges with non-zero flow be hidden? (y/n) : ")
 
-max_flow_value = max_flow(C, source, sink)
+if(hide0cap=='n'):
+    max_flow_value = max_flow(C, source, sink, False)
+else:
+    max_flow_value = max_flow(C, source, sink, True)
+
 print ("Edmonds-Karp algorithm")
 print ("max_flow_value is: ", max_flow_value)
-display_graphs.displayAllGraphs()
+display_graphs.displayAllGraphs(max_flow_value)
