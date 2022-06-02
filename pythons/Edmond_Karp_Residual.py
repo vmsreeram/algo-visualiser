@@ -23,6 +23,7 @@ def makeGraph(C, F, path, flow, s, t, rGraphName):
     subg2.add_node(pydot.Node(str(t)))
     graph.add_subgraph(subg2)
 
+    # add edges
     for i in range(n):
         for j in range(n):
             if (C[i][j] - F[i][j])>0 :
@@ -34,6 +35,7 @@ def makeGraph(C, F, path, flow, s, t, rGraphName):
                 else:
                     graph.add_edge( pydot.Edge(str(i), str(j), label= str(C[i][j] - F[i][j]),fontsize="10.0",arrowhead='vee') )
 
+    # fdp fixes nodes' positions
     graph.write(rGraphName, prog='fdp', format='png')
 
     

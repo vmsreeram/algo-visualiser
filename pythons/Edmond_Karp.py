@@ -6,7 +6,7 @@ import os
 import display_graphs
 
 def max_flow(C, s, t):
-        n = len(C) # C is the capacity matrix
+        n = len(C) # C is the capacity matrix, defined below
         F = [[0] * n for i in range(n)]
 
         index = 1
@@ -29,7 +29,7 @@ def max_flow(C, s, t):
         Edmond_Karp_Residual.makeGraph(C, F, path, flow, s, t, rGraphName)
         return sum(F[s][i] for i in range(n))
 
-#find path by using BFS
+#find path by using BFS - helper function to max-flow
 def bfs(C, F, s, t):
         queue = [s]
         paths = {s:[]}
@@ -65,7 +65,8 @@ C = [[ 0, 4, 10, 0],  # 0
 source = 0  
 sink = 3
 
-# to remove all files in folder = 'imgs/flow' and 'imgs/resi' // assuming imgs, flow, resi exists
+# to remove all files in folder = 'imgs/flow' and 'imgs/resi' // assuming folders imgs, flow, resi exists
+# remove existing files from imgs/flow
 folder = 'imgs/flow'
 for filename in os.listdir(folder):
     file_path = os.path.join(folder, filename)
@@ -77,6 +78,7 @@ for filename in os.listdir(folder):
     except Exception as e:
         print('Failed to delete %s. Reason: %s' % (file_path, e))
 
+# remove existing files from imgs/resi
 folder2 = 'imgs/resi'
 for filename in os.listdir(folder2):
     file_path = os.path.join(folder2, filename)

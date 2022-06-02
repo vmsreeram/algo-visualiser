@@ -20,11 +20,12 @@ def makeGraph(C, F, s, t, fGraphName):
     subg2.add_node(pydot.Node(str(t)))
     graph.add_subgraph(subg2)
 
-
+    # add edges
     for i in range(n):
         for j in range(n):
             if (C[i][j]!=0) or (F[i][j]!=0):
                 graph.add_edge(pydot.Edge(str(i), str(j), label=str(C[i][j])+"/"+str(F[i][j]),fontsize="10.0",arrowhead='vee' ))
 
+    # fdp fixes nodes' positions
     graph.write(fGraphName, prog='fdp', format='png')
     

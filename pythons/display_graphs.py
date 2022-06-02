@@ -51,11 +51,15 @@ def displayAllGraphs():
         if curr>=len(flowImgs):
             print("wrong index")
             return
-
+        
+        global DimHeight
         imgResIm = (PIL.Image.open(residualImgs[curr]))
         widRes, heiRes = imgResIm.size
         ReRatio = widRes/heiRes
         DimWidth = int(ReRatio * DimHeight)
+        if DimWidth>=600:
+            DimWidth=600
+            DimHeight=int(DimWidth / ReRatio)
         resized_image= imgResIm.resize((DimWidth,DimHeight), PIL.Image.ANTIALIAS)
         imgRes= ImageTk.PhotoImage(resized_image)
 
@@ -63,6 +67,9 @@ def displayAllGraphs():
         widFlo,heiFlo = imgFloIm.size
         FlRatio = widFlo/heiFlo
         DimWidth = int(FlRatio * DimHeight)
+        if DimWidth>=600:
+            DimWidth=600
+            DimHeight=int(DimWidth / ReRatio)
         resized_image= imgFloIm.resize((DimWidth,DimHeight), PIL.Image.ANTIALIAS)
         imgFlo= ImageTk.PhotoImage(resized_image)
 
@@ -106,10 +113,14 @@ def displayAllGraphs():
             print("wrong index")
             return
         
+        global DimHeight
         imgResIm = (PIL.Image.open(residualImgs[curr]))
         widRes, heiRes = imgResIm.size
         ReRatio = widRes/heiRes
         DimWidth = int(ReRatio * DimHeight)
+        if DimWidth>=600:
+            DimWidth=600
+            DimHeight=int(DimWidth / ReRatio)
         resized_image= imgResIm.resize((DimWidth,DimHeight), PIL.Image.ANTIALIAS)
         imgRes= ImageTk.PhotoImage(resized_image)
 
@@ -117,6 +128,9 @@ def displayAllGraphs():
         widFlo,heiFlo = imgFloIm.size
         FlRatio = widFlo/heiFlo
         DimWidth = int(FlRatio * DimHeight)
+        if DimWidth>=600:
+            DimWidth=600
+            DimHeight=int(DimWidth / ReRatio)
         resized_image= imgFloIm.resize((DimWidth,DimHeight), PIL.Image.ANTIALIAS)
         imgFlo= ImageTk.PhotoImage(resized_image)
 
