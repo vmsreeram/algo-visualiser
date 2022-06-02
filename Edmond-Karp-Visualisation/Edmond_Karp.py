@@ -65,38 +65,42 @@ C = [[ 0, 4, 10, 0],  # 0
 source = 0  
 sink = 3
 
-# to remove all files in folder = 'imgs/flow' and 'imgs/resi' // assuming folders imgs, flow, resi exists
-# remove existing files from imgs/flow
-folder = 'imgs/flow'
-for filename in os.listdir(folder):
-    file_path = os.path.join(folder, filename)
-    try:
-        if os.path.isfile(file_path) or os.path.islink(file_path):
-            os.unlink(file_path)
-        elif os.path.isdir(file_path):
-            shutil.rmtree(file_path)
-    except Exception as e:
-        print('Failed to delete %s. Reason: %s' % (file_path, e))
+def Main(C, source, sink, hide0cap):
+    # to remove all files in folder = 'imgs/flow' and 'imgs/resi' // assuming folders imgs, flow, resi exists
+    # remove existing files from imgs/flow
+    folder = 'imgs/flow'
+    for filename in os.listdir(folder):
+        file_path = os.path.join(folder, filename)
+        try:
+            if os.path.isfile(file_path) or os.path.islink(file_path):
+                os.unlink(file_path)
+            elif os.path.isdir(file_path):
+                shutil.rmtree(file_path)
+        except Exception as e:
+            print('Failed to delete %s. Reason: %s' % (file_path, e))
 
-# remove existing files from imgs/resi
-folder2 = 'imgs/resi'
-for filename in os.listdir(folder2):
-    file_path = os.path.join(folder2, filename)
-    try:
-        if os.path.isfile(file_path) or os.path.islink(file_path):
-            os.unlink(file_path)
-        elif os.path.isdir(file_path):
-            shutil.rmtree(file_path)
-    except Exception as e:
-        print('Failed to delete %s. Reason: %s' % (file_path, e))
+    # remove existing files from imgs/resi
+    folder2 = 'imgs/resi'
+    for filename in os.listdir(folder2):
+        file_path = os.path.join(folder2, filename)
+        try:
+            if os.path.isfile(file_path) or os.path.islink(file_path):
+                os.unlink(file_path)
+            elif os.path.isdir(file_path):
+                shutil.rmtree(file_path)
+        except Exception as e:
+            print('Failed to delete %s. Reason: %s' % (file_path, e))
 
-# ask user to choose whether or not to hide zero capacity edges with non-zero flow
-hide0cap = input("Should zero capacity edges with non-zero flow be hidden in visualisation? (y(default) / n) : ")
-if(hide0cap=='n' or hide0cap=='N'):
-    max_flow_value = max_flow(C, source, sink, False)
-else:
-    max_flow_value = max_flow(C, source, sink, True)
+    # ask user to choose whether or not to hide zero capacity edges with non-zero flow
+    # hide0cap = input("Should zero capacity edges with non-zero flow be hidden in visualisation? (y(default) / n) : ")
+    print("hide0cap=",hide0cap)
+    if(hide0cap==False):
+        print("With False called.")
+        max_flow_value = max_flow(C, source, sink, False)
+    else:
+        print("With True called.")
+        max_flow_value = max_flow(C, source, sink, True)
 
-print ("Edmonds-Karp algorithm")
-print ("max_flow_value is: ", max_flow_value)
-display_graphs.displayAllGraphs(max_flow_value)         # start UI
+    print ("Edmonds-Karp algorithm")
+    print ("max_flow_value is: ", max_flow_value)
+    display_graphs.displayAllGraphs(max_flow_value)         # start UI
