@@ -19,13 +19,13 @@ def displayAllGraphs(max_flow_value):
 
     frm_legend = Frame(win, width=600, height=600)
     frm_legend.place(anchor='sw', relx=0.1, rely=0.95)
-    lbllegend = Label(frm_legend, text='C/F on edge represents the edge \nwith capacity C, having flow F', font="arial 15", fg="black", bg='green')
+    lbllegend = Label(frm_legend, text='C/F on edge represents the edge \nwith capacity C, having flow F', font="arial 15", fg="black", bg='lightgreen')
     lbllegend.pack()
 
     frameanslbl = Frame(win, width=0, height=0)
     frameanslbl.place(anchor='se', relx=0.8, rely=0.95)
     answerlabeltext = 'Edmonds-Karp algorithm\nmax_flow_value is: = '+str(max_flow_value)
-    anslbl = Label(frameanslbl, text=answerlabeltext, font="arial 15", fg="black", bg='green')
+    anslbl = Label(frameanslbl, text=answerlabeltext, font="arial 15", fg="black", bg='lightgreen')
 
     residualImgs=[]
     flowImgs=[]
