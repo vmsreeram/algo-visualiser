@@ -15,8 +15,7 @@ def makeGraph(C, F, path, flow, s, t, rGraphName):
     graph.get_node(str(s))[0].set_label("Source")
     graph.get_node(str(t))[0].set_label("Sink")
 
-    for i in range(n-1):
-        graph.add_edge(pydot.Edge(str(i), str(i+1), style = 'invis'))
+    # Forcing source to be at top and sink to be at bottom of the graph
     subg=pydot.Subgraph(rank='source')
     subg.add_node(pydot.Node(str(s)))
     graph.add_subgraph(subg)
@@ -29,11 +28,11 @@ def makeGraph(C, F, path, flow, s, t, rGraphName):
             if (C[i][j] - F[i][j])>0 :
                 if path is not None and ((i,j) in path):
                     if (C[i][j] - F[i][j] == flow):
-                        graph.add_edge(pydot.Edge(str(i), str(j), label= str(C[i][j] - F[i][j]) , color = "red" , penwidth = 3))    #bottleneck edge
+                        graph.add_edge(pydot.Edge(str(i), str(j), label= str(C[i][j] - F[i][j]) , fontsize="10.0",color = "red" , penwidth = 3))    #bottleneck edge
                     else:
-                        graph.add_edge(pydot.Edge(str(i), str(j), label= str(C[i][j] - F[i][j]) , color = "red" ))                  #augmenting path but not bottleneck
+                        graph.add_edge(pydot.Edge(str(i), str(j), label= str(C[i][j] - F[i][j]) , fontsize="10.0",color = "red",arrowhead='vee' ))                  #augmenting path but not bottleneck
                 else:
-                    graph.add_edge( pydot.Edge(str(i), str(j), label= str(C[i][j] - F[i][j])) )
+                    graph.add_edge( pydot.Edge(str(i), str(j), label= str(C[i][j] - F[i][j]),fontsize="10.0",arrowhead='vee') )
 
     graph.write(rGraphName, prog='fdp', format='png')
 

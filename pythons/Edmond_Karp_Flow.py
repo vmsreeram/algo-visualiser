@@ -1,3 +1,4 @@
+from cProfile import label
 import pydot
 
 def makeGraph(C, F, s, t, fGraphName):
@@ -11,8 +12,7 @@ def makeGraph(C, F, s, t, fGraphName):
     graph.get_node(str(s))[0].set_label("Source")
     graph.get_node(str(t))[0].set_label("Sink")
 
-    for i in range(n-1):
-        graph.add_edge(pydot.Edge(str(i), str(i+1), style = 'invis'))
+    # Forcing source to be at top and sink to be at bottom of the graph
     subg=pydot.Subgraph(rank='source')
     subg.add_node(pydot.Node(str(s)))
     graph.add_subgraph(subg)
@@ -24,8 +24,7 @@ def makeGraph(C, F, s, t, fGraphName):
     for i in range(n):
         for j in range(n):
             if (C[i][j]!=0) or (F[i][j]!=0):
-                # graph.add_edge(pydot.Edge(str(i), str(j), label="C= "+str(C[i][j])+" : F= "+str(F[i][j]) ))
-                graph.add_edge(pydot.Edge(str(i), str(j), label=str(C[i][j])+"/"+str(F[i][j]) ))
+                graph.add_edge(pydot.Edge(str(i), str(j), label=str(C[i][j])+"/"+str(F[i][j]),fontsize="10.0",arrowhead='vee' ))
 
     graph.write(fGraphName, prog='fdp', format='png')
     
