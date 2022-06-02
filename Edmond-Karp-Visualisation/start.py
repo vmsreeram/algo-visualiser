@@ -30,8 +30,11 @@ inpTxt.config(font =("Courier", 20))
 def openInp():
     global C
     filename=browse()
-    openedFile = "\nOpened file : ..."+str(filename)[(len(str(filename))-45):]
-    fileLbl = Label(root, text=openedFile, font="arial 15", fg="black")
+    # if (len(str(filename))) >= 65:
+    #     openedFile = "\nOpened file : "+str(filename)[:20] +" ... "+str(filename)[(len(str(filename))-45):]
+    # else:    
+    openedFile = "\nOpened file : "+str(filename)
+    fileLbl = Label(root, text=openedFile, font="arial 15", fg="black", wraplength=500)
     fileLbl.pack()
     C1.pack()
     browseBtn.pack_forget()
