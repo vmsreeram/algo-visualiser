@@ -1,8 +1,8 @@
 #Edmonds-Karp Algorithm
 import shutil
+import os
 import Edmond_Karp_Flow
 import Edmond_Karp_Residual
-import os
 import display_graphs
 
 def max_flow(C, s, t, hide0cp=False):
@@ -45,16 +45,16 @@ def bfs(C, F, s, t):
                         queue.append(v)
         return None
     
-# make a capacity graph
+# make a capacity graph - some example inputs commented for ease
 # node 0  1  2   3
-C = [[ 0, 4, 10, 0],  # 0
+""" C = [[ 0, 4, 10, 0],  # 0
      [ 0, 0, 2,  7],  # 1
      [ 0, 4, 0,  5],  # 2
-     [ 0, 0, 0,  0]]  # 3
+     [ 0, 0, 0,  0]]  # 3 """
 
-""" C = [[ 0, 6, 5],  # 0
+C = [[ 0, 6, 5],  # 0
      [ 2, 0, 7],  # 1
-     [ 3, 1, 0]]  # 3 """
+     [ 3, 1, 0]]  # 2
 
 """ C = [[ 0, 6, 4, 10, 9],  # 0
      [ 5, 0, 6, 2,  7],  # 1
@@ -63,7 +63,7 @@ C = [[ 0, 4, 10, 0],  # 0
      [ 5, 7, 3, 9,  0]]  # 4 """
 
 source = 0  
-sink = 3
+sink = 2
 
 # to remove all files in folder = 'imgs/flow' and 'imgs/resi' // assuming folders imgs, flow, resi exists
 # remove existing files from imgs/flow
@@ -90,13 +90,13 @@ for filename in os.listdir(folder2):
     except Exception as e:
         print('Failed to delete %s. Reason: %s' % (file_path, e))
 
-hide0cap = input("Should 0 capacity edges with non-zero flow be hidden? (y/n) : ")
-
-if(hide0cap=='n'):
+# ask user to choose whether or not to hide zero capacity edges with non-zero flow
+hide0cap = input("Should zero capacity edges with non-zero flow be hidden in visualisation? (y(default) / n) : ")
+if(hide0cap=='n' or hide0cap=='N'):
     max_flow_value = max_flow(C, source, sink, False)
 else:
     max_flow_value = max_flow(C, source, sink, True)
 
 print ("Edmonds-Karp algorithm")
 print ("max_flow_value is: ", max_flow_value)
-display_graphs.displayAllGraphs(max_flow_value)
+display_graphs.displayAllGraphs(max_flow_value)         # start UI

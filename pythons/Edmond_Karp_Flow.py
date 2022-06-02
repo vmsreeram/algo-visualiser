@@ -1,4 +1,3 @@
-from cProfile import label
 import pydot
 
 def makeGraph(C, F, s, t, fGraphName, hide0cp=False):
