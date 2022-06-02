@@ -41,9 +41,14 @@ def openInp():
     exitBtn.pack_forget()
     proceedBtn.pack(padx=2, pady=5, side=LEFT)
     exitBtn.pack(padx=2, pady=5, side=LEFT)
-    with open(filename) as textFile:
-        Cx = [line.split() for line in textFile]
+    try:
+        with open(filename) as textFile:
+            Cx = [line.split() for line in textFile]
+    except:
+        print("Invalid input file contents")
+        exit()
     C=[]
+    
     for lst in C:
         if len(lst) is not len(Cx[0]):
             print("Invalid input file contents")
