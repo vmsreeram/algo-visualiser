@@ -23,9 +23,9 @@ def makeGraph(C, F, s, t, fGraphName, hide0cp=False):
     for i in range(n):
         for j in range(n):
             if (((C[i][j]!=0) or (F[i][j]!=0)) and not hide0cp):
-                graph.add_edge(pydot.Edge(str(i), str(j), label=str(C[i][j])+"/"+str(F[i][j]),fontsize="10.0",arrowhead='vee' ))
+                graph.add_edge(pydot.Edge(str(i), str(j), label=str(C[i][j])+"/"+str(F[i][j]),fontsize="15.0",arrowhead='vee' ))
             if ((C[i][j]!=0) and hide0cp):
-                graph.add_edge(pydot.Edge(str(i), str(j), label=str(C[i][j])+"/"+str(F[i][j]),fontsize="10.0",arrowhead='vee' ))
+                graph.add_edge(pydot.Edge(str(i), str(j), label=str(C[i][j])+"/"+str(F[i][j]),fontsize="15.0",arrowhead='vee' ))
             
     # fdp fixes nodes' positions
     graph.write(fGraphName, prog='fdp', format='png')

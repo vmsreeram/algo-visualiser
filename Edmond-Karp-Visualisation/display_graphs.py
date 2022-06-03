@@ -73,7 +73,7 @@ def displayAllGraphs(max_flow_value):
         DimWidth = int(FlRatio * DimHeight)
         if DimWidth>=600:
             DimWidth=600
-            DimHeight=int(DimWidth / ReRatio)
+            DimHeight=int(DimWidth / FlRatio)
         resized_image= imgFloIm.resize((DimWidth,DimHeight), PIL.Image.ANTIALIAS)
         imgFlo= ImageTk.PhotoImage(resized_image)
 
