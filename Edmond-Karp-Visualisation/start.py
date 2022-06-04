@@ -140,5 +140,10 @@ proceedBtn = Button(frame,
 C1 = Checkbutton(frm_inp, text = " Hide zero capacity edges with non-zero flow values in visualisation", variable = CheckVar1, height=2, width = 50)
 
 
+<<<<<<< HEAD
 
 root.mainloop()
+=======
+# comment
+root.mainloop()
+>>>>>>> b0c57dd89ace4d79164dc70fe2ff14b8d153d23e
