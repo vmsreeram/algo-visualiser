@@ -1,5 +1,13 @@
 # algo-visualiser
 
+## Packages to be installed beforehand
+1. Anaconda environment is preferred.
+2. After downloading Anaconda, run the following commands in order to install the required packages
+   ```conda install graphviz```
+   ```conda install pydot```
+   ```conda install -c conda-forge tk```
+   ```conda install pillow```
+
 ## How to run?
 1. Set the ```pwd``` in the terminal as ```Edmond-Karp-Visualisation```.
 2. Execute the command
@@ -17,4 +25,4 @@ The generated graph images will be stored in ```imgs``` folder. Also, for any in
 
 The input file should be adjacency matrix with entry at  i, j position is ```C[i][j]``` representing the capacity of the edge from i to j.
 
-Two sample inputs are given in the same folder.
+Eight sample inputs are given in the same folder.
