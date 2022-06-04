@@ -70,7 +70,7 @@ def openInp():
     F = [[0] * len(C) for i in range(len(C))]
     Edmond_Karp_Flow.makeGraph(C, F, 0, (len(C)-1), 'imgs/inp_grp.png', True, True)
     
-    DimHeight=500
+    DimHeight=500           # resize forcing this to be image height, keeping aspect ratio (nearly) the same
     imgResIm = (PIL.Image.open('imgs/inp_grp.png'))
     widRes, heiRes = imgResIm.size
     ReRatio = widRes/heiRes
@@ -80,7 +80,7 @@ def openInp():
 
     lbl_inp_grp = Label(frm_inp_grp, image=imgRes)
     
-    # imgRes=ImageTk.PhotoImage(imgResIm)
+    # imgRes=ImageTk.PhotoImage(imgResIm)       # uncomment these 2 if resizing is to be overridden
     # lbl_inp_grp = Label(frm_inp_grp, image=imgRes)
     lbl_inp_grp.pack()
     frm_inp_grp.place(anchor='n', relx=0.5, rely=0.15)
@@ -97,13 +97,17 @@ def openInp():
     
 def done():
     INPUT = inpTxt.get("1.0", "end-1c")
-    src, snk = INPUT.split(' ')
-    if int(src) <0 or int(src) >=len(C) or int(snk) <0 or int(snk) >=len(C) or int(snk)==int(src):
+    try:
+        src, snk = INPUT.split(' ')
+        assert(int(src) >=0 and int(src) <len(C) and int(snk) >=0 and int(snk) <len(C) and int(snk)!=int(src))
+    except:
         print("Invalid input of src/snk")
         exit()
     root.destroy()
-    # exit()
-    Edmond_Karp.Main(C,int(src),int(snk), CheckVar1.get())
+    try:
+        Edmond_Karp.Main(C,int(src),int(snk), CheckVar1.get())
+    except Exception as e:
+            print('Failed to call Edmond_Karp.Main(). Reason: %s' % (e))
 
 browseBtn = Button(frame,
                    text="Choose input graph",
