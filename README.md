@@ -25,4 +25,4 @@ The generated graph images will be stored in ```imgs``` folder. Also, for any in
 
 The input file should be adjacency matrix with entry at  i, j position is ```C[i][j]``` representing the capacity of the edge from i to j.
 
-Two sample inputs are given in the same folder.
+Eight sample inputs are given in the same folder.
