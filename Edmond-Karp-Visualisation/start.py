@@ -76,14 +76,14 @@ def done():
     Edmond_Karp.Main(C,int(src),int(snk), CheckVar1.get())
 
 browseBtn = Button(frame,
-                   text="Browse",
+                   text="Choose input graph",
                    fg="green",
                    command=openInp)
 browseBtn.pack(padx=2, pady=5, side=LEFT)
 
 exitBtn = Button(frame,
                    text="Exit",
-                   fg="green",
+                   fg="red",
                    command=exit)
 exitBtn.pack(padx=2, pady=5, side=LEFT)
 
