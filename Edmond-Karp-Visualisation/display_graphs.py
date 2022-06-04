@@ -24,13 +24,8 @@ def displayAllGraphs(max_flow_value):
 
     frameanslbl = Frame(win, width=0, height=0)
     frameanslbl.place(anchor='se', relx=0.8, rely=0.95)
-<<<<<<< HEAD
-    answerlabeltext = 'Edmonds-Karp algorithm\nThe Max Flow Value is '+str(max_flow_value)
-    anslbl = Label(frameanslbl, text=answerlabeltext, font="arial 15", fg="black", bg='lightgreen')
-=======
     answerlabeltext = 'Edmonds-Karp algorithm\n The max flow value is: = '+str(max_flow_value)
     anslbl = Label(frameanslbl, text=answerlabeltext, font="arial 20", fg="white", bg='green')
->>>>>>> 8a0d940cfd4a2adac00e022b3dc7d08776959001
 
     residualImgs=[]
     flowImgs=[]

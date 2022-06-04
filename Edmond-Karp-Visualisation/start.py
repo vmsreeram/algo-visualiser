@@ -111,23 +111,15 @@ def done():
 
 browseBtn = Button(frame,
                    text="Choose input graph",
-<<<<<<< HEAD
-                   fg="green",
-=======
                    fg="black",
                    font="arial 20",
->>>>>>> 8a0d940cfd4a2adac00e022b3dc7d08776959001
                    command=openInp)
 browseBtn.pack(padx=2, pady=5, side=LEFT)
 
 exitBtn = Button(frame,
                    text="Exit",
-<<<<<<< HEAD
-                   fg="red",
-=======
                    fg="black",
                    font="arial 20",
->>>>>>> 8a0d940cfd4a2adac00e022b3dc7d08776959001
                    command=exit)
 exitBtn.pack(padx=2, pady=5, side=LEFT)
 
@@ -140,10 +132,5 @@ proceedBtn = Button(frame,
 C1 = Checkbutton(frm_inp, text = " Hide zero capacity edges with non-zero flow values in visualisation", variable = CheckVar1, height=2, width = 50)
 
 
-<<<<<<< HEAD
-
-root.mainloop()
-=======
 # comment
 root.mainloop()
->>>>>>> b0c57dd89ace4d79164dc70fe2ff14b8d153d23e
