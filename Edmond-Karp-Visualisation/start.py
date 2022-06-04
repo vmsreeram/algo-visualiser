@@ -11,7 +11,7 @@ root.geometry('1250x800')
 frame = Frame(root)
 frame.pack()
 
-frm_inp_grp = Frame(root, width=700, height=400, highlightbackground="blue", highlightthickness=2)
+frm_inp_grp = Frame(root, width=750, height=500, highlightbackground="blue", highlightthickness=2)
 
 frm_inp = Frame(root, width=550, height=150, highlightbackground="green", highlightthickness=1)
 

@@ -2,12 +2,7 @@
 
 ## Packages to be installed beforehand
 1. Anaconda environment is preferred.
-2. After downloading Anaconda, run the following commands in order to install the required packages
-<<<<<<< HEAD
-   ```conda install graphviz```
-   ```conda install pydot```
-   ```conda install -c conda-forge tk```
-=======
+2. After [setting up Anaconda](https://docs.anaconda.com/anaconda/install/), run the following commands in order to install the required packages
    
    ```conda install graphviz```
    
@@ -15,7 +10,6 @@
    
    ```conda install -c conda-forge tk```
    
->>>>>>> 8a0d940cfd4a2adac00e022b3dc7d08776959001
    ```conda install pillow```
 
 ## How to run?
