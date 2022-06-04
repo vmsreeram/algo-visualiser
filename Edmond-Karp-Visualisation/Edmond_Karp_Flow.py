@@ -9,8 +9,8 @@ def makeGraph(C, F, s, t, fGraphName, hide0cp=False, initdisp=False):
         my_node = pydot.Node(str(i))
         graph.add_node(my_node)
     if not initdisp:
-        graph.get_node(str(s))[0].set_label("Source")
-        graph.get_node(str(t))[0].set_label("Sink")
+        graph.get_node(str(s))[0].set_label("S R C")
+        graph.get_node(str(t))[0].set_label("S N K")
 
     # Forcing source to be at top and sink to be in opposite sides of the graph
     subg=pydot.Subgraph(rank='source')

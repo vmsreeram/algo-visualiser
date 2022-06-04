@@ -1,3 +1,4 @@
+from tkinter import font
 import pydot
 
 def makeGraph(C, F, path, flow, s, t, rGraphName):
@@ -6,7 +7,7 @@ def makeGraph(C, F, path, flow, s, t, rGraphName):
         stringg="Length of augmenting path = "+str(len(path))+"\nBottleneck Capacity = "+str(flow)
         graph = pydot.Dot("my_graph", graph_type="digraph", bgcolor="yellow", label=stringg, sep=3, nodesep=0.9)
     else:
-        graph = pydot.Dot("my_graph", graph_type="digraph", bgcolor="yellow", label="No path exists from Source to Sink.\nThe vertices reachable from Source are now shown in white", sep=3, nodesep=0.9)
+        graph = pydot.Dot("my_graph", graph_type="digraph", bgcolor="yellow", label="No path exists from Source to Sink.\nThe vertices reachable from Source are now shown in green", sep=3, nodesep=0.9)
 
     reachable=[s]
     if path is None or path == []:
@@ -25,14 +26,14 @@ def makeGraph(C, F, path, flow, s, t, rGraphName):
     # Add nodes
     for i in range(n):
         if (i in reachable) and (path is None or path == []):
-            my_node = pydot.Node(str(i),style = 'filled', fillcolor = '#fafafa')
+            my_node = pydot.Node(str(i),style = 'filled', fillcolor = 'green')
             graph.add_node(my_node)
         else:
             my_node = pydot.Node(str(i))
             graph.add_node(my_node)
 
-    graph.get_node(str(s))[0].set_label("Source")
-    graph.get_node(str(t))[0].set_label("Sink")
+    graph.get_node(str(s))[0].set_label("S R C")
+    graph.get_node(str(t))[0].set_label("S N K")
 
     # Forcing source to be at top and sink to be in opposite sides of the graph
     subg=pydot.Subgraph(rank='source')

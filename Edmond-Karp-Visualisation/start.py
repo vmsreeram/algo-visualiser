@@ -111,19 +111,22 @@ def done():
 
 browseBtn = Button(frame,
                    text="Choose input graph",
-                   fg="green",
+                   fg="black",
+                   font="arial 20",
                    command=openInp)
 browseBtn.pack(padx=2, pady=5, side=LEFT)
 
 exitBtn = Button(frame,
                    text="Exit",
-                   fg="red",
+                   fg="black",
+                   font="arial 20",
                    command=exit)
 exitBtn.pack(padx=2, pady=5, side=LEFT)
 
 proceedBtn = Button(frame,
                    text="Proceed",
-                   fg="green",
+                   fg="black",
+                   font="arial 20",
                    command=done)
 
 C1 = Checkbutton(frm_inp, text = " Hide zero capacity edges with non-zero flow values in visualisation", variable = CheckVar1, height=2, width = 50)
