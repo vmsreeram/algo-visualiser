@@ -19,13 +19,18 @@ def displayAllGraphs(max_flow_value):
 
     frm_legend = Frame(win, width=600, height=600)
     frm_legend.place(anchor='sw', relx=0.1, rely=0.95)
-    lbllegend = Label(frm_legend, text='C/F on edge represents the edge \nwith capacity C, having flow F', font="arial 15", fg="black", bg='lightgreen')
+    lbllegend = Label(frm_legend, text='C/F on edge represents the edge \nwith capacity C, having flow F', font="arial 20", fg="white", bg='green')
     lbllegend.pack()
 
     frameanslbl = Frame(win, width=0, height=0)
     frameanslbl.place(anchor='se', relx=0.8, rely=0.95)
+<<<<<<< HEAD
     answerlabeltext = 'Edmonds-Karp algorithm\nThe Max Flow Value is '+str(max_flow_value)
     anslbl = Label(frameanslbl, text=answerlabeltext, font="arial 15", fg="black", bg='lightgreen')
+=======
+    answerlabeltext = 'Edmonds-Karp algorithm\n The max flow value is: = '+str(max_flow_value)
+    anslbl = Label(frameanslbl, text=answerlabeltext, font="arial 20", fg="white", bg='green')
+>>>>>>> 8a0d940cfd4a2adac00e022b3dc7d08776959001
 
     residualImgs=[]
     flowImgs=[]
@@ -82,14 +87,14 @@ def displayAllGraphs(max_flow_value):
         for widgets in frm_stepLbl.winfo_children():
             widgets.destroy()
         labelstring = 'Step '+str(curr+1)
-        step_lbl = Label(frm_stepLbl, text=labelstring, font="arial 25 underline")
+        step_lbl = Label(frm_stepLbl, text=labelstring, font="arial 25")
         step_lbl.pack()
 
         # remove image in frm_flowImg
         for widgets in frm_flowImg.winfo_children():
             widgets.destroy()
         flowImg_lbl = Label(frm_flowImg, image = imgFlo)
-        flowImg_txt_lbl = Label(frm_flowImg, text='Flow Graph', font="arial 15 underline")
+        flowImg_txt_lbl = Label(frm_flowImg, text='Flow Graph', font="arial 25")
         flowImg_txt_lbl.pack()
         flowImg_lbl.pack()
 
@@ -97,7 +102,7 @@ def displayAllGraphs(max_flow_value):
         for widgets in frm_residImg.winfo_children():
             widgets.destroy()
         resiImg_lbl = Label(frm_residImg, image=imgRes)
-        resiImg_txt_lbl = Label(frm_residImg, text='Residual Graph', font="arial 15 underline")
+        resiImg_txt_lbl = Label(frm_residImg, text='Residual Graph', font="arial 25")
         resiImg_txt_lbl.pack()
         resiImg_lbl.pack() 
         win.mainloop()
@@ -140,7 +145,7 @@ def displayAllGraphs(max_flow_value):
         for widgets in frm_stepLbl.winfo_children():
             widgets.destroy()
         labelstring = 'Step '+str(curr+1)
-        step_lbl = Label(frm_stepLbl, text=labelstring, font="arial 25 underline")
+        step_lbl = Label(frm_stepLbl, text=labelstring, font="arial 25")
         step_lbl.pack()
         ####
 
@@ -148,7 +153,7 @@ def displayAllGraphs(max_flow_value):
         for widgets in frm_flowImg.winfo_children():
             widgets.destroy()
         flowImg_lbl = Label(frm_flowImg, image = imgFlo)
-        flowImg_txt_lbl = Label(frm_flowImg, text='Flow Graph', font="arial 15 underline")
+        flowImg_txt_lbl = Label(frm_flowImg, text='Flow Graph', font="arial 25")
         flowImg_txt_lbl.pack()
         flowImg_lbl.pack()
 
@@ -156,7 +161,7 @@ def displayAllGraphs(max_flow_value):
         for widgets in frm_residImg.winfo_children():
             widgets.destroy()
         resiImg_lbl = Label(frm_residImg, image=imgRes)
-        resiImg_txt_lbl = Label(frm_residImg, text='Residual Graph', font="arial 15 underline")
+        resiImg_txt_lbl = Label(frm_residImg, text='Residual Graph', font="arial 25")
         resiImg_txt_lbl.pack()
         resiImg_lbl.pack() 
         win.mainloop()
