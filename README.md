@@ -30,3 +30,11 @@ The generated graph images will be stored in ```imgs``` folder. Also, for any in
 The input file should be adjacency matrix with entry at  i, j position is ```C[i][j]``` representing the capacity of the edge from i to j.
 
 Eight sample inputs are given in the same folder.
+<!-- 
+    TODO 
+  1. Handle error exit by showing the reason in a window.
+  2. Add title, choose input graph label, browse button.
+  3. Ability to re-browse
+    ASK
+  1. The orientations are device specific. Working in Arun's, but images not shown fully in mine. (inp#?) How to handle?
+-->
