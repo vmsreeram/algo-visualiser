@@ -2,7 +2,7 @@ import pydot
 
 def makeGraph(C, F, s, t, fGraphName, hide0cp=False, initdisp=False):
     n = len(C)  
-    graph = pydot.Dot("my_graph", graph_type="digraph", bgcolor="#013220",fontcolor="white", sep=3, nodesep=0.9)
+    graph = pydot.Dot("my_graph", graph_type="digraph", bgcolor="#204934",fontcolor="white", sep=3, nodesep=0.9)
 
     # Add nodes
     for i in range(n):
