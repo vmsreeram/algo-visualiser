@@ -7,7 +7,7 @@ DimHeight = 500
 def displayAllGraphs(max_flow_value):
     win = Tk()
     win.title("Edmond-Karp Visualisation")
-    win.geometry("1500x1000")                 # changed so as to fit whole window (instead of line28, which isn't working on mac)
+    win.geometry("1750x1400")                 # changed so as to fit whole window (instead of line28, which isn't working on mac)
     frm_flowImg = Frame(win, width=500, height=600)
     frm_flowImg.place(anchor='e', relx=0.5, rely=0.5)
 
@@ -61,8 +61,8 @@ def displayAllGraphs(max_flow_value):
         widRes, heiRes = imgResIm.size
         ReRatio = widRes/heiRes
         DimWidth = int(ReRatio * DimHeight)
-        if DimWidth>=600:
-            DimWidth=600
+        if DimWidth>800:
+            DimWidth=800
             DimHeight=int(DimWidth / ReRatio)
         resized_image= imgResIm.resize((DimWidth,DimHeight), PIL.Image.ANTIALIAS)
         imgRes= ImageTk.PhotoImage(resized_image)
@@ -71,8 +71,8 @@ def displayAllGraphs(max_flow_value):
         widFlo,heiFlo = imgFloIm.size
         FlRatio = widFlo/heiFlo
         DimWidth = int(FlRatio * DimHeight)
-        if DimWidth>=600:
-            DimWidth=600
+        if DimWidth>800:
+            DimWidth=800
             DimHeight=int(DimWidth / FlRatio)
         resized_image= imgFloIm.resize((DimWidth,DimHeight), PIL.Image.ANTIALIAS)
         imgFlo= ImageTk.PhotoImage(resized_image)
@@ -118,8 +118,8 @@ def displayAllGraphs(max_flow_value):
         widRes, heiRes = imgResIm.size
         ReRatio = widRes/heiRes
         DimWidth = int(ReRatio * DimHeight)
-        if DimWidth>=600:
-            DimWidth=600
+        if DimWidth>800:
+            DimWidth=800
             DimHeight=int(DimWidth / ReRatio)
         resized_image= imgResIm.resize((DimWidth,DimHeight), PIL.Image.ANTIALIAS)
         imgRes= ImageTk.PhotoImage(resized_image)
@@ -128,8 +128,8 @@ def displayAllGraphs(max_flow_value):
         widFlo,heiFlo = imgFloIm.size
         FlRatio = widFlo/heiFlo
         DimWidth = int(FlRatio * DimHeight)
-        if DimWidth>=600:
-            DimWidth=600
+        if DimWidth>800:
+            DimWidth=800
             DimHeight=int(DimWidth / FlRatio)
         resized_image= imgFloIm.resize((DimWidth,DimHeight), PIL.Image.ANTIALIAS)
         imgFlo= ImageTk.PhotoImage(resized_image)

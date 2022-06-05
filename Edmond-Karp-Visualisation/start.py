@@ -7,11 +7,11 @@ from PIL import ImageTk
 
 root = Tk()
 root.title("edmond-karp-visualiser")
-root.geometry('1250x800')
+root.geometry('1500x900')
 frame = Frame(root)
 frame.pack()
 
-frm_inp_grp = Frame(root, width=750, height=500, highlightbackground="blue", highlightthickness=2)
+frm_inp_grp = Frame(root, width=850, height=500, highlightbackground="blue", highlightthickness=2)
 
 frm_inp = Frame(root, width=550, height=150, highlightbackground="green", highlightthickness=1)
 
@@ -28,7 +28,7 @@ def browse():
 C=[]
 CheckVar1 = BooleanVar(frm_inp)
 CheckVar1.set(True)
-inpTxtLbl = Label(frm_inp, height = 3, width = 40, text="Enter space separated source and sink vertex indices : ")
+inpTxtLbl = Label(frm_inp, height = 3, width = 75,font="arial 15", text="Enter space separated source and sink vertex indices : ")
 inpTxt = Text(frm_inp, height = 1, width = 5, highlightbackground = "grey", highlightcolor= "grey", highlightthickness=2)
 inpTxt.config(font =("Courier", 20))
 
@@ -111,25 +111,25 @@ def done():
 
 browseBtn = Button(frame,
                    text="Choose input graph",
-                   fg="black",
+                   fg="blue",
                    font="arial 20",
                    command=openInp)
 browseBtn.pack(padx=2, pady=5, side=LEFT)
 
 exitBtn = Button(frame,
                    text="Exit",
-                   fg="black",
+                   fg="red",
                    font="arial 20",
                    command=exit)
 exitBtn.pack(padx=2, pady=5, side=LEFT)
 
 proceedBtn = Button(frame,
                    text="Proceed",
-                   fg="black",
+                   fg="blue",
                    font="arial 20",
                    command=done)
 
-C1 = Checkbutton(frm_inp, text = " Hide zero capacity edges with non-zero flow values in visualisation", variable = CheckVar1, height=2, width = 50)
+C1 = Checkbutton(frm_inp, text = " Hide zero capacity edges with non-zero flow values in visualisation", variable = CheckVar1, height=2, width = 75,font="arial 15")
 
 
 # comment

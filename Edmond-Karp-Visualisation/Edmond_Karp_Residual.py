@@ -5,9 +5,9 @@ def makeGraph(C, F, path, flow, s, t, rGraphName):
     n = len(C)
     if path is not None and path != []:
         stringg="Length of augmenting path = "+str(len(path))+"\nBottleneck Capacity = "+str(flow)
-        graph = pydot.Dot("my_graph", graph_type="digraph", bgcolor="yellow", label=stringg, sep=3, nodesep=0.9)
+        graph = pydot.Dot("my_graph", graph_type="digraph", bgcolor="#013220",fontcolor="white", label=stringg, sep=3, nodesep=0.9)
     else:
-        graph = pydot.Dot("my_graph", graph_type="digraph", bgcolor="yellow", label="No path exists from Source to Sink.\nThe vertices reachable from Source are now shown in green", sep=3, nodesep=0.9)
+        graph = pydot.Dot("my_graph", graph_type="digraph", bgcolor="#013220",fontcolor="white", label="No path exists from Source to Sink.\nThe vertices reachable from Source are now shown in red and the others in blue", sep=3, nodesep=0.9)
 
     reachable=[s]
     if path is None or path == []:
@@ -26,10 +26,13 @@ def makeGraph(C, F, path, flow, s, t, rGraphName):
     # Add nodes
     for i in range(n):
         if (i in reachable) and (path is None or path == []):
-            my_node = pydot.Node(str(i),style = 'filled', fillcolor = 'green')
+            my_node = pydot.Node(str(i),style = 'filled', fillcolor = 'red',fontcolor="white",color="white")
+            graph.add_node(my_node)
+        elif (i not in reachable) and (path is None or path == []):
+            my_node = pydot.Node(str(i),style = 'filled', fillcolor = 'blue',fontcolor="white",color="white")
             graph.add_node(my_node)
         else:
-            my_node = pydot.Node(str(i))
+            my_node = pydot.Node(str(i),fontcolor="white",color="white")
             graph.add_node(my_node)
 
     graph.get_node(str(s))[0].set_label("S R C")
@@ -49,11 +52,11 @@ def makeGraph(C, F, path, flow, s, t, rGraphName):
             if (C[i][j] - F[i][j])>0 :
                 if path is not None and ((i,j) in path):
                     if (C[i][j] - F[i][j] == flow):
-                        graph.add_edge(pydot.Edge(str(i), str(j), label= str(C[i][j] - F[i][j]) , fontsize="15.0",color = "red" , penwidth = 3))    #bottleneck edge
+                        graph.add_edge(pydot.Edge(str(i), str(j), label= str(C[i][j] - F[i][j]) , fontsize="15.0",color = "red" , penwidth = 4,fontcolor="white"))    #bottleneck edge
                     else:
-                        graph.add_edge(pydot.Edge(str(i), str(j), label= str(C[i][j] - F[i][j]) , fontsize="15.0",color = "red",arrowhead='vee' ))                  #augmenting path but not bottleneck
+                        graph.add_edge(pydot.Edge(str(i), str(j), label= str(C[i][j] - F[i][j]) , fontsize="15.0",color = "red",arrowhead='vee',penwidth=1.5 ,fontcolor="white"))                  #augmenting path but not bottleneck
                 else:
-                    graph.add_edge( pydot.Edge(str(i), str(j), label= str(C[i][j] - F[i][j]),fontsize="15.0",arrowhead='vee') )
+                    graph.add_edge( pydot.Edge(str(i), str(j), label= str(C[i][j] - F[i][j]),fontsize="15.0",color="white",penwidth=1.5,arrowhead='vee',fontcolor="white") )
 
     # fdp fixes nodes' positions
     graph.write(rGraphName, prog='fdp', format='png')
