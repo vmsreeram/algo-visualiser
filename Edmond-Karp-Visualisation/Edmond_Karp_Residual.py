@@ -26,10 +26,10 @@ def makeGraph(C, F, path, flow, s, t, rGraphName):
     # Add nodes
     for i in range(n):
         if (i in reachable) and (path is None or path == []):
-            my_node = pydot.Node(str(i),style = 'filled', fillcolor = 'red',fontcolor="white",color="white")
+            my_node = pydot.Node(str(i),style = 'filled', fillcolor = 'red4',fontcolor="white",color="white")
             graph.add_node(my_node)
         elif (i not in reachable) and (path is None or path == []):
-            my_node = pydot.Node(str(i),style = 'filled', fillcolor = 'blue',fontcolor="white",color="white")
+            my_node = pydot.Node(str(i),style = 'filled', fillcolor = 'blue4',fontcolor="white",color="white")
             graph.add_node(my_node)
         else:
             my_node = pydot.Node(str(i),fontcolor="white",color="white")
