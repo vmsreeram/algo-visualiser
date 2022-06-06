@@ -52,6 +52,7 @@ def openInp():
         with open(filename) as textFile:
             Cx = [line.split() for line in textFile]
     except:
+        root.destroy()
         ErrorExit.raiseErr("Invalid input file contents")
         # print("Invalid input file contents")
         # exit()
@@ -59,6 +60,7 @@ def openInp():
     
     for lst in C:
         if len(lst) is not len(Cx[0]):
+            root.destroy()
             ErrorExit.raiseErr("Invalid input file contents")
             # print("Invalid input file contents")
             # exit()
@@ -66,6 +68,7 @@ def openInp():
         for i in range(len(Cx[0])):
             C.append([int(j) for j in Cx[i]])
     except:
+        root.destroy()
         ErrorExit.raiseErr("Invalid input file contents")
         # print("Invalid input file contents")
         # exit()
@@ -105,6 +108,7 @@ def done():
         src, snk = INPUT.split(' ')
         assert(int(src) >=0 and int(src) <len(C) and int(snk) >=0 and int(snk) <len(C) and int(snk)!=int(src))
     except:
+        root.destroy()
         ErrorExit.raiseErr("Invalid input of src/snk")
         # print("Invalid input of src/snk")
         # exit()
