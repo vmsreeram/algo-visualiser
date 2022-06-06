@@ -36,5 +36,5 @@ Eight sample inputs are given in the same folder.
   2. Add title, choose input graph label, browse button.
   3. Ability to re-browse
     ASK
-  1. The orientations are device specific. Working in Arun's, but images not shown fully in mine. (inp#?) How to handle?
+  1. The dimensions of image are device specific. Working in Arun's, but images not shown fully in mine. (eg inp#3) How to handle?
 -->
