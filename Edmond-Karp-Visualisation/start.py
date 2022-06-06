@@ -55,7 +55,7 @@ def openInp():
         root.destroy()
         ErrorExit.raiseErr("Invalid input file contents")
         # print("Invalid input file contents")
-        # exit()
+        exit()
     C=[]
     
     for lst in C:
@@ -63,7 +63,7 @@ def openInp():
             root.destroy()
             ErrorExit.raiseErr("Invalid input file contents")
             # print("Invalid input file contents")
-            # exit()
+            exit()
     try:
         for i in range(len(Cx[0])):
             C.append([int(j) for j in Cx[i]])
@@ -71,7 +71,7 @@ def openInp():
         root.destroy()
         ErrorExit.raiseErr("Invalid input file contents")
         # print("Invalid input file contents")
-        # exit()
+        exit()
     
     #########
     F = [[0] * len(C) for i in range(len(C))]
@@ -111,7 +111,7 @@ def done():
         root.destroy()
         ErrorExit.raiseErr("Invalid input of src/snk")
         # print("Invalid input of src/snk")
-        # exit()
+        exit()
     root.destroy()
     try:
         Edmond_Karp.Main(C,int(src),int(snk), CheckVar1.get())
