@@ -2,28 +2,28 @@ import os
 from PIL import ImageTk
 from tkinter import *
 import PIL.Image
-DimHeight = 500
+DimHeight = 600
 
 def displayAllGraphs(max_flow_value):
     win = Tk()
     win.title("Edmond-Karp Visualisation")
     win.geometry("1750x1400")                 # changed so as to fit whole window (instead of line28, which isn't working on mac)
-    frm_flowImg = Frame(win, width=500, height=600)
+    frm_flowImg = Frame(win, width=700, height=600)
     frm_flowImg.place(anchor='e', relx=0.5, rely=0.5)
 
-    frm_residImg = Frame(win, width=500, height=600)
+    frm_residImg = Frame(win, width=700, height=600)
     frm_residImg.place(anchor='w', relx=0.5, rely=0.5)
 
     frm_stepLbl = Frame(win, width=600, height=100)
     frm_stepLbl.place(anchor='n', relx=0.5, rely=0)
 
     frm_legend = Frame(win, width=600, height=600)
-    frm_legend.place(anchor='sw', relx=0.1, rely=0.95)
+    frm_legend.place(anchor='nw', relx=0.1, rely=0.9)
     lbllegend = Label(frm_legend, text='C/F on edge represents the edge \nwith capacity C, having flow F', font="arial 20", fg="white", bg='green')
     lbllegend.pack()
 
     frameanslbl = Frame(win, width=0, height=0)
-    frameanslbl.place(anchor='se', relx=0.8, rely=0.95)
+    frameanslbl.place(anchor='ne', relx=0.9, rely=0.9)
     answerlabeltext = 'Edmonds-Karp algorithm\n The max flow value is: = '+str(max_flow_value)
     anslbl = Label(frameanslbl, text=answerlabeltext, font="arial 20", fg="white", bg='green')
 
@@ -52,7 +52,8 @@ def displayAllGraphs(max_flow_value):
             anslbl.pack()
             nextButton.pack_forget()
         if curr >= 1:
-            prevButton.pack(side=LEFT)
+            # prevButton.pack(side=TOP, anchor=NW, relx=0.5,rely=0.5)
+            prevButton.place(relx=0,rely=0, anchor=NW)
         
         # resize images generated before displaying. By default, height=500 will be made, keeping aspect ratio same.
         # However, if the width exceeds too much (>600), width=600 is made, keeping aspect ratio same.
@@ -61,8 +62,8 @@ def displayAllGraphs(max_flow_value):
         widRes, heiRes = imgResIm.size
         ReRatio = widRes/heiRes
         DimWidth = int(ReRatio * DimHeight)
-        if DimWidth>800:
-            DimWidth=800
+        if DimWidth>700:
+            DimWidth=700
             DimHeight=int(DimWidth / ReRatio)
         resized_image= imgResIm.resize((DimWidth,DimHeight), PIL.Image.ANTIALIAS)
         imgRes= ImageTk.PhotoImage(resized_image)
@@ -71,8 +72,8 @@ def displayAllGraphs(max_flow_value):
         widFlo,heiFlo = imgFloIm.size
         FlRatio = widFlo/heiFlo
         DimWidth = int(FlRatio * DimHeight)
-        if DimWidth>800:
-            DimWidth=800
+        if DimWidth>700:
+            DimWidth=700
             DimHeight=int(DimWidth / FlRatio)
         resized_image= imgFloIm.resize((DimWidth,DimHeight), PIL.Image.ANTIALIAS)
         imgFlo= ImageTk.PhotoImage(resized_image)
@@ -106,10 +107,11 @@ def displayAllGraphs(max_flow_value):
         global curr
         curr-=1
         if curr == 0:
-            prevButton.pack_forget()
+            # prevButton.pack_forget()
+            prevButton.place_forget()
         if curr <= len(flowImgs)-2:
             anslbl.pack_forget()
-            nextButton.pack(side=RIGHT)
+            nextButton.pack(side=TOP, anchor=NE)
         
         # resize images generated before displaying. By default, height=500 will be made, keeping aspect ratio same.
         # However, if the width exceeds too much (>600), width=600 is made, keeping aspect ratio same.
@@ -118,8 +120,8 @@ def displayAllGraphs(max_flow_value):
         widRes, heiRes = imgResIm.size
         ReRatio = widRes/heiRes
         DimWidth = int(ReRatio * DimHeight)
-        if DimWidth>800:
-            DimWidth=800
+        if DimWidth>700:
+            DimWidth=700
             DimHeight=int(DimWidth / ReRatio)
         resized_image= imgResIm.resize((DimWidth,DimHeight), PIL.Image.ANTIALIAS)
         imgRes= ImageTk.PhotoImage(resized_image)
@@ -128,8 +130,8 @@ def displayAllGraphs(max_flow_value):
         widFlo,heiFlo = imgFloIm.size
         FlRatio = widFlo/heiFlo
         DimWidth = int(FlRatio * DimHeight)
-        if DimWidth>800:
-            DimWidth=800
+        if DimWidth>700:
+            DimWidth=700
             DimHeight=int(DimWidth / FlRatio)
         resized_image= imgFloIm.resize((DimWidth,DimHeight), PIL.Image.ANTIALIAS)
         imgFlo= ImageTk.PhotoImage(resized_image)
@@ -178,7 +180,7 @@ def displayAllGraphs(max_flow_value):
                     font="arial 20",
                     command=exit)                
 
-    nextButton.pack(side=RIGHT)
+    nextButton.pack(side=TOP, anchor=NE)
     exitButton.pack(side=BOTTOM)
     showImg()
     win.mainloop()
