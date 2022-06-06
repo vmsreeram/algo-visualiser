@@ -1,5 +1,6 @@
 import Edmond_Karp
 import Edmond_Karp_Flow
+import ErrorExit
 from tkinter import *
 from tkinter import filedialog
 import PIL.Image
@@ -51,20 +52,23 @@ def openInp():
         with open(filename) as textFile:
             Cx = [line.split() for line in textFile]
     except:
-        print("Invalid input file contents")
-        exit()
+        ErrorExit.raiseErr("Invalid input file contents")
+        # print("Invalid input file contents")
+        # exit()
     C=[]
     
     for lst in C:
         if len(lst) is not len(Cx[0]):
-            print("Invalid input file contents")
-            exit()
+            ErrorExit.raiseErr("Invalid input file contents")
+            # print("Invalid input file contents")
+            # exit()
     try:
         for i in range(len(Cx[0])):
             C.append([int(j) for j in Cx[i]])
     except:
-        print("Invalid input file contents")
-        exit()
+        ErrorExit.raiseErr("Invalid input file contents")
+        # print("Invalid input file contents")
+        # exit()
     
     #########
     F = [[0] * len(C) for i in range(len(C))]
@@ -101,8 +105,9 @@ def done():
         src, snk = INPUT.split(' ')
         assert(int(src) >=0 and int(src) <len(C) and int(snk) >=0 and int(snk) <len(C) and int(snk)!=int(src))
     except:
-        print("Invalid input of src/snk")
-        exit()
+        ErrorExit.raiseErr("Invalid input of src/snk")
+        # print("Invalid input of src/snk")
+        # exit()
     root.destroy()
     try:
         Edmond_Karp.Main(C,int(src),int(snk), CheckVar1.get())
@@ -129,7 +134,7 @@ proceedBtn = Button(frame,
                    font="arial 20",
                    command=done)
 
-C1 = Checkbutton(frm_inp, text = " Hide zero capacity edges with non-zero flow values in visualisation", variable = CheckVar1, height=2, width = 75,font="arial 15")
+C1 = Checkbutton(frm_inp, text = "Hide zero capacity edges with non-zero flow values in visualisation", variable = CheckVar1, height=2, width = 75,font="arial 15")
 
 
 # comment
