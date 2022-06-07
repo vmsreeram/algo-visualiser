@@ -11,7 +11,7 @@ root.title("edmond-karp-visualiser")
 screen_width = root.winfo_screenwidth()
 screen_height = root.winfo_screenheight()
 # root.geometry('1500x900')
-root.attributes('-fullscreen', True)
+root.attributes('-fullscreen', True) #TODO: Minimise button
 frame = Frame(root)
 frame.pack()
 
@@ -140,9 +140,10 @@ proceedBtn = Button(frame,
                    fg="blue",
                    font="arial 20",
                    command=done)
-
+                   
+                   
+#TODO: Change size of Checkbox
 C1 = Checkbutton(frm_inp, text = "Hide zero capacity edges with non-zero flow values in visualisation", variable = CheckVar1, height=2, width = 75,font="arial 15")
-
 
 # comment
 root.mainloop()
