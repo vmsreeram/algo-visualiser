@@ -7,7 +7,8 @@ DimHeight = 600
 def displayAllGraphs(max_flow_value):
     win = Tk()
     screen_width = win.winfo_screenwidth()
-    screen_height = win.winfo_screenheight()   
+    screen_height = win.winfo_screenheight()
+    win.attributes('-fullscreen', True)
     win.title("Edmond-Karp Visualisation")
     win.geometry("1750x1400")                 # changed so as to fit whole window (instead of line28, which isn't working on mac)
     frm_flowImg = Frame(win, width=screen_width*0.48611, height=screen_height*0.66667)

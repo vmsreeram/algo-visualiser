@@ -8,13 +8,16 @@ from PIL import ImageTk
 
 root = Tk()
 root.title("edmond-karp-visualiser")
-root.geometry('1500x900')
+screen_width = root.winfo_screenwidth()
+screen_height = root.winfo_screenheight()
+# root.geometry('1500x900')
+root.attributes('-fullscreen', True)
 frame = Frame(root)
 frame.pack()
 
-frm_inp_grp = Frame(root, width=850, height=500, highlightbackground="blue", highlightthickness=2)
+frm_inp_grp = Frame(root, width=screen_width*0.59208, height=screen_height*0.55556, highlightbackground="blue", highlightthickness=2)
 
-frm_inp = Frame(root, width=550, height=150, highlightbackground="green", highlightthickness=1)
+frm_inp = Frame(root, width=screen_width*0.38194, height=screen_height*0.16667, highlightbackground="green", highlightthickness=1)
 
 def browse():
 	global filename
