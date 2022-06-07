@@ -6,18 +6,20 @@ DimHeight = 600
 
 def displayAllGraphs(max_flow_value):
     win = Tk()
+    screen_width = win.winfo_screenwidth()
+    screen_height = win.winfo_screenheight()   
     win.title("Edmond-Karp Visualisation")
     win.geometry("1750x1400")                 # changed so as to fit whole window (instead of line28, which isn't working on mac)
-    frm_flowImg = Frame(win, width=700, height=600)
+    frm_flowImg = Frame(win, width=screen_width*0.48611, height=screen_height*0.66667)
     frm_flowImg.place(anchor='e', relx=0.5, rely=0.5)
 
-    frm_residImg = Frame(win, width=700, height=600)
+    frm_residImg = Frame(win, width=screen_width*0.48611, height=screen_height*0.66667)
     frm_residImg.place(anchor='w', relx=0.5, rely=0.5)
 
-    frm_stepLbl = Frame(win, width=600, height=100)
+    frm_stepLbl = Frame(win, width=screen_width*0.41666, height=screen_height*0.11111)
     frm_stepLbl.place(anchor='n', relx=0.5, rely=0)
 
-    frm_legend = Frame(win, width=600, height=600)
+    frm_legend = Frame(win, width=screen_width*0.41666, height=screen_width*0.41666)
     frm_legend.place(anchor='nw', relx=0.1, rely=0.9)
     lbllegend = Label(frm_legend, text='C/F on edge represents the edge \nwith capacity C, having flow F', font="arial 20", fg="white", bg='green')
     lbllegend.pack()
@@ -62,8 +64,8 @@ def displayAllGraphs(max_flow_value):
         widRes, heiRes = imgResIm.size
         ReRatio = widRes/heiRes
         DimWidth = int(ReRatio * DimHeight)
-        if DimWidth>700:
-            DimWidth=700
+        if DimWidth>screen_width*0.48611:
+            DimWidth=screen_width*0.48611
             DimHeight=int(DimWidth / ReRatio)
         resized_image= imgResIm.resize((DimWidth,DimHeight), PIL.Image.ANTIALIAS)
         imgRes= ImageTk.PhotoImage(resized_image)
@@ -72,8 +74,8 @@ def displayAllGraphs(max_flow_value):
         widFlo,heiFlo = imgFloIm.size
         FlRatio = widFlo/heiFlo
         DimWidth = int(FlRatio * DimHeight)
-        if DimWidth>700:
-            DimWidth=700
+        if DimWidth>screen_width*0.48611:
+            DimWidth=screen_width*0.48611
             DimHeight=int(DimWidth / FlRatio)
         resized_image= imgFloIm.resize((DimWidth,DimHeight), PIL.Image.ANTIALIAS)
         imgFlo= ImageTk.PhotoImage(resized_image)
@@ -120,8 +122,8 @@ def displayAllGraphs(max_flow_value):
         widRes, heiRes = imgResIm.size
         ReRatio = widRes/heiRes
         DimWidth = int(ReRatio * DimHeight)
-        if DimWidth>700:
-            DimWidth=700
+        if DimWidth>screen_width*0.48611:
+            DimWidth=screen_width*0.48611
             DimHeight=int(DimWidth / ReRatio)
         resized_image= imgResIm.resize((DimWidth,DimHeight), PIL.Image.ANTIALIAS)
         imgRes= ImageTk.PhotoImage(resized_image)
@@ -130,8 +132,8 @@ def displayAllGraphs(max_flow_value):
         widFlo,heiFlo = imgFloIm.size
         FlRatio = widFlo/heiFlo
         DimWidth = int(FlRatio * DimHeight)
-        if DimWidth>700:
-            DimWidth=700
+        if DimWidth>screen_width*0.48611:
+            DimWidth=screen_width*0.48611
             DimHeight=int(DimWidth / FlRatio)
         resized_image= imgFloIm.resize((DimWidth,DimHeight), PIL.Image.ANTIALIAS)
         imgFlo= ImageTk.PhotoImage(resized_image)

@@ -8,17 +8,17 @@ def makeGraph(C, F, s, t, fGraphName, hide0cp=False, initdisp=False):
     for i in range(n):
         my_node = pydot.Node(str(i),fontcolor="white",color="white")
         graph.add_node(my_node)
-    if not initdisp:
-        graph.get_node(str(s))[0].set_label("S R C")
-        graph.get_node(str(t))[0].set_label("S N K")
+    # if not initdisp:
+    #     graph.get_node(str(s))[0].set_label("S R C")
+    #     graph.get_node(str(t))[0].set_label("S N K")
 
-    # Forcing source to be at top and sink to be in opposite sides of the graph
-    subg=pydot.Subgraph(rank='source')
-    subg.add_node(pydot.Node(str(s)))
-    graph.add_subgraph(subg)
-    subg2=pydot.Subgraph(rank='sink')
-    subg2.add_node(pydot.Node(str(t)))
-    graph.add_subgraph(subg2)
+    # # Forcing source to be at top and sink to be in opposite sides of the graph
+    # subg=pydot.Subgraph(rank='source')
+    # subg.add_node(pydot.Node(str(s)))
+    # graph.add_subgraph(subg)
+    # subg2=pydot.Subgraph(rank='sink')
+    # subg2.add_node(pydot.Node(str(t)))
+    # graph.add_subgraph(subg2)
 
     if not initdisp:
         # add edges

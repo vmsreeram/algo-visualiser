@@ -35,16 +35,16 @@ def makeGraph(C, F, path, flow, s, t, rGraphName):
             my_node = pydot.Node(str(i),fontcolor="white",color="white")
             graph.add_node(my_node)
 
-    graph.get_node(str(s))[0].set_label("S R C")
-    graph.get_node(str(t))[0].set_label("S N K")
+    # graph.get_node(str(s))[0].set_label("S R C")
+    # graph.get_node(str(t))[0].set_label("S N K")
 
-    # Forcing source to be at top and sink to be in opposite sides of the graph
-    subg=pydot.Subgraph(rank='source')
-    subg.add_node(pydot.Node(str(s)))
-    graph.add_subgraph(subg)
-    subg2=pydot.Subgraph(rank='sink')
-    subg2.add_node(pydot.Node(str(t)))
-    graph.add_subgraph(subg2)
+    # # Forcing source to be at top and sink to be in opposite sides of the graph
+    # subg=pydot.Subgraph(rank='source')
+    # subg.add_node(pydot.Node(str(s)))
+    # graph.add_subgraph(subg)
+    # subg2=pydot.Subgraph(rank='sink')
+    # subg2.add_node(pydot.Node(str(t)))
+    # graph.add_subgraph(subg2)
 
     # add edges
     for i in range(n):
