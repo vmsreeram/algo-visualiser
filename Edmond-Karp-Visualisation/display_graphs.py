@@ -2,7 +2,7 @@ import os
 from PIL import ImageTk
 from tkinter import *
 import PIL.Image
-mul = 0.48611
+mul = 0.47
 
 # FIXME : inputs such as input0 where height of graph is dominant, forcing constant width will overshoot image. TODO : Add a conditon for max height allowed for handling this
 
@@ -70,6 +70,9 @@ def displayAllGraphs(max_flow_value):
         ReRatio = widRes/heiRes
         DimWidth=screen_width*mul
         DimHeight=int(DimWidth / ReRatio)
+        if(DimHeight > screen_height*0.65):
+            DimHeight = screen_height*0.65
+            DimWidth = int(DimHeight*ReRatio)
         resized_image= imgResIm.resize((int(DimWidth),int(DimHeight)), PIL.Image.ANTIALIAS)
         imgRes= ImageTk.PhotoImage(resized_image)
 
@@ -78,6 +81,9 @@ def displayAllGraphs(max_flow_value):
         FlRatio = widFlo/heiFlo
         DimWidth=screen_width*mul
         DimHeight=int(DimWidth / FlRatio)
+        if(DimHeight > screen_height*0.65):
+            DimHeight = screen_height*0.65
+            DimWidth = int(DimHeight*FlRatio)
         resized_image= imgFloIm.resize((int(DimWidth),int(DimHeight)), PIL.Image.ANTIALIAS)
         imgFlo= ImageTk.PhotoImage(resized_image)
 
@@ -123,6 +129,9 @@ def displayAllGraphs(max_flow_value):
         ReRatio = widRes/heiRes
         DimWidth=screen_width*mul
         DimHeight=int(DimWidth / ReRatio)
+        if(DimHeight > screen_height*0.65):
+            DimHeight = screen_height*0.65
+            DimWidth = int(DimHeight*ReRatio)
         resized_image= imgResIm.resize((int(DimWidth),int(DimHeight)), PIL.Image.ANTIALIAS)
         imgRes= ImageTk.PhotoImage(resized_image)
 
@@ -131,6 +140,9 @@ def displayAllGraphs(max_flow_value):
         FlRatio = widFlo/heiFlo
         DimWidth=screen_width*mul
         DimHeight=int(DimWidth / FlRatio)
+        if(DimHeight > screen_height*0.65):
+            DimHeight = screen_height*0.65
+            DimWidth = int(DimHeight*FlRatio)
         resized_image= imgFloIm.resize((int(DimWidth),int(DimHeight)), PIL.Image.ANTIALIAS)
         imgFlo= ImageTk.PhotoImage(resized_image)
 
