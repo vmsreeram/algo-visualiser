@@ -1,4 +1,4 @@
-from tkinter import font
+# from tkinter import font
 import pydot
 
 def makeGraph(C, F, path, flow, s, t, rGraphName):
@@ -39,14 +39,6 @@ def makeGraph(C, F, path, flow, s, t, rGraphName):
     graph.get_node(str(t))[0].set_fillcolor("blue4")
     graph.get_node(str(s))[0].set_style("filled")
     graph.get_node(str(t))[0].set_style("filled")
-
-    # # Forcing source to be at top and sink to be in opposite sides of the graph
-    # subg=pydot.Subgraph(rank='source')
-    # subg.add_node(pydot.Node(str(s)))
-    # graph.add_subgraph(subg)
-    # subg2=pydot.Subgraph(rank='sink')
-    # subg2.add_node(pydot.Node(str(t)))
-    # graph.add_subgraph(subg2)
 
     # add edges
     for i in range(n):
