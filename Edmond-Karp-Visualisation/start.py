@@ -10,7 +10,8 @@ root = Tk()
 root.title("edmond-karp-visualiser")
 screen_width = root.winfo_screenwidth()
 screen_height = root.winfo_screenheight()
-root.attributes('-fullscreen', True) #TODO: Minimise button
+scrSizeStr=str(int(screen_width))+'x'+str(int(screen_height))
+root.geometry(scrSizeStr)
 frame = Frame(root)
 frame.pack()
 
