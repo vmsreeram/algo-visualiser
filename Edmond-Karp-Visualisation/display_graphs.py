@@ -2,16 +2,19 @@ import os
 from PIL import ImageTk
 from tkinter import *
 import PIL.Image
-DimHeight = 600
 mul = 0.48611
 
 def displayAllGraphs(max_flow_value):
     win = Tk()
     screen_width = win.winfo_screenwidth()
     screen_height = win.winfo_screenheight()
-    win.attributes('-fullscreen', True)
+
     win.title("Edmond-Karp Visualisation")
-    win.geometry("1750x1400")                 # changed so as to fit whole window (instead of line28, which isn't working on mac)
+    scrSizeStr=str(int(screen_width))+'x'+str(int(screen_height))
+    win.geometry(scrSizeStr)
+    # print("2")
+    # win.attributes('-fullscreen', True)     #TODO: Check why segmentation fault here. 
+    # print("3")
     frm_flowImg = Frame(win, width=screen_width*mul, height=screen_height*0.66667)
     frm_flowImg.place(anchor='e', relx=0.5, rely=0.5)
 
@@ -59,27 +62,25 @@ def displayAllGraphs(max_flow_value):
             # prevButton.pack(side=TOP, anchor=NW, relx=0.5,rely=0.5)
             prevButton.place(relx=0,rely=0, anchor=NW)
         
-        # resize images generated before displaying. By default, height=500 will be made, keeping aspect ratio same.
-        # However, if the width exceeds too much (>600), width=600 is made, keeping aspect ratio same.
-        global DimHeight
+        # resize images generated before displaying. Same width(=screen_width*mul) forced.
         imgResIm = (PIL.Image.open(residualImgs[curr]))
         widRes, heiRes = imgResIm.size
         ReRatio = widRes/heiRes
-        DimWidth = int(ReRatio * DimHeight)
-        if DimWidth>screen_width*mul:
-            DimWidth=screen_width*mul
-            DimHeight=int(DimWidth / ReRatio)
-        resized_image= imgResIm.resize((DimWidth,DimHeight), PIL.Image.ANTIALIAS)
+        # DimWidth = int(ReRatio * DimHeight)
+        # if DimWidth>screen_width*mul:
+        DimWidth=screen_width*mul
+        DimHeight=int(DimWidth / ReRatio)
+        resized_image= imgResIm.resize((int(DimWidth),int(DimHeight)), PIL.Image.ANTIALIAS)
         imgRes= ImageTk.PhotoImage(resized_image)
 
         imgFloIm = (PIL.Image.open(flowImgs[curr]))
         widFlo,heiFlo = imgFloIm.size
         FlRatio = widFlo/heiFlo
-        DimWidth = int(FlRatio * DimHeight)
-        if DimWidth>screen_width*mul:
-            DimWidth=screen_width*mul
-            DimHeight=int(DimWidth / FlRatio)
-        resized_image= imgFloIm.resize((DimWidth,DimHeight), PIL.Image.ANTIALIAS)
+        # DimWidth = int(FlRatio * DimHeight)
+        # if DimWidth>screen_width*mul:
+        DimWidth=screen_width*mul
+        DimHeight=int(DimWidth / FlRatio)
+        resized_image= imgFloIm.resize((int(DimWidth),int(DimHeight)), PIL.Image.ANTIALIAS)
         imgFlo= ImageTk.PhotoImage(resized_image)
 
         
@@ -117,27 +118,26 @@ def displayAllGraphs(max_flow_value):
             anslbl.pack_forget()
             nextButton.pack(side=TOP, anchor=NE)
         
-        # resize images generated before displaying. By default, height=500 will be made, keeping aspect ratio same.
-        # However, if the width exceeds too much (>600), width=600 is made, keeping aspect ratio same.
+        # resize images generated before displaying. Same width(=screen_width*mul) forced.
         global DimHeight
         imgResIm = (PIL.Image.open(residualImgs[curr]))
         widRes, heiRes = imgResIm.size
         ReRatio = widRes/heiRes
-        DimWidth = int(ReRatio * DimHeight)
-        if DimWidth>screen_width*mul:
-            DimWidth=screen_width*mul
-            DimHeight=int(DimWidth / ReRatio)
-        resized_image= imgResIm.resize((DimWidth,DimHeight), PIL.Image.ANTIALIAS)
+        # DimWidth = int(ReRatio * DimHeight)
+        # if DimWidth>screen_width*mul:
+        DimWidth=screen_width*mul
+        DimHeight=int(DimWidth / ReRatio)
+        resized_image= imgResIm.resize((int(DimWidth),int(DimHeight)), PIL.Image.ANTIALIAS)
         imgRes= ImageTk.PhotoImage(resized_image)
 
         imgFloIm = (PIL.Image.open(flowImgs[curr]))
         widFlo,heiFlo = imgFloIm.size
         FlRatio = widFlo/heiFlo
-        DimWidth = int(FlRatio * DimHeight)
-        if DimWidth>screen_width*mul:
-            DimWidth=screen_width*mul
-            DimHeight=int(DimWidth / FlRatio)
-        resized_image= imgFloIm.resize((DimWidth,DimHeight), PIL.Image.ANTIALIAS)
+        # DimWidth = int(FlRatio * DimHeight)
+        # if DimWidth>screen_width*mul:
+        DimWidth=screen_width*mul
+        DimHeight=int(DimWidth / FlRatio)
+        resized_image= imgFloIm.resize((int(DimWidth),int(DimHeight)), PIL.Image.ANTIALIAS)
         imgFlo= ImageTk.PhotoImage(resized_image)
 
         

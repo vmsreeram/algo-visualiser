@@ -7,7 +7,7 @@ def makeGraph(C, F, path, flow, s, t, rGraphName):
         stringg="Length of augmenting path = "+str(len(path))+"\nBottleneck Capacity = "+str(flow)
         graph = pydot.Dot("my_graph", graph_type="digraph", bgcolor="#204934",fontcolor="white", label=stringg, sep=3, nodesep=0.9)
     else:
-        graph = pydot.Dot("my_graph", graph_type="digraph", bgcolor="#204934",fontcolor="white", label="No path exists from Source to Sink.\nThe vertices reachable from Source are now shown in red and the others in blue", sep=3, nodesep=0.9)
+        graph = pydot.Dot("my_graph", graph_type="digraph", bgcolor="#204934",fontcolor="white", label="No path exists from Source to Sink.\nRed - Reachable vertices from Source, Blue - others", sep=3, nodesep=0.9)
 
     reachable=[s]
     if path is None or path == []:
