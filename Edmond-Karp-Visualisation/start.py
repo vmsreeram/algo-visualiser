@@ -71,7 +71,7 @@ def openInp():
     F = [[0] * len(C) for i in range(len(C))]
     Edmond_Karp_Flow.makeGraph(C, F, 0, (len(C)-1), 'imgs/inp_grp.png', True, True)
     
-    DimHeight=500           #FIXME: change this. Use screen info.    # resize forcing this to be image height, keeping aspect ratio (nearly) the same
+    DimHeight=int(screen_height*0.60556)           #FIXME: change this. Use screen info.    # resize forcing this to be image height, keeping aspect ratio (nearly) the same
     imgResIm = (PIL.Image.open('imgs/inp_grp.png'))
     widRes, heiRes = imgResIm.size
     ReRatio = widRes/heiRes
@@ -84,7 +84,7 @@ def openInp():
     # imgRes=ImageTk.PhotoImage(imgResIm)       # uncomment these 2 if resizing is to be overridden
     # lbl_inp_grp = Label(frm_inp_grp, image=imgRes)
     lbl_inp_grp.pack()
-    frm_inp_grp.place(anchor='n', relx=0.5, rely=0.15)
+    frm_inp_grp.place(anchor='n', relx=0.5, rely=0.07)
     frm_inp.place(anchor='n', relx=0.5, rely=0.8)
 
     #########
@@ -106,10 +106,7 @@ def done():
         ErrorExit.raiseErr("Invalid input of src/snk")
         exit()
     root.destroy()
-    # try:
     Edmond_Karp.Main(C,int(src),int(snk), CheckVar1.get())
-    # except Exception as e:
-    #         print('Failed to call Edmond_Karp.Main(). Reason: %s' % (e))
 
 browseBtn = Button(frame,
                    text="Choose input graph",
