@@ -4,6 +4,8 @@ from tkinter import *
 import PIL.Image
 mul = 0.48611
 
+# FIXME : inputs such as input0 where height of graph is dominant, forcing constant width will overshoot image. TODO : Add a conditon for max height allowed for handling this
+
 def displayAllGraphs(max_flow_value):
     win = Tk()
     screen_width = win.winfo_screenwidth()
