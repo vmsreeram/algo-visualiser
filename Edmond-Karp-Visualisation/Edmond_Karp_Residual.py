@@ -35,8 +35,10 @@ def makeGraph(C, F, path, flow, s, t, rGraphName):
             my_node = pydot.Node(str(i),fontcolor="white",color="white")
             graph.add_node(my_node)
 
-    # graph.get_node(str(s))[0].set_label("S R C")
-    # graph.get_node(str(t))[0].set_label("S N K")
+    graph.get_node(str(s))[0].set_fillcolor("red4")
+    graph.get_node(str(t))[0].set_fillcolor("blue4")
+    graph.get_node(str(s))[0].set_style("filled")
+    graph.get_node(str(t))[0].set_style("filled")
 
     # # Forcing source to be at top and sink to be in opposite sides of the graph
     # subg=pydot.Subgraph(rank='source')
