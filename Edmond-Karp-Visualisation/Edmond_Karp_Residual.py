@@ -19,8 +19,6 @@ def makeGraph(C, F, path, flow, s, t, rGraphName):
                 if(C[u][v]-F[u][v]>0) and v not in paths:
                     reachable.append(v)
                     paths[v] = paths[u]+[(u,v)]
-                    # if v == t:
-                    #     return paths[v]
                     queue.append(v)    
         print("vertices reachable from s :=",reachable)
     # Add nodes

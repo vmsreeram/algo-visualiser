@@ -10,7 +10,6 @@ root = Tk()
 root.title("edmond-karp-visualiser")
 screen_width = root.winfo_screenwidth()
 screen_height = root.winfo_screenheight()
-# root.geometry('1500x900')
 root.attributes('-fullscreen', True) #TODO: Minimise button
 frame = Frame(root)
 frame.pack()
@@ -40,12 +39,6 @@ inpTxt.config(font =("Courier", 20))
 def openInp():
     global C
     filename=browse()
-    # if (len(str(filename))) >= 65:
-    #     openedFile = "\nOpened file : "+str(filename)[:20] +" ... "+str(filename)[(len(str(filename))-45):]
-    # else:    
-    openedFile = "\nOpened file : "+str(filename)
-    fileLbl = Label(root, text=openedFile, font="arial 15", fg="black", wraplength=600)
-    fileLbl.pack()
     C1.pack()
     browseBtn.pack_forget()
     exitBtn.pack_forget()
@@ -57,7 +50,6 @@ def openInp():
     except:
         root.destroy()
         ErrorExit.raiseErr("Invalid input file contents")
-        # print("Invalid input file contents")
         exit()
     C=[]
     
@@ -65,7 +57,6 @@ def openInp():
         if len(lst) is not len(Cx[0]):
             root.destroy()
             ErrorExit.raiseErr("Invalid input file contents")
-            # print("Invalid input file contents")
             exit()
     try:
         for i in range(len(Cx[0])):
@@ -73,14 +64,13 @@ def openInp():
     except:
         root.destroy()
         ErrorExit.raiseErr("Invalid input file contents")
-        # print("Invalid input file contents")
         exit()
     
     #########
     F = [[0] * len(C) for i in range(len(C))]
     Edmond_Karp_Flow.makeGraph(C, F, 0, (len(C)-1), 'imgs/inp_grp.png', True, True)
     
-    DimHeight=500           # resize forcing this to be image height, keeping aspect ratio (nearly) the same
+    DimHeight=500           #FIXME: change this. Use screen info.    # resize forcing this to be image height, keeping aspect ratio (nearly) the same
     imgResIm = (PIL.Image.open('imgs/inp_grp.png'))
     widRes, heiRes = imgResIm.size
     ReRatio = widRes/heiRes
@@ -113,7 +103,6 @@ def done():
     except:
         root.destroy()
         ErrorExit.raiseErr("Invalid input of src/snk")
-        # print("Invalid input of src/snk")
         exit()
     root.destroy()
     try:
@@ -144,6 +133,4 @@ proceedBtn = Button(frame,
                    
 #TODO: Change size of Checkbox
 C1 = Checkbutton(frm_inp, text = "Hide zero capacity edges with non-zero flow values in visualisation", variable = CheckVar1, height=2, width = 75,font="arial 15")
-
-# comment
 root.mainloop()

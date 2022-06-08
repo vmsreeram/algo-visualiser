@@ -66,8 +66,6 @@ def displayAllGraphs(max_flow_value):
         imgResIm = (PIL.Image.open(residualImgs[curr]))
         widRes, heiRes = imgResIm.size
         ReRatio = widRes/heiRes
-        # DimWidth = int(ReRatio * DimHeight)
-        # if DimWidth>screen_width*mul:
         DimWidth=screen_width*mul
         DimHeight=int(DimWidth / ReRatio)
         resized_image= imgResIm.resize((int(DimWidth),int(DimHeight)), PIL.Image.ANTIALIAS)
@@ -76,8 +74,6 @@ def displayAllGraphs(max_flow_value):
         imgFloIm = (PIL.Image.open(flowImgs[curr]))
         widFlo,heiFlo = imgFloIm.size
         FlRatio = widFlo/heiFlo
-        # DimWidth = int(FlRatio * DimHeight)
-        # if DimWidth>screen_width*mul:
         DimWidth=screen_width*mul
         DimHeight=int(DimWidth / FlRatio)
         resized_image= imgFloIm.resize((int(DimWidth),int(DimHeight)), PIL.Image.ANTIALIAS)
@@ -123,8 +119,6 @@ def displayAllGraphs(max_flow_value):
         imgResIm = (PIL.Image.open(residualImgs[curr]))
         widRes, heiRes = imgResIm.size
         ReRatio = widRes/heiRes
-        # DimWidth = int(ReRatio * DimHeight)
-        # if DimWidth>screen_width*mul:
         DimWidth=screen_width*mul
         DimHeight=int(DimWidth / ReRatio)
         resized_image= imgResIm.resize((int(DimWidth),int(DimHeight)), PIL.Image.ANTIALIAS)
@@ -133,8 +127,6 @@ def displayAllGraphs(max_flow_value):
         imgFloIm = (PIL.Image.open(flowImgs[curr]))
         widFlo,heiFlo = imgFloIm.size
         FlRatio = widFlo/heiFlo
-        # DimWidth = int(FlRatio * DimHeight)
-        # if DimWidth>screen_width*mul:
         DimWidth=screen_width*mul
         DimHeight=int(DimWidth / FlRatio)
         resized_image= imgFloIm.resize((int(DimWidth),int(DimHeight)), PIL.Image.ANTIALIAS)

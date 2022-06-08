@@ -20,8 +20,6 @@ def makeGraph(C, F, s, t, fGraphName, hide0cp=False, initdisp=False):
             for j in range(n):
                 if (((C[i][j]!=0) or (F[i][j]!=0)) and not hide0cp) or ((C[i][j]!=0) and hide0cp):
                     graph.add_edge(pydot.Edge(str(i), str(j), label=str(C[i][j])+"/"+str(F[i][j]),fontsize="15.0",arrowhead='vee',penwidth=1.5,color="white" ,fontcolor="white"))
-                # if ((C[i][j]!=0) and hide0cp):
-                #     graph.add_edge(pydot.Edge(str(i), str(j), label=str(C[i][j])+"/"+str(F[i][j]),fontsize="15.0",arrowhead='vee' ))
     else:                           # for intial graph display only
         for i in range(n):
             for j in range(n):
