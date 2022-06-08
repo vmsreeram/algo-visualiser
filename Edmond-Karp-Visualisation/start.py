@@ -105,10 +105,10 @@ def done():
         ErrorExit.raiseErr("Invalid input of src/snk")
         exit()
     root.destroy()
-    try:
-        Edmond_Karp.Main(C,int(src),int(snk), CheckVar1.get())
-    except Exception as e:
-            print('Failed to call Edmond_Karp.Main(). Reason: %s' % (e))
+    # try:
+    Edmond_Karp.Main(C,int(src),int(snk), CheckVar1.get())
+    # except Exception as e:
+    #         print('Failed to call Edmond_Karp.Main(). Reason: %s' % (e))
 
 browseBtn = Button(frame,
                    text="Choose input graph",
