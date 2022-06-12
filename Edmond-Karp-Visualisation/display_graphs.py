@@ -28,7 +28,7 @@ def displayAllGraphs(max_flow_value, s, t):
 
     frm_legend = Frame(win, width=screen_width*0.41666, height=screen_width*0.41666)
     frm_legend.place(anchor='nw', relx=0.1, rely=0.9)
-    lbllegend = Label(frm_legend, text='•  C/F on edges represent capacity C and flow value F\n• Zero capacity edges are not shown', font="arial 20", fg="white", bg='#204934',justify= LEFT)
+    lbllegend = Label(frm_legend, text='•  C/F on edges represent capacity C and flow value F\n•  Zero capacity edges are not shown', font="arial 20", fg="white", bg='#204934',justify= LEFT)
     lbllegend.pack()
 
     frameanslbl = Frame(win, width=0, height=0)
@@ -123,7 +123,7 @@ def displayAllGraphs(max_flow_value, s, t):
             prevButton.place_forget()
         if curr <= len(flowImgs)-2:
             # anslbl.pack_forget()
-            lbllegend.configure(text='•  C/F on edges represent capacity C and flow value F\n• Zero capacity edges are not shown')
+            lbllegend.configure(text='•  C/F on edges represent capacity C and flow value F\n•  Zero capacity edges are not shown')
             lbllegend.pack()
             nextButton.pack(side=TOP, anchor=NE)
         
