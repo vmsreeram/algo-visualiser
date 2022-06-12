@@ -44,11 +44,11 @@ def makeGraph(C, F, path, flow, s, t, rGraphName):
             if (C[i][j] - F[i][j])>0 :
                 if path is not None and ((i,j) in path):
                     if (C[i][j] - F[i][j] == flow):
-                        graph.add_edge(pydot.Edge(str(i), str(j), label= str(C[i][j] - F[i][j]) , fontsize="15.0",color = "red" , penwidth = 4,fontcolor="white"))    #bottleneck edge
+                        graph.add_edge(pydot.Edge(str(i), str(j), label= str(C[i][j] - F[i][j]) , fontsize="20.0",color = "red" , penwidth = 4,fontcolor="orange"))    #bottleneck edge
                     else:
-                        graph.add_edge(pydot.Edge(str(i), str(j), label= str(C[i][j] - F[i][j]) , fontsize="15.0",color = "red",arrowhead='vee',penwidth=1.5 ,fontcolor="white"))                  #augmenting path but not bottleneck
+                        graph.add_edge(pydot.Edge(str(i), str(j), label= str(C[i][j] - F[i][j]) , fontsize="20.0",color = "red",arrowhead='vee',penwidth=1.5 ,fontcolor="orange"))                  #augmenting path but not bottleneck
                 else:
-                    graph.add_edge( pydot.Edge(str(i), str(j), label= str(C[i][j] - F[i][j]),fontsize="15.0",color="white",penwidth=1.5,arrowhead='vee',fontcolor="white") )
+                    graph.add_edge( pydot.Edge(str(i), str(j), label= str(C[i][j] - F[i][j]),fontsize="20.0",color="white",penwidth=1.5,arrowhead='vee',fontcolor="orange") )
 
     # fdp fixes nodes' positions
     graph.write(rGraphName, prog='fdp', format='png')

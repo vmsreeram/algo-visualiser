@@ -36,20 +36,20 @@ def makeGraph(C, F, s, t, fGraphName, hide0cp=False, initdisp=False, lastStg=Fal
             for j in range(n):
                 if (((C[i][j]!=0) or (F[i][j]!=0)) and not hide0cp) or ((C[i][j]!=0) and hide0cp):
                     if (i in reachable) and (not (j in reachable)):
-                        graph.add_edge(pydot.Edge(str(i), str(j), label=str(C[i][j])+"/"+str(F[i][j]),fontsize="15.0",arrowhead='vee',penwidth=1.5,color="red" ,fontcolor="white"))
+                        graph.add_edge(pydot.Edge(str(i), str(j), label=str(C[i][j])+"/"+str(F[i][j]),fontsize="20.0",arrowhead='vee',penwidth=1.5,color="red" ,fontcolor="orange"))
                     else:
-                        graph.add_edge(pydot.Edge(str(i), str(j), label=str(C[i][j])+"/"+str(F[i][j]),fontsize="15.0",arrowhead='vee',penwidth=1.5,color="white" ,fontcolor="white"))
+                        graph.add_edge(pydot.Edge(str(i), str(j), label=str(C[i][j])+"/"+str(F[i][j]),fontsize="20.0",arrowhead='vee',penwidth=1.5,color="white" ,fontcolor="orange"))
     elif not initdisp:
         # add edges
         for i in range(n):
             for j in range(n):
                 if (((C[i][j]!=0) or (F[i][j]!=0)) and not hide0cp) or ((C[i][j]!=0) and hide0cp):
-                    graph.add_edge(pydot.Edge(str(i), str(j), label=str(C[i][j])+"/"+str(F[i][j]),fontsize="15.0",arrowhead='vee',penwidth=1.5,color="white" ,fontcolor="white"))
+                    graph.add_edge(pydot.Edge(str(i), str(j), label=str(C[i][j])+"/"+str(F[i][j]),fontsize="20.0",arrowhead='vee',penwidth=1.5,color="white" ,fontcolor="orange"))
     else:                           # for intial graph display only
         for i in range(n):
             for j in range(n):
                 if (((C[i][j]!=0) or (F[i][j]!=0)) and not hide0cp) or ((C[i][j]!=0) and hide0cp):
-                    graph.add_edge(pydot.Edge(str(i), str(j), label=str(C[i][j]),fontsize="15.0",arrowhead='vee',color="white",fontcolor="white",penwidth=1.5 ))
+                    graph.add_edge(pydot.Edge(str(i), str(j), label=str(C[i][j]),fontsize="20.0",arrowhead='vee',color="white",fontcolor="orange",penwidth=1.5 ))
             
     # fdp fixes nodes' positions
     graph.write(fGraphName, prog='fdp', format='png')
