@@ -187,9 +187,9 @@ def displayAllGraphs(max_flow_value, s, t):
                     command=showImg)
     exitButton = Button(win,
                     text="Exit",
-                    fg="red",
+                    fg="black",
                     font="arial 20",
-                    command=exit)                
+                    command=exit,bg= "red")                
 
     nextButton.pack(side=TOP, anchor=NE)
     exitButton.place(rely=1.0, relx=1.0, anchor=SE)

@@ -117,9 +117,9 @@ browseBtn.pack(padx=2, pady=5, side=LEFT)
 
 exitBtn = Button(frame,
                    text="Exit",
-                   fg="red",
+                   fg="black",
                    font="arial 20",
-                   command=exit)
+                   command=exit, bg= "red")
 exitBtn.pack(padx=2, pady=5, side=LEFT)
 
 proceedBtn = Button(frame,
