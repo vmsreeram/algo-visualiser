@@ -40,7 +40,7 @@ inpTxt.config(font =("Courier", 20))
 def openInp():
     global C
     filename=browse()
-    C1.pack()
+    # C1.pack()
     browseBtn.pack_forget()
     exitBtn.pack_forget()
     proceedBtn.pack(padx=2, pady=5, side=LEFT)

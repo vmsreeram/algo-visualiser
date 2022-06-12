@@ -1,8 +1,10 @@
 import pydot
 
-def makeGraph(C, F, s, t, fGraphName, hide0cp=False, initdisp=False):
+def makeGraph(C, F, s, t, fGraphName, hide0cp=False, initdisp=False, lastStg=False):
     n = len(C)  
-    if not initdisp:
+    if lastStg:
+        graph = pydot.Dot("my_graph", graph_type="digraph", bgcolor="#204934",fontcolor="white", label="Red - Source, Blue - Sink\nRed edges form min-cut", sep=3, nodesep=0.9)
+    elif not initdisp:
         graph = pydot.Dot("my_graph", graph_type="digraph", bgcolor="#204934",fontcolor="white", label="Red - Source\nBlue - Sink", sep=3, nodesep=0.9)
     else:
         graph = pydot.Dot("my_graph", graph_type="digraph", bgcolor="#204934",fontcolor="white", sep=3, nodesep=0.9)
@@ -17,7 +19,27 @@ def makeGraph(C, F, s, t, fGraphName, hide0cp=False, initdisp=False):
         graph.get_node(str(s))[0].set_style("filled")
         graph.get_node(str(t))[0].set_style("filled")
 
-    if not initdisp:
+    reachable=[s]
+    if lastStg:
+        queue = [s]
+        paths = {s:[]}
+        while queue: 
+            u = queue.pop(0)
+            for v in range(len(C)):
+                if(C[u][v]-F[u][v]>0) and v not in paths:
+                    reachable.append(v)
+                    paths[v] = paths[u]+[(u,v)]
+                    queue.append(v)    
+
+    if lastStg:
+        for i in range(n):
+            for j in range(n):
+                if (((C[i][j]!=0) or (F[i][j]!=0)) and not hide0cp) or ((C[i][j]!=0) and hide0cp):
+                    if (i in reachable) and (not (j in reachable)):
+                        graph.add_edge(pydot.Edge(str(i), str(j), label=str(C[i][j])+"/"+str(F[i][j]),fontsize="15.0",arrowhead='vee',penwidth=1.5,color="red" ,fontcolor="white"))
+                    else:
+                        graph.add_edge(pydot.Edge(str(i), str(j), label=str(C[i][j])+"/"+str(F[i][j]),fontsize="15.0",arrowhead='vee',penwidth=1.5,color="white" ,fontcolor="white"))
+    elif not initdisp:
         # add edges
         for i in range(n):
             for j in range(n):

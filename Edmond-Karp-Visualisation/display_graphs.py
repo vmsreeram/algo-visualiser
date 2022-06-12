@@ -6,7 +6,7 @@ mul = 0.47
 
 # FIXME : inputs such as input0 where height of graph is dominant, forcing constant width will overshoot image. TODO : Add a conditon for max height allowed for handling this
 
-def displayAllGraphs(max_flow_value):
+def displayAllGraphs(max_flow_value, s, t):
     win = Tk()
     screen_width = win.winfo_screenwidth()
     screen_height = win.winfo_screenheight()
@@ -28,13 +28,13 @@ def displayAllGraphs(max_flow_value):
 
     frm_legend = Frame(win, width=screen_width*0.41666, height=screen_width*0.41666)
     frm_legend.place(anchor='nw', relx=0.1, rely=0.9)
-    lbllegend = Label(frm_legend, text='C/F on edge represents the edge \nwith capacity C, having flow F', font="arial 20", fg="white", bg='green')
+    lbllegend = Label(frm_legend, text='* C/F on edges represent capacity C and flow value F\n* Zero capacity edges are not shown', font="arial 20", fg="white", bg='#204934')
     lbllegend.pack()
 
     frameanslbl = Frame(win, width=0, height=0)
     frameanslbl.place(anchor='ne', relx=0.9, rely=0.9)
-    answerlabeltext = 'Edmonds-Karp algorithm\n The max flow value is: = '+str(max_flow_value)
-    anslbl = Label(frameanslbl, text=answerlabeltext, font="arial 20", fg="white", bg='green')
+    answerlabeltext = 'The max \"'+str(s)+'\"-\"'+str(t)+'\" flow value is '+str(max_flow_value)
+    anslbl = Label(frameanslbl, text=answerlabeltext, font="arial 20", fg="white", bg='#204934')
 
     residualImgs=[]
     flowImgs=[]
@@ -58,8 +58,11 @@ def displayAllGraphs(max_flow_value):
         global curr
         curr+=1
         if curr == len(flowImgs)-1:
-            anslbl.pack()
+            # anslbl.pack()
             nextButton.pack_forget()
+            lbllegend.configure(text='The max \"'+str(s)+'\"-\"'+str(t)+'\" flow value is '+str(max_flow_value))
+            lbllegend.pack()
+
         if curr >= 1:
             # prevButton.pack(side=TOP, anchor=NW, relx=0.5,rely=0.5)
             prevButton.place(relx=0,rely=0, anchor=NW)
@@ -119,7 +122,9 @@ def displayAllGraphs(max_flow_value):
             # prevButton.pack_forget()
             prevButton.place_forget()
         if curr <= len(flowImgs)-2:
-            anslbl.pack_forget()
+            # anslbl.pack_forget()
+            lbllegend.configure(text='* C/F on edges represent capacity C and flow value F\n* Zero capacity edges are not shown')
+            lbllegend.pack()
             nextButton.pack(side=TOP, anchor=NE)
         
         # resize images generated before displaying. Same width(=screen_width*mul) forced.

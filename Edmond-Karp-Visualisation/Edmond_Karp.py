@@ -26,7 +26,7 @@ def max_flow(C, s, t, hide0cp=False):
             fGraphName = "imgs/flow/flowGraph" +str(index) + ".png"
             rGraphName = "imgs/resi/residualGraph" +str(index) + ".png"
             path = bfs(C, F, s, t)
-        Edmond_Karp_Flow.makeGraph(C, F, s, t, fGraphName, hide0cp)
+        Edmond_Karp_Flow.makeGraph(C, F, s, t, fGraphName, hide0cp, False, True)
         Edmond_Karp_Residual.makeGraph(C, F, path, flow, s, t, rGraphName)
         return sum(F[s][i] for i in range(n))
 
@@ -82,4 +82,4 @@ def Main(C, source, sink, hide0cap):
 
     print ("Edmonds-Karp algorithm")
     print ("max_flow_value is: ", max_flow_value)
-    display_graphs.displayAllGraphs(max_flow_value)         # start UI
+    display_graphs.displayAllGraphs(max_flow_value, source, sink)         # start UI
