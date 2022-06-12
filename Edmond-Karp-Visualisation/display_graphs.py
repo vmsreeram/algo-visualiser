@@ -4,8 +4,6 @@ from tkinter import *
 import PIL.Image
 mul = 0.47
 
-# FIXME : inputs such as input0 where height of graph is dominant, forcing constant width will overshoot image. TODO : Add a conditon for max height allowed for handling this
-
 def displayAllGraphs(max_flow_value, s, t):
     win = Tk()
     screen_width = win.winfo_screenwidth()
@@ -14,9 +12,6 @@ def displayAllGraphs(max_flow_value, s, t):
     win.title("Edmond-Karp Visualisation")
     scrSizeStr=str(int(screen_width))+'x'+str(int(screen_height))
     win.geometry(scrSizeStr)
-    # print("2")
-    # win.attributes('-fullscreen', True)     #TODO: Check why segmentation fault here. 
-    # print("3")
     frm_flowImg = Frame(win, width=screen_width*mul, height=screen_height*0.66667)
     frm_flowImg.place(anchor='e', relx=0.5, rely=0.5)
 
@@ -25,16 +20,6 @@ def displayAllGraphs(max_flow_value, s, t):
 
     frm_stepLbl = Frame(win, width=screen_width*0.41666, height=screen_height*0.11111)
     frm_stepLbl.place(anchor='n', relx=0.5, rely=0)
-
-    frm_legend = Frame(win, width=screen_width*0.41666, height=screen_width*0.41666)
-    frm_legend.place(anchor='nw', relx=0.1, rely=0.9)
-    lbllegend = Label(frm_legend, text='•  C/F on edges represent capacity C and flow value F\n•  Zero capacity edges are not shown', font="arial 20", fg="white", bg='#204934',justify= LEFT)
-    lbllegend.pack()
-
-    frameanslbl = Frame(win, width=0, height=0)
-    frameanslbl.place(anchor='ne', relx=0.9, rely=0.9)
-    answerlabeltext = 'The max \"'+str(s)+'\"-\"'+str(t)+'\" flow value is '+str(max_flow_value)
-    anslbl = Label(frameanslbl, text=answerlabeltext, font="arial 20", fg="white", bg='#204934')
 
     residualImgs=[]
     flowImgs=[]
@@ -52,19 +37,32 @@ def displayAllGraphs(max_flow_value, s, t):
     residualImgs.sort()
     flowImgs.sort()
 
+    imgFloIm = (PIL.Image.open(flowImgs[0]))
+    widFlo,heiFlo = imgFloIm.size
+    FlRatio1 = widFlo/heiFlo
+    DimWidth1=screen_width*mul
+    DimHeight1=int(DimWidth1 / FlRatio1)
+    if(DimHeight1 > screen_height*0.65):
+        DimHeight1 = screen_height*0.65
+        DimWidth1 = int(DimHeight1*FlRatio1)
+
+    frm_legend = Frame(win, width=screen_width*0.41666, height=screen_width*0.41666)
+    print("set relx = ",0.5-(DimWidth1/screen_width))
+    frm_legend.place(anchor='nw', relx = 0.5-(DimWidth1/screen_width), rely=0.9)
+    lbllegend = Label(frm_legend, text='•  C/F on edges represent capacity C and flow value F\n•  Zero capacity edges are not shown', font="arial 19", fg="white", bg='#204934',justify= LEFT)
+    lbllegend.pack()
+
     global curr
     curr = -1
     def showImg():
         global curr
         curr+=1
         if curr == len(flowImgs)-1:
-            # anslbl.pack()
             nextButton.pack_forget()
             lbllegend.configure(text='The max \"'+str(s)+'\"-\"'+str(t)+'\" flow value is '+str(max_flow_value))
             lbllegend.pack()
 
         if curr >= 1:
-            # prevButton.pack(side=TOP, anchor=NW, relx=0.5,rely=0.5)
             prevButton.place(relx=0,rely=0, anchor=NW)
         
         # resize images generated before displaying. Same width(=screen_width*mul) forced.
@@ -119,10 +117,8 @@ def displayAllGraphs(max_flow_value, s, t):
         global curr
         curr-=1
         if curr == 0:
-            # prevButton.pack_forget()
             prevButton.place_forget()
         if curr <= len(flowImgs)-2:
-            # anslbl.pack_forget()
             lbllegend.configure(text='•  C/F on edges represent capacity C and flow value F\n•  Zero capacity edges are not shown')
             lbllegend.pack()
             nextButton.pack(side=TOP, anchor=NE)
@@ -196,6 +192,6 @@ def displayAllGraphs(max_flow_value, s, t):
                     command=exit)                
 
     nextButton.pack(side=TOP, anchor=NE)
-    exitButton.pack(side=BOTTOM)
+    exitButton.place(rely=1.0, relx=1.0, anchor=SE)
     showImg()
     win.mainloop()
