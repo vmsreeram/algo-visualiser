@@ -47,7 +47,6 @@ def displayAllGraphs(max_flow_value, s, t):
         DimWidth1 = int(DimHeight1*FlRatio1)
 
     frm_legend = Frame(win, width=screen_width*0.41666, height=screen_width*0.41666)
-    print("set relx = ",0.5-(DimWidth1/screen_width))
     frm_legend.place(anchor='nw', relx = 0.5-(DimWidth1/screen_width), rely=0.9)
     lbllegend = Label(frm_legend, text='•  C/F on edges represent capacity C and flow value F\n•  Zero capacity edges are not shown', font="arial 19", fg="white", bg='#204934',justify= LEFT)
     lbllegend.pack()
@@ -59,7 +58,7 @@ def displayAllGraphs(max_flow_value, s, t):
         curr+=1
         if curr == len(flowImgs)-1:
             nextButton.pack_forget()
-            lbllegend.configure(text='The max \"'+str(s)+'\"-\"'+str(t)+'\" flow value is '+str(max_flow_value))
+            lbllegend.configure(text='The max '+str(s)+'-'+str(t)+' flow value is '+str(max_flow_value))
             lbllegend.pack()
 
         if curr >= 1:

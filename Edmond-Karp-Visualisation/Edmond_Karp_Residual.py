@@ -20,7 +20,6 @@ def makeGraph(C, F, path, flow, s, t, rGraphName):
                     reachable.append(v)
                     paths[v] = paths[u]+[(u,v)]
                     queue.append(v)    
-        print("vertices reachable from s :=",reachable)
     # Add nodes
     for i in range(n):
         if (i in reachable) and (path is None or path == []):
