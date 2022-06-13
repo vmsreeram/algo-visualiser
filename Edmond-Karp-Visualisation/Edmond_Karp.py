@@ -80,6 +80,4 @@ def Main(C, source, sink, hide0cap):
     else:
         max_flow_value = max_flow(C, source, sink, True)
 
-    print ("Edmonds-Karp algorithm")
-    print ("max_flow_value is: ", max_flow_value)
     display_graphs.displayAllGraphs(max_flow_value, source, sink)         # start UI
