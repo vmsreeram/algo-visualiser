@@ -1,16 +1,11 @@
 from tkinter import *
 import os
-# cmd = 'ls -al'
-# os.system(cmd)
 
 def retry():
     #TODO
     global win
     win.destroy()
     os.system('python3 start.py')
-    # exit()
-    
-    
 
 def raiseErr(errmsg):
     global win

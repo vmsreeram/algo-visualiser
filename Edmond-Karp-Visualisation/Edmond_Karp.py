@@ -73,8 +73,6 @@ def Main(C, source, sink, hide0cap):
         except Exception as e:
             print('Failed to delete %s. Reason: %s' % (file_path, e))
 
-    # ask user to choose whether or not to hide zero capacity edges with non-zero flow
-    # hide0cap = input("Should zero capacity edges with non-zero flow be hidden in visualisation? (y(default) / n) : ")
     if(hide0cap==False):
         max_flow_value = max_flow(C, source, sink, False)
     else:
