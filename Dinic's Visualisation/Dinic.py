@@ -1,3 +1,4 @@
+import showGraph
 #Dinic Algorithm
 
 #build level graph by using BFS
@@ -18,6 +19,7 @@ def Bfs(C, F, s, t):  # C is the capacity matrix
                             level[i] = level[k] + 1
                             queue.append(i)
         #function call {pass parameter levelGraph}
+        showGraph.makeGraph(levelGraph)
         return level[t] > 0
 
 #search augmenting path by using DFS
