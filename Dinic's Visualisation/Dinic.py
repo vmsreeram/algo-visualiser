@@ -3,24 +3,24 @@ import showGraph
 
 #build level graph by using BFS
 def Bfs(C, F, s, t):  # C is the capacity matrix
-        n = len(C)
-        queue = []
-        queue.append(s)
-        global level
-        global levelGraph
-        levelGraph = n*[n*[0]] # initialization of level graph
-        level = n * [0]  # initialization
-        level[s] = 1  
-        while queue:
-            k = queue.pop(0)
-            for i in range(n):
-                    if (F[k][i] < C[k][i]) and (level[i] == 0): # not visited
-                            levelGraph[k][i] = C[k][i]-F[k][i]
-                            level[i] = level[k] + 1
-                            queue.append(i)
-        #function call {pass parameter levelGraph}
-        showGraph.makeGraph(levelGraph)
-        return level[t] > 0
+    n = len(C)
+    queue = []
+    queue.append(s)
+    global level
+    global levelGraph
+    levelGraph = [n*[0] for i in range(n)] # initialization of level graph
+    level = n * [0]  # initialization
+    level[s] = 1  
+    while queue:
+        k = queue.pop(0)
+        for i in range(n):
+            if (F[k][i] < C[k][i]) and (level[i] == 0): # not visited
+                levelGraph[k][i] = C[k][i]
+                level[i] = level[k] + 1
+                queue.append(i)
+    #function call {pass parameter levelGraph}
+    showGraph.makeGraph(levelGraph)
+    return level[t] > 0
 
 #search augmenting path by using DFS
 def Dfs(C, F, k, cp):
@@ -48,15 +48,18 @@ def MaxFlow(C,s,t):
 #-------------------------------------
 # make a capacity graph
 # node   s   o   p   q   r   t
-C = [[ 0, 3, 3, 0, 0, 0 ],  # s
-     [ 0, 0, 2, 3, 0, 0 ],  # o
-     [ 0, 0, 0, 0, 2, 0 ],  # p
-     [ 0, 0, 0, 0, 4, 2 ],  # q
-     [ 0, 0, 0, 0, 0, 2 ],  # r
-     [ 0, 0, 0, 0, 0, 3 ]]  # t
+C = [[ 0, 4, 10, 0],  # 0
+     [ 0, 0, 2,  7],  # 1
+     [ 0, 4, 0,  5],  # 2
+     [ 0, 0, 0,  0]]
 
 source = 0  # A
-sink = 5    # F
+sink = 3    # F
 print ("Dinic's Algorithm")
-max_flow_value = MaxFlow(C, source, sink)
-print ("max_flow_value is", max_flow_value)
+##added for debugging
+n = len(C)
+F = [n*[0] for i in range(n)]
+Bfs(C,F,source,sink)
+###############
+# max_flow_value = MaxFlow(C, source, sink)
+# print ("max_flow_value is", max_flow_value)
