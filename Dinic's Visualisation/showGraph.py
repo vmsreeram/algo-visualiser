@@ -13,7 +13,8 @@ def makeGraph(C):
     # add edges
     for i in range(n):
         for j in range(n):
-            graph.add_edge( pydot.Edge(str(i), str(j), label= str(C[i][j])) )
+            if(C[i][j]>0):
+                graph.add_edge( pydot.Edge(str(i), str(j), label= str(C[i][j])) )
 
     
-    graph.write("levelGraph", prog='fdp', format='png')
+    graph.write("levelGraph.png", prog='fdp', format='png')
