@@ -15,9 +15,9 @@ def Bfs(C, F, s, t):  # C is the capacity matrix
             for i in range(n):
                     if (F[k][i] < C[k][i]) and (level[i] == 0): # not visited
                             levelGraph[k][i] = C[k][i]-F[k][i]
-                            #function call {pass parameter levelGraph}
                             level[i] = level[k] + 1
                             queue.append(i)
+        #function call {pass parameter levelGraph}
         return level[t] > 0
 
 #search augmenting path by using DFS
