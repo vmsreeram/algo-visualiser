@@ -6,12 +6,16 @@ def Bfs(C, F, s, t):  # C is the capacity matrix
         queue = []
         queue.append(s)
         global level
+        global levelGraph
+        levelGraph = n*[n*[0]] # initialization of level graph
         level = n * [0]  # initialization
         level[s] = 1  
         while queue:
             k = queue.pop(0)
             for i in range(n):
                     if (F[k][i] < C[k][i]) and (level[i] == 0): # not visited
+                            levelGraph[k][i] = C[k][i]-F[k][i]
+                            #function call {pass parameter levelGraph}
                             level[i] = level[k] + 1
                             queue.append(i)
         return level[t] > 0
