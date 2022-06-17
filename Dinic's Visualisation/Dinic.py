@@ -15,11 +15,11 @@ def Bfs(C, F, s, t):  # C is the capacity matrix
         k = queue.pop(0)
         for i in range(n):
             if (F[k][i] < C[k][i]) and (level[i] == 0): # not visited
-                levelGraph[k][i] = C[k][i]
+                levelGraph[k][i] = C[k][i] - F[k][i]
                 level[i] = level[k] + 1
                 queue.append(i)
     #function call {pass parameter levelGraph}
-    showGraph.makeGraph(levelGraph)
+    showGraph.makeGraph(C,levelGraph)
     return level[t] > 0
 
 #search augmenting path by using DFS
@@ -27,9 +27,9 @@ def Dfs(C, F, k, cp):
         tmp = cp
         if k == len(C)-1:
             return cp
-        for i in range(len(C)):
-            if (level[i] == level[k] + 1) and (F[k][i] < C[k][i]):
-                f = Dfs(C,F,i,min(tmp,C[k][i] - F[k][i]))
+        for i in range(len(levelGraph)):
+            if (level[i] == level[k] + 1) and (0 < levelGraph[k][i]):
+                f = Dfs(C,F,i,min(tmp,levelGraph[k][i]))
                 F[k][i] = F[k][i] + f
                 F[i][k] = F[i][k] - f
                 tmp = tmp - f
@@ -59,7 +59,7 @@ print ("Dinic's Algorithm")
 ##added for debugging
 n = len(C)
 F = [n*[0] for i in range(n)]
-Bfs(C,F,source,sink)
+# Bfs(C,F,source,sink)
 ###############
-# max_flow_value = MaxFlow(C, source, sink)
-# print ("max_flow_value is", max_flow_value)
+max_flow_value = MaxFlow(C, source, sink)
+print ("max_flow_value is", max_flow_value)
