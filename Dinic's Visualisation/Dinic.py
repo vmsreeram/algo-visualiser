@@ -48,18 +48,12 @@ def MaxFlow(C,s,t):
 #-------------------------------------
 # make a capacity graph
 # node   s   o   p   q   r   t
-C = [[ 0, 4, 10, 0],  # 0
-     [ 0, 0, 2,  7],  # 1
-     [ 0, 4, 0,  5],  # 2
-     [ 0, 0, 0,  0]]
-
-source = 0  # A
-sink = 3    # F
-print ("Dinic's Algorithm")
-##added for debugging
-n = len(C)
-F = [n*[0] for i in range(n)]
-# Bfs(C,F,source,sink)
-###############
-max_flow_value = MaxFlow(C, source, sink)
-print ("max_flow_value is", max_flow_value)
+def Main(C, source, sink, booln=False):
+        print ("Dinic's Algorithm")
+        ##added for debugging
+        n = len(C)
+        F = [n*[0] for i in range(n)]
+        # Bfs(C,F,source,sink)
+        ###############
+        max_flow_value = MaxFlow(C, source, sink)
+        print ("max_flow_value is", max_flow_value)
