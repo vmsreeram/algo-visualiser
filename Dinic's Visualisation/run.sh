@@ -1,0 +1,9 @@
+python start1.py 0
+python start1.py 1
+python start1.py 2
+python start1.py 3
+python start1.py 4
+python start1.py 5
+python start1.py 6
+python start1.py 7
+python start1.py 8

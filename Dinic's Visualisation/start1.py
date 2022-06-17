@@ -1,5 +1,7 @@
 import Dinic
-k = input()
+import sys
+
+k = sys.argv[1]
 filename = 'inputs/input'+k+'.txt'
 try:
     with open(filename) as textFile:
