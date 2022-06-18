@@ -17,7 +17,9 @@ def Bfs(C, F, s, t):  # C is the capacity matrix
                 level[i] = level[k] + 1
                 queue.append(i)
     #function call {pass parameter levelGraph}
-    showGraph.makeGraph(C,levelGraph)
+    global ctr
+    showGraph.makeGraph(F,levelGraph,str(ctr),C)
+    ctr+=1
     return level[t] > 0
 
 #search augmenting path by using DFS
@@ -117,5 +119,7 @@ def Main(C, source, sink, booln=False):
     # F = [n*[0] for i in range(n)]
     # Bfs(C,F,source,sink)
     ###############
+    global ctr
+    ctr=0
     max_flow_value = MaxFlow(C, source, sink)
     print ("max_flow_value is", max_flow_value)
