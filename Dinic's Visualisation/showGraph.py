@@ -1,7 +1,7 @@
 import pydot
 
 def makeGraph(F,L,g_no,C):
-    n = len(F,)
+    n = len(F)
 
     graph = pydot.Dot("my_graph", graph_type="digraph", bgcolor="#204934",fontcolor="white",sep=3, nodesep=0.9)
 

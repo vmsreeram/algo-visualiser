@@ -1,4 +1,5 @@
 import showGraph
+import augmentShow
 #Dinic Algorithm
 
 #build level graph by using BFS
@@ -7,6 +8,8 @@ def Bfs(C, F, s, t):  # C is the capacity matrix
     queue = []
     queue.append(s)
     global level
+    global ctr
+
     level = n * [0]  # initialization
     level[s] = 1  
     while queue:
@@ -17,7 +20,7 @@ def Bfs(C, F, s, t):  # C is the capacity matrix
                 level[i] = level[k] + 1
                 queue.append(i)
     #function call {pass parameter levelGraph}
-    global ctr
+    
     showGraph.makeGraph(F,levelGraph,str(ctr),C)
     ctr+=1
     return level[t] > 0
@@ -36,7 +39,7 @@ def Dfs(C, F, k, cp,t):
     return cp - tmp
 
 
-def advance (path,t,F,flo):
+def advance (C,path,t,F,flo):
     neighbourAvailable = False
     k = path[-1]
     u = 0
@@ -48,46 +51,55 @@ def advance (path,t,F,flo):
             break
     if(neighbourAvailable==False):
         # print("retreat: ",path," t= ", t, flo)
-        flo = retreat(path,t,F,flo)
+        flo = retreat(C,path,t,F,flo)
     elif (u == t):
         # print("augment: ",path," t= ", t, flo)
-        flo = augment(path,t,F,flo)
+        flo = augment(C,path,t,F,flo)
     elif (path != []):
         # print("advance: ",path," t= ", t, flo)
-        flo = advance(path,t,F,flo)
+        flo = advance(C,path,t,F,flo)
     return flo
 
     
 
-def retreat (path,t,F,flo):
+def retreat (C,path,t,F,flo):
     lastEle = path.pop()
     for i in range(len(levelGraph)):
         if levelGraph[i][lastEle] >0:
             levelGraph[i][lastEle] =0
     if(path!=[]):
         # print("advance: ",path," t= ", t, flo)
-        flo = advance(path,t,F,flo)
+        flo = advance(C,path,t,F,flo)
     return flo
 
-def augment(path,t,F,flo):
+def augment(C,path,t,F,flo):
     pathSize = len(path)
+    global ctr
     if (pathSize>1):
         bottleNeckCapacity = levelGraph[path[0]][path[1]]
         bottleNeckEdgeLevels = (0,1)
-        for i in range(pathSize-1):
+        #finding bottle neck capacity and bottleneck edge
+        for i in range(pathSize-2,-1,-1):
             if(bottleNeckCapacity > levelGraph[path[i]][path[i+1]]):
                 bottleNeckEdgeLevels = (i,i+1)
                 bottleNeckCapacity = levelGraph[path[i]][path[i+1]]
         
+        bottleNeckEdge = (path[bottleNeckEdgeLevels[0]],path[bottleNeckEdgeLevels[1]])
+        
+        augmentShow.makeAugmentGraph(C,F,path,levelGraph,bottleNeckCapacity,str(ctr))
+        ctr+=1
         for i in range(pathSize-1):
             levelGraph[path[i]][path[i+1]] -= bottleNeckCapacity
             F[path[i]][path[i+1]] += bottleNeckCapacity
             F[path[i+1]][path[i]] -= bottleNeckCapacity
         flo += bottleNeckCapacity
-        
         del path[bottleNeckEdgeLevels[1]:pathSize]
+        
+        augmentShow.makeAugmentGraph(C,F,path,levelGraph,0,str(ctr))
+        
+        ctr+=1
         # print("advance: ",path," t= ",t, flo,"bedge= ",bottleNeckEdgeLevels)
-        flo = advance(path,t,F,flo)
+        flo = advance(C,path,t,F,flo)
     return flo
 
 
@@ -101,7 +113,7 @@ def MaxFlow(C,s,t):
     path = [s]
     while(Bfs(C,F,s,t)):
         path = [s]
-        flow = flow + advance(path,t,F,0)
+        flow = flow + advance(C,path,t,F,0)
     return flow
 
 #-------------------------------------
