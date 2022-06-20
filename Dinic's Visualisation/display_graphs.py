@@ -9,7 +9,7 @@ def displayAllGraphs(max_flow_value, s, t):
     screen_width = win.winfo_screenwidth()
     screen_height = win.winfo_screenheight()
 
-    win.title("Edmond-Karp Visualisation")
+    win.title("Dinic's Visualisation")
     scrSizeStr=str(int(screen_width))+'x'+str(int(screen_height))
     win.geometry(scrSizeStr)
     frm_flowImg = Frame(win, width=screen_width*mul, height=screen_height*0.66667)
@@ -48,7 +48,7 @@ def displayAllGraphs(max_flow_value, s, t):
 
     frm_legend = Frame(win, width=screen_width*0.41666, height=screen_width*0.41666)
     frm_legend.place(anchor='nw', relx = 0.5-(DimWidth1/screen_width), rely=0.9)
-    lbllegend = Label(frm_legend, text='•  C/F on edges represent capacity C and flow value F\n•  Zero capacity edges are not shown', font="arial 19", fg="white", bg='#204934',justify= LEFT)
+    lbllegend = Label(frm_legend, text='•  C/F on edges represent capacity C and flow value F\n•  Zero capacity edges are not shown\n•  Source-Red; Sink-Blue', font="arial 19", fg="white", bg='#204934',justify= LEFT)
     lbllegend.pack()
 
     global curr
@@ -107,7 +107,7 @@ def displayAllGraphs(max_flow_value, s, t):
         for widgets in frm_residImg.winfo_children():
             widgets.destroy()
         resiImg_lbl = Label(frm_residImg, image=imgRes)
-        resiImg_txt_lbl = Label(frm_residImg, text='Residual Graph', font="arial 25")
+        resiImg_txt_lbl = Label(frm_residImg, text='Level Graph', font="arial 25")
         resiImg_txt_lbl.pack()
         resiImg_lbl.pack() 
         win.mainloop()
@@ -118,7 +118,7 @@ def displayAllGraphs(max_flow_value, s, t):
         if curr == 0:
             prevButton.place_forget()
         if curr <= len(flowImgs)-2:
-            lbllegend.configure(text='•  C/F on edges represent capacity C and flow value F\n•  Zero capacity edges are not shown')
+            lbllegend.configure(text='•  C/F on edges represent capacity C and flow value F\n•  Zero capacity edges are not shown\n•  Source-Red; Sink-Blue')
             lbllegend.pack()
             nextButton.pack(side=TOP, anchor=NE)
         
@@ -168,7 +168,7 @@ def displayAllGraphs(max_flow_value, s, t):
         for widgets in frm_residImg.winfo_children():
             widgets.destroy()
         resiImg_lbl = Label(frm_residImg, image=imgRes)
-        resiImg_txt_lbl = Label(frm_residImg, text='Residual Graph', font="arial 25")
+        resiImg_txt_lbl = Label(frm_residImg, text='Level Graph', font="arial 25")
         resiImg_txt_lbl.pack()
         resiImg_lbl.pack() 
         win.mainloop()

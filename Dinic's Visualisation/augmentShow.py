@@ -1,6 +1,6 @@
 import pydot
 
-def makeAugmentGraph (C,F,path,L,bottleNeckCapacity,g_no):
+def makeAugmentGraph (C,F,path,L,bottleNeckCapacity,g_no,source,sink):
     n = len(C)
     last_node = path[-1]
     
@@ -15,6 +15,10 @@ def makeAugmentGraph (C,F,path,L,bottleNeckCapacity,g_no):
             my_node = pydot.Node(str(i),fontcolor="white",color="white")
         graph.add_node(my_node)
     
+    graph.get_node(str(source))[0].set_fillcolor("red4")
+    graph.get_node(str(sink))[0].set_fillcolor("blue4")
+    graph.get_node(str(source))[0].set_style("filled")
+    graph.get_node(str(sink))[0].set_style("filled")
     #Add edges
     for i in range(n):
         for j in range(n):
@@ -38,14 +42,17 @@ def makeAugmentGraph (C,F,path,L,bottleNeckCapacity,g_no):
     for i in range(n):
         my_node = pydot.Node(str(i),fontcolor="white",color="white")
         graph1.add_node(my_node)
-
+    graph1.get_node(str(source))[0].set_fillcolor("red4")
+    graph1.get_node(str(sink))[0].set_fillcolor("blue4")
+    graph1.get_node(str(source))[0].set_style("filled")
+    graph1.get_node(str(sink))[0].set_style("filled")
     # add edges
     for i in range(n):
         for j in range(n):
             if(C[i][j]>0):
-                graph1.add_edge( pydot.Edge(str(i), str(j), label= (str(F[i][j]) + "/" + str(C[i][j])),color = "white",fontsize="20.0",penwidth=1.5,fontcolor="orange") )
+                graph1.add_edge( pydot.Edge(str(i), str(j), label= (str(C[i][j]) + "/" + str(F[i][j])),color = "white",fontsize="20.0",penwidth=1.5,fontcolor="orange") )
             else:
-                graph1.add_edge( pydot.Edge(str(i), str(j), label= (str(F[i][j]) + "/" + str(C[i][j])),color = "white",fontsize="20.0",penwidth=1.5,fontcolor="orange",style="invis") )
+                graph1.add_edge( pydot.Edge(str(i), str(j), label= (str(C[i][j]) + "/" + str(F[i][j])),color = "white",fontsize="20.0",penwidth=1.5,fontcolor="orange",style="invis") )
 
     graph.write("imgs/level/"+g_no+".png", prog='fdp', format='png')
     graph1.write("imgs/flow/"+g_no+".png", prog='fdp', format='png')

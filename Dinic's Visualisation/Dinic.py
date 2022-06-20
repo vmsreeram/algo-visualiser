@@ -23,8 +23,8 @@ def Bfs(C, F, s, t):  # C is the capacity matrix
                 level[i] = level[k] + 1
                 queue.append(i)
     #function call {pass parameter levelGraph}
-    
-    showGraph.makeGraph(F,levelGraph,str(ctr),C)
+    global Source,Sink
+    showGraph.makeGraph(F,levelGraph,str(ctr),C,Source,Sink)
     ctr+=1
     return level[t] > 0
 
@@ -88,8 +88,8 @@ def augment(C,path,t,F,flo):
                 bottleNeckCapacity = levelGraph[path[i]][path[i+1]]
         
         bottleNeckEdge = (path[bottleNeckEdgeLevels[0]],path[bottleNeckEdgeLevels[1]])
-        
-        augmentShow.makeAugmentGraph(C,F,path,levelGraph,bottleNeckCapacity,str(ctr))
+        global Source,Sink
+        augmentShow.makeAugmentGraph(C,F,path,levelGraph,bottleNeckCapacity,str(ctr),Source,Sink)
         ctr+=1
         for i in range(pathSize-1):
             levelGraph[path[i]][path[i+1]] -= bottleNeckCapacity
@@ -98,7 +98,7 @@ def augment(C,path,t,F,flo):
         flo += bottleNeckCapacity
         del path[bottleNeckEdgeLevels[1]:pathSize]
         
-        augmentShow.makeAugmentGraph(C,F,path,levelGraph,0,str(ctr))
+        augmentShow.makeAugmentGraph(C,F,path,levelGraph,0,str(ctr),Source,Sink)
         
         ctr+=1
         # print("advance: ",path," t= ",t, flo,"bedge= ",bottleNeckEdgeLevels)
@@ -122,6 +122,9 @@ def MaxFlow(C,s,t):
 
 def Main(C, source, sink, booln=False):
     print ("Dinic's Algorithm")
+    global Source,Sink
+    Source=source
+    Sink=sink
     folder = 'imgs/flow'
     for filename in os.listdir(folder):
         file_path = os.path.join(folder, filename)

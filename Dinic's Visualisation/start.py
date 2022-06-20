@@ -71,7 +71,7 @@ def openInp():
     F = [[0] * len(C) for i in range(len(C))]
     L = [[0] * len(C) for i in range(len(C))]
     g_no="../inp_grp"
-    showGraph.makeGraph(F,L,g_no,C,True)
+    showGraph.makeGraph(F,L,g_no,C,0,0,True)
     
     DimHeight=int(screen_height*0.60556)           #FIXME: change this. Use screen info.    # resize forcing this to be image height, keeping aspect ratio (nearly) the same
     imgResIm = (PIL.Image.open('imgs/inp_grp.png'))
