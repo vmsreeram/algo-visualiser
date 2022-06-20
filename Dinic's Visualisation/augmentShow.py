@@ -27,6 +27,8 @@ def makeAugmentGraph (C,F,path,L,bottleNeckCapacity,g_no):
                 
                 else:
                     graph.add_edge( pydot.Edge(str(i), str(j), label= str(L[i][j]),color = "white",fontsize="20.0",penwidth=1.5,fontcolor="orange") )
+            else:
+                graph.add_edge( pydot.Edge(str(i), str(j), label= str(L[i][j]),color = "white",fontsize="20.0",penwidth=1.5,fontcolor="orange",style="invis") )
     
     graph.write("imgs/level/"+g_no+".png", prog='fdp', format='png')
 
