@@ -51,7 +51,7 @@ def makeGraph(F,L,g_no,C,source,sink,initDisp=False):
             else:
                 graph1.add_edge( pydot.Edge(str(i), str(j), label= str(L[i][j]),color = "white",fontsize="20.0",penwidth=1.5,fontcolor="orange",style="invis") )
 
-    #TODO:Fix nodes' positions	
+    #TODO:Fix nodes' positions
     graph.write("imgs/flow/"+g_no+".png", prog='fdp', format='png')
     if not initDisp:
         graph1.write("imgs/level/"+g_no+".png", prog='fdp', format='png')

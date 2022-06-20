@@ -73,7 +73,7 @@ def openInp():
     g_no="../inp_grp"
     showGraph.makeGraph(F,L,g_no,C,0,0,True)
     
-    DimHeight=int(screen_height*0.60556)           
+    DimHeight=int(screen_height*0.60556)
     imgResIm = (PIL.Image.open('imgs/inp_grp.png'))
     widRes, heiRes = imgResIm.size
     ReRatio = widRes/heiRes

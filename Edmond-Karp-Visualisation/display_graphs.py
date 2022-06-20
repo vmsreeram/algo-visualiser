@@ -29,13 +29,12 @@ def displayAllGraphs(max_flow_value, s, t):
         file_path = os.path.join(folder, filename)
         flowImgs.append(str(file_path))
 
-    folder = 'imgs/resi'
-    for filename in os.listdir(folder):
-        file_path = os.path.join(folder, filename)
-        residualImgs.append(str(file_path))
+    nfiles=len(flowImgs)
+    flowImgs.clear()
 
-    residualImgs.sort()
-    flowImgs.sort()
+    for i in range(nfiles):
+        residualImgs.append('imgs/level/'+str(i)+'.png')
+        flowImgs.append('imgs/resi/'+str(i)+'.png')
 
     imgFloIm = (PIL.Image.open(flowImgs[0]))
     widFlo,heiFlo = imgFloIm.size
