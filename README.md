@@ -21,7 +21,7 @@
   ```zsh
   python3 start.py
   ```
-3. Click on ```Browse``` and choose the text file having valid input in space-separated adjacency matrix format. Verify whether the label shows the path to the selected file.
+3. Click on ```Choose input graph``` and choose the text file having valid input in space-separated adjacency matrix format. Verify whether the label shows the path to the selected file.
 4. Default valid index values of source and sink vertices will be automatically filled in the textbox. If it is to be modified, write two modified space-separated integers. 
 5. Click on ```Proceed```.
 6. Wait for algorithm to work in background. On completion, a new window will open.
@@ -39,7 +39,7 @@ The input file should be adjacency matrix with entry at  i, j position is ```C[i
   ```zsh
   python3 start.py
   ```
-3. Click on ```Browse``` and choose the text file having valid input in space-separated adjacency matrix format. Verify whether the label shows the path to the selected file.
+3. Click on ```Choose input graph``` and choose the text file having valid input in space-separated adjacency matrix format. Verify whether the label shows the path to the selected file.
 4. Default valid index values of source and sink vertices will be automatically filled in the textbox. If it is to be modified, write two modified space-separated integers. 
 5. Click on ```Proceed```.
 6. Wait for algorithm to work in background. On completion, a new window will open.
