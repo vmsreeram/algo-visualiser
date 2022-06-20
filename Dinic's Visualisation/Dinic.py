@@ -121,7 +121,7 @@ def MaxFlow(C,s,t):
 #-------------------------------------
 
 def Main(C, source, sink, booln=False):
-    print ("Dinic's Algorithm")
+#     print ("Dinic's Algorithm")
     global Source,Sink
     Source=source
     Sink=sink
@@ -157,5 +157,5 @@ def Main(C, source, sink, booln=False):
     global ctr
     ctr=0
     max_flow_value = MaxFlow(C, source, sink)
-    print ("max_flow_value is", max_flow_value)
+#     print ("max_flow_value is", max_flow_value)
     display_graphs.displayAllGraphs(max_flow_value,source,sink)

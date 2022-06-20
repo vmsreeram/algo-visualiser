@@ -58,7 +58,7 @@ def displayAllGraphs(max_flow_value, s, t):
         curr+=1
         if curr == len(flowImgs)-1:
             nextButton.pack_forget()
-            lbllegend.configure(text='The max '+str(s)+'-'+str(t)+' flow value is '+str(max_flow_value))
+            lbllegend.configure(text='The max '+str(s)+'-'+str(t)+' flow value is '+str(max_flow_value)+'\n•  Source-Red; Sink-Blue')
             lbllegend.pack()
 
         if curr >= 1:
