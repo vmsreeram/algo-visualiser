@@ -1,5 +1,8 @@
+import os
+import shutil
 import showGraph
 import augmentShow
+import display_graphs
 #Dinic Algorithm
 
 #build level graph by using BFS
@@ -105,7 +108,6 @@ def augment(C,path,t,F,flo):
 
 
 #calculate max flow
-#_ = float('inf')
 def MaxFlow(C,s,t):
     n = len(C)
     F = [n*[0] for i in range(n)] # F is the flow matrix
@@ -117,21 +119,40 @@ def MaxFlow(C,s,t):
     return flow
 
 #-------------------------------------
-# make a capacity graph
-# node   s   o   p   q   r   t
+
 def Main(C, source, sink, booln=False):
     print ("Dinic's Algorithm")
+    folder = 'imgs/flow'
+    for filename in os.listdir(folder):
+        file_path = os.path.join(folder, filename)
+        try:
+            if os.path.isfile(file_path) or os.path.islink(file_path):
+                os.unlink(file_path)
+            elif os.path.isdir(file_path):
+                shutil.rmtree(file_path)
+        except Exception as e:
+            print('Failed to delete %s. Reason: %s' % (file_path, e))
+
+    # remove existing files from imgs/resi
+    folder2 = 'imgs/level'
+    for filename in os.listdir(folder2):
+        file_path = os.path.join(folder2, filename)
+        try:
+            if os.path.isfile(file_path) or os.path.islink(file_path):
+                os.unlink(file_path)
+            elif os.path.isdir(file_path):
+                shutil.rmtree(file_path)
+        except Exception as e:
+            print('Failed to delete %s. Reason: %s' % (file_path, e))
+    
     n = len(C)
     global path 
     global levelGraph
     levelGraph = [n*[0] for i in range(n)] # initialization of level graph
     path = len(levelGraph)*[0]
-    ##added for debugging
-    # n = len(C)
-    # F = [n*[0] for i in range(n)]
-    # Bfs(C,F,source,sink)
-    ###############
+
     global ctr
     ctr=0
     max_flow_value = MaxFlow(C, source, sink)
     print ("max_flow_value is", max_flow_value)
+    display_graphs.displayAllGraphs(max_flow_value,source,sink)
