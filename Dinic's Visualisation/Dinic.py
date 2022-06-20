@@ -80,7 +80,7 @@ def augment(C,path,t,F,flo):
         bottleNeckEdgeLevels = (0,1)
         #finding bottle neck capacity and bottleneck edge
         for i in range(pathSize-2,-1,-1):
-            if(bottleNeckCapacity > levelGraph[path[i]][path[i+1]]):
+            if(bottleNeckCapacity >= levelGraph[path[i]][path[i+1]]):
                 bottleNeckEdgeLevels = (i,i+1)
                 bottleNeckCapacity = levelGraph[path[i]][path[i+1]]
         
