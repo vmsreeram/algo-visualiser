@@ -33,8 +33,8 @@ def displayAllGraphs(max_flow_value, s, t):
     flowImgs.clear()
 
     for i in range(nfiles):
-        residualImgs.append('imgs/level/'+str(i)+'.png')
-        flowImgs.append('imgs/resi/'+str(i)+'.png')
+        residualImgs.append('imgs/resi/residualGraph'+str(i+1)+'.png')
+        flowImgs.append('imgs/flow/flowGraph'+str(i+1)+'.png')
 
     imgFloIm = (PIL.Image.open(flowImgs[0]))
     widFlo,heiFlo = imgFloIm.size
