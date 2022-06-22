@@ -1,11 +1,11 @@
 import pydot
 
-def makeAugmentGraph (C,F,path,L,bottleNeckCapacity,g_no,source,sink):
+def makeAugmentGraph (C,F,path,L,bottleNeckCapacity,g_no,source,sink, lbltxtlvl="", lbltxtflo=""):
     n = len(C)
     last_node = path[-1]
     
     #making level graph and making its png image
-    graph = pydot.Dot("my_graph", graph_type="digraph", bgcolor="#204934",fontcolor="white",sep=3, nodesep=0.9)
+    graph = pydot.Dot("my_graph", graph_type="digraph", bgcolor="#204934",fontcolor="white",sep=3, nodesep=0.9, labelloc="t", label=lbltxtlvl)
 
     #Add nodes
     for i in range(n):
@@ -36,7 +36,7 @@ def makeAugmentGraph (C,F,path,L,bottleNeckCapacity,g_no,source,sink):
     
 
     #making flow graph and making its png image
-    graph1 = pydot.Dot("my_graph", graph_type="digraph", bgcolor="#204934",fontcolor="white",sep=3, nodesep=0.9)
+    graph1 = pydot.Dot("my_graph", graph_type="digraph", bgcolor="#204934",fontcolor="white",sep=3, nodesep=0.9, labelloc="t", label=lbltxtflo)
 
     # Add nodes
     for i in range(n):

@@ -24,7 +24,7 @@ def Bfs(C, F, s, t):  # C is the capacity matrix
                 queue.append(i)
     #function call {pass parameter levelGraph}
     global Source,Sink
-    showGraph.makeGraph(F,levelGraph,str(ctr),C,Source,Sink)
+    showGraph.makeGraph(F,levelGraph,str(ctr),C,Source,Sink, False, "lvl bfs", "flo bfs")
     ctr+=1
     return level[t] > 0
 
@@ -89,7 +89,7 @@ def augment(C,path,t,F,flo):
         
         bottleNeckEdge = (path[bottleNeckEdgeLevels[0]],path[bottleNeckEdgeLevels[1]])
         global Source,Sink
-        augmentShow.makeAugmentGraph(C,F,path,levelGraph,bottleNeckCapacity,str(ctr),Source,Sink)
+        augmentShow.makeAugmentGraph(C,F,path,levelGraph,bottleNeckCapacity,str(ctr),Source,Sink, "lvl bfr aug", "flo bfr aug")
         ctr+=1
         for i in range(pathSize-1):
             levelGraph[path[i]][path[i+1]] -= bottleNeckCapacity
@@ -98,7 +98,7 @@ def augment(C,path,t,F,flo):
         flo += bottleNeckCapacity
         del path[bottleNeckEdgeLevels[1]:pathSize]
         
-        augmentShow.makeAugmentGraph(C,F,path,levelGraph,0,str(ctr),Source,Sink)
+        augmentShow.makeAugmentGraph(C,F,path,levelGraph,0,str(ctr),Source,Sink, "lvl aug", "flo aug")
         
         ctr+=1
         # print("advance: ",path," t= ",t, flo,"bedge= ",bottleNeckEdgeLevels)

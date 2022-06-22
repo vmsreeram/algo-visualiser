@@ -1,9 +1,9 @@
 import pydot
 
-def makeGraph(F,L,g_no,C,source,sink,initDisp=False):
+def makeGraph(F,L,g_no,C,source,sink,initDisp=False, lbltxtlvl="", lbltxtflo=""):
     n = len(F)
 
-    graph = pydot.Dot("my_graph", graph_type="digraph", bgcolor="#204934",fontcolor="white",sep=3, nodesep=0.9)
+    graph = pydot.Dot("my_graph", graph_type="digraph", bgcolor="#204934",fontcolor="white",sep=3, nodesep=0.9, labelloc="t", label=lbltxtflo)
 
     # Add nodes
     for i in range(n):
@@ -32,7 +32,7 @@ def makeGraph(F,L,g_no,C,source,sink,initDisp=False):
 
     
     
-    graph1 = pydot.Dot("my_graph", graph_type="digraph", bgcolor="#204934",fontcolor="white",sep=3, nodesep=0.9)
+    graph1 = pydot.Dot("my_graph", graph_type="digraph", bgcolor="#204934",fontcolor="white",sep=3, nodesep=0.9, labelloc="t", label=lbltxtlvl)
 
     # Add nodes
     for i in range(n):
