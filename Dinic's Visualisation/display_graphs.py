@@ -124,7 +124,7 @@ def displayAllGraphs(max_flow_value, s, t):
         if curr == 0:
             prevButton.place_forget()
         if curr <= len(flowImgs)-2:
-            lbllegend.configure(text='•  C/F on edges represent capacity C and flow value F\n•  Zero capacity edges are not shown\n•  Source-Red; Sink-Blue')
+            lbllegend.configure(text='•  C/F on edges represent capacity C and flow value F   •  Cyan bordered node represent the last node in the current path\n•  Zero capacity edges are not shown\n•  Source-Red; Sink-Blue')
             lbllegend.pack()
             nextButton.pack(side=TOP, anchor=NE)
         
