@@ -24,8 +24,8 @@ def Bfs(C, F, s, t):  # C is the capacity matrix
                 queue.append(i)
     #function call {pass parameter levelGraph}
     global Source,Sink
-    if(level[t]>0):
-        showGraph.makeGraph(F,levelGraph,str(ctr),C,Source,Sink, False, "Level graph - New Phase", "Flow graph")
+    
+    showGraph.makeGraph(F,levelGraph,str(ctr),C,Source,Sink, False, "Level graph - New Phase", "Flow graph")
     ctr+=1
     return level[t] > 0
 
