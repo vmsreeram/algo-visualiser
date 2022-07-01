@@ -44,6 +44,7 @@ def Dfs(C, F, k, cp,t):
 
 
 def advance (C,path,t,F,flo):
+    global ctr
     neighbourAvailable = False
     k = path[-1]
     u = 0
@@ -53,26 +54,33 @@ def advance (C,path,t,F,flo):
             u = i
             neighbourAvailable = True
             break
-    if(neighbourAvailable==False):
-        # print("retreat: ",path," t= ", t, flo)
+    
+    if(neighbourAvailable==False): # retreat
         flo = retreat(C,path,t,F,flo)
-    elif (u == t):
-        # print("augment: ",path," t= ", t, flo)
+    elif (u == t):# augment
+        # augmentShow.makeAugmentGraph(C,F,path,levelGraph,0,str(ctr),Source,Sink, "Level graph - After ADVANCING", "Flow graph - After ADVANCING")
+        # ctr+=1
         flo = augment(C,path,t,F,flo)
-    elif (path != []):
-        # print("advance: ",path," t= ", t, flo)
+    elif (path != []): # advance
+        augmentShow.makeAugmentGraph(C,F,path,levelGraph,0,str(ctr),Source,Sink, "Level graph - After ADVANCING", "Flow graph - After ADVANCING")
+        ctr+=1
         flo = advance(C,path,t,F,flo)
     return flo
 
     
 
 def retreat (C,path,t,F,flo):
+    global ctr
     lastEle = path.pop()
     for i in range(len(levelGraph)):
         if levelGraph[i][lastEle] >0:
             levelGraph[i][lastEle] =0
+    
+    
     if(path!=[]):
         # print("advance: ",path," t= ", t, flo)
+        augmentShow.makeAugmentGraph(C,F,path,levelGraph,0,str(ctr),Source,Sink, "Level graph - After RETREATING", "Flow graph - After RETREATING")
+        ctr+=1
         flo = advance(C,path,t,F,flo)
     return flo
 
@@ -90,7 +98,7 @@ def augment(C,path,t,F,flo):
         
         bottleNeckEdge = (path[bottleNeckEdgeLevels[0]],path[bottleNeckEdgeLevels[1]])
         global Source,Sink
-        augmentShow.makeAugmentGraph(C,F,path,levelGraph,bottleNeckCapacity,str(ctr),Source,Sink, "Level graph - Before AUGMENTING", "Flow graph - Before AUGMENTING")
+        augmentShow.makeAugmentGraph(C,F,path,levelGraph,bottleNeckCapacity,str(ctr),Source,Sink, "Level graph - After ADVANCING", "Flow graph - After ADVANCING")
         ctr+=1
         for i in range(pathSize-1):
             levelGraph[path[i]][path[i+1]] -= bottleNeckCapacity
