@@ -1,6 +1,6 @@
 import pydot
 
-def makeAugmentGraph (C,F,path,L,bottleNeckCapacity,g_no,source,sink, lbltxtlvl="", lbltxtflo=""):
+def makeAugmentGraph (level, C,F,path,L,bottleNeckCapacity,g_no,source,sink, lbltxtlvl="", lbltxtflo=""):
     n = len(C)
     last_node = path[-1]
     
@@ -10,9 +10,9 @@ def makeAugmentGraph (C,F,path,L,bottleNeckCapacity,g_no,source,sink, lbltxtlvl=
     #Add nodes
     for i in range(n):
         if(i==last_node):
-            my_node = pydot.Node(str(i),fontcolor="white",color="#198BB4")
+            my_node = pydot.Node(str(i),fontcolor="white",color="#198BB4", xlabel="l="+str(level[i]))
         else:
-            my_node = pydot.Node(str(i),fontcolor="white",color="white")
+            my_node = pydot.Node(str(i),fontcolor="white",color="white", xlabel="l="+str(level[i]))
         graph.add_node(my_node)
     
     graph.get_node(str(source))[0].set_fillcolor("red4")
