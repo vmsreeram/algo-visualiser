@@ -1,6 +1,6 @@
 import pydot
 
-def makeGraph(F,L,g_no,C,source,sink,initDisp=False, lbltxtlvl="", lbltxtflo=""):
+def makeGraph(level,F,L,g_no,C,source,sink,initDisp=False, lbltxtlvl="", lbltxtflo=""):
     n = len(F)
 
     graph = pydot.Dot("my_graph", graph_type="digraph", bgcolor="#204934",fontcolor="white",sep=3, nodesep=0.9, labelloc="t", label=lbltxtflo)
@@ -36,7 +36,10 @@ def makeGraph(F,L,g_no,C,source,sink,initDisp=False, lbltxtlvl="", lbltxtflo="")
 
     # Add nodes
     for i in range(n):
-        my_node = pydot.Node(str(i),fontcolor="white",color="white")
+        if not initDisp:
+            my_node = pydot.Node(str(i),fontcolor="white",color="white", xlabel="l="+str(level[i]))
+        else:
+            my_node = pydot.Node(str(i),fontcolor="white",color="white")
         graph1.add_node(my_node)
     if not initDisp:
         graph1.get_node(str(source))[0].set_fillcolor("red4")

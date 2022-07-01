@@ -25,7 +25,7 @@ def Bfs(C, F, s, t):  # C is the capacity matrix
     #function call {pass parameter levelGraph}
     global Source,Sink
     
-    showGraph.makeGraph(F,levelGraph,str(ctr),C,Source,Sink, False, "Level graph - New Phase", "Flow graph")
+    showGraph.makeGraph(level, F,levelGraph,str(ctr),C,Source,Sink, False, "Level graph - New Phase", "Flow graph")
     ctr+=1
     return level[t] > 0
 
@@ -62,7 +62,7 @@ def advance (C,path,t,F,flo):
         # ctr+=1
         flo = augment(C,path,t,F,flo)
     elif (path != []): # advance
-        augmentShow.makeAugmentGraph(C,F,path,levelGraph,0,str(ctr),Source,Sink, "Level graph - After ADVANCING", "Flow graph - After ADVANCING")
+        augmentShow.makeAugmentGraph(level, C,F,path,levelGraph,0,str(ctr),Source,Sink, "Level graph - After ADVANCING", "Flow graph - After ADVANCING")
         ctr+=1
         flo = advance(C,path,t,F,flo)
     return flo
@@ -79,7 +79,7 @@ def retreat (C,path,t,F,flo):
     
     if(path!=[]):
         # print("advance: ",path," t= ", t, flo)
-        augmentShow.makeAugmentGraph(C,F,path,levelGraph,0,str(ctr),Source,Sink, "Level graph - After RETREATING", "Flow graph - After RETREATING")
+        augmentShow.makeAugmentGraph(level, C,F,path,levelGraph,0,str(ctr),Source,Sink, "Level graph - After RETREATING", "Flow graph - After RETREATING")
         ctr+=1
         flo = advance(C,path,t,F,flo)
     return flo
@@ -98,7 +98,7 @@ def augment(C,path,t,F,flo):
         
         bottleNeckEdge = (path[bottleNeckEdgeLevels[0]],path[bottleNeckEdgeLevels[1]])
         global Source,Sink
-        augmentShow.makeAugmentGraph(C,F,path,levelGraph,bottleNeckCapacity,str(ctr),Source,Sink, "Level graph - After ADVANCING", "Flow graph - After ADVANCING")
+        augmentShow.makeAugmentGraph(level, C,F,path,levelGraph,bottleNeckCapacity,str(ctr),Source,Sink, "Level graph - After ADVANCING", "Flow graph - After ADVANCING")
         ctr+=1
         for i in range(pathSize-1):
             levelGraph[path[i]][path[i+1]] -= bottleNeckCapacity
@@ -107,7 +107,7 @@ def augment(C,path,t,F,flo):
         flo += bottleNeckCapacity
         del path[bottleNeckEdgeLevels[1]:pathSize]
         
-        augmentShow.makeAugmentGraph(C,F,path,levelGraph,0,str(ctr),Source,Sink, "Level graph - After AUGMENTING", "Flow graph - After AUGMENTING")
+        augmentShow.makeAugmentGraph(level, C,F,path,levelGraph,0,str(ctr),Source,Sink, "Level graph - After AUGMENTING", "Flow graph - After AUGMENTING")
         
         ctr+=1
         # print("advance: ",path," t= ",t, flo,"bedge= ",bottleNeckEdgeLevels)
