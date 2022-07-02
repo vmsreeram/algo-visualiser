@@ -12,7 +12,8 @@ def Bfs(C, F, s, t):  # C is the capacity matrix
     queue.append(s)
     global level
     global ctr
-
+    global levelGraph
+    levelGraph = [n*[0] for i in range(n)]
     level = n * [-1]  # initialization
     level[s] = 1  
     while queue:
