@@ -198,5 +198,20 @@ def displayAllGraphs(max_flow_value, s, t):
 
     nextButton.pack(side=TOP, anchor=NE)
     exitButton.place(rely=1.0, relx=1.0, anchor=SE)
+    # def leftKey(event):
+    #     print ("Left key pressed")
+    #     showPrevImg()
+
+    # def rightKey(event):
+    #     print ("Right key pressed")
+    #     showImg()
+        
+
+    # framee = Frame(win, width=100, height=100)
+    # framee.bind('<Left>', leftKey)
+    # framee.bind('<Right>', rightKey)
+    # framee.focus_set()
+    # framee.pack()
+
     showImg()
     win.mainloop()
