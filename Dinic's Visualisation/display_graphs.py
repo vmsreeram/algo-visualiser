@@ -198,5 +198,31 @@ def displayAllGraphs(max_flow_value, s, t):
 
     nextButton.pack(side=TOP, anchor=NE)
     exitButton.place(rely=1.0, relx=1.0, anchor=SE)
+    def leftKey(event):
+        print ("Left key pressed")  #comment out
+        if(prevButton.winfo_viewable()):
+            showPrevImg()
+        else:
+            print ("Left key ignored")  #comment out
+            pass
+
+    def rightKey(event):
+        print ("Right key pressed") #comment out
+        if(nextButton.winfo_viewable()):
+            showImg()
+        else:
+            print ("Right key ignored") #comment out
+            pass
+        
+    def escpress(event):
+        exit()
+        
+    framee = Frame(win, width=0, height=0)
+    framee.bind('<Left>', leftKey)
+    framee.bind('<Right>', rightKey)
+    framee.bind('<Escape>', escpress)
+    framee.focus_set()
+    framee.pack()
+
     showImg()
     win.mainloop()

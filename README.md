@@ -30,7 +30,7 @@ If graphviz is not properly installed, try
 4. Default valid index values of source and sink vertices will be automatically filled in the textbox. If it is to be modified, write two modified space-separated integers. 
 5. Click on ```Proceed```.
 6. Wait for algorithm to work in background. On completion, a new window will open.
-7. Use "Next" and "Prev" buttons to move through the generated images.
+7. Use "Next" and "Prev" buttons to move through the generated images. Left/Right arrow keys on keyboard is also supported.
 
 The generated graph images will be stored in ```imgs``` folder. Also, for any integer $n$, ```imgs/flow/flowGraph{n}.png``` will be the flow graph image of the $n^{th}$ step. And, ```imgs/resi/residualGraph{n}.png``` will be the residual graph image of the $n^{th}$ step.
 
@@ -49,7 +49,7 @@ Eight sample inputs are given in the same folder.
 4. Default valid index values of source and sink vertices will be automatically filled in the textbox. If it is to be modified, write two modified space-separated integers. 
 5. Click on ```Proceed```.
 6. Wait for algorithm to work in background. On completion, a new window will open.
-7. Use "Next" and "Prev" buttons to move through the generated images.
+7. Use "Next" and "Prev" buttons to move through the generated images. Left/Right arrow keys on keyboard is also supported.
 
 The generated graph images will be stored in ```imgs``` folder. Also, for any integer $n$, ```imgs/flow/{n}.png``` will be the flow graph image of the $n^{th}$ step. And, ```imgs/level/{n}.png``` will be the level graph image of the $n^{th}$ step.
 
