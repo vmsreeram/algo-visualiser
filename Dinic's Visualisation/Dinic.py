@@ -1,7 +1,7 @@
 import os
 import shutil
-import showGraph
-import augmentShow
+import newPhaseGraph
+import newStageGraph
 import display_graphs
 #Dinic Algorithm
 
@@ -27,9 +27,9 @@ def Bfs(C, F, s, t):  # C is the capacity matrix
     global Source,Sink
     
     if(level[t]!=0):
-        showGraph.makeGraph(level, F,levelGraph,str(ctr),C,Source,Sink, False, "New Phase; s-t Path length="+str(level[t]-1), "")
+        newPhaseGraph.makeGraph(level, F,levelGraph,str(ctr),C,Source,Sink, False, "New Phase; s-t Path length="+str(level[t]-1), "")
     else:
-        showGraph.makeGraph(level, F,levelGraph,str(ctr),C,Source,Sink, False, "New Phase; No s-t path", "")
+        newPhaseGraph.makeGraph(level, F,levelGraph,str(ctr),C,Source,Sink, False, "New Phase; No s-t path", "")
     ctr+=1
     return level[t] > 0
 
@@ -66,7 +66,7 @@ def advance (C,path,t,F,flo):
         # ctr+=1
         flo = augment(C,path,t,F,flo)
     elif (path != []): # advance
-        augmentShow.makeAugmentGraph(level, C,F,path,levelGraph,0,str(ctr),Source,Sink, "After ADVANCING", "After ADVANCING")
+        newStageGraph.makeAugmentGraph(level, C,F,path,levelGraph,0,str(ctr),Source,Sink, "After ADVANCING", "After ADVANCING")
         ctr+=1
         flo = advance(C,path,t,F,flo)
     return flo
@@ -83,7 +83,7 @@ def retreat (C,path,t,F,flo):
     
     if(path!=[]):
         # print("advance: ",path," t= ", t, flo)
-        augmentShow.makeAugmentGraph(level, C,F,path,levelGraph,0,str(ctr),Source,Sink, "After RETREATING", "After RETREATING")
+        newStageGraph.makeAugmentGraph(level, C,F,path,levelGraph,0,str(ctr),Source,Sink, "After RETREATING", "After RETREATING")
         ctr+=1
         flo = advance(C,path,t,F,flo)
     return flo
@@ -102,7 +102,7 @@ def augment(C,path,t,F,flo):
         
         bottleNeckEdge = (path[bottleNeckEdgeLevels[0]],path[bottleNeckEdgeLevels[1]])
         global Source,Sink
-        augmentShow.makeAugmentGraph(level, C,F,path,levelGraph,bottleNeckCapacity,str(ctr),Source,Sink, "After ADVANCING", "After ADVANCING")
+        newStageGraph.makeAugmentGraph(level, C,F,path,levelGraph,bottleNeckCapacity,str(ctr),Source,Sink, "After ADVANCING", "After ADVANCING")
         ctr+=1
         for i in range(pathSize-1):
             levelGraph[path[i]][path[i+1]] -= bottleNeckCapacity
@@ -111,7 +111,7 @@ def augment(C,path,t,F,flo):
         flo += bottleNeckCapacity
         del path[bottleNeckEdgeLevels[1]:pathSize]
         
-        augmentShow.makeAugmentGraph(level, C,F,path,levelGraph,0,str(ctr),Source,Sink, "After AUGMENTING", "After AUGMENTING")
+        newStageGraph.makeAugmentGraph(level, C,F,path,levelGraph,0,str(ctr),Source,Sink, "After AUGMENTING", "After AUGMENTING")
         
         ctr+=1
         # print("advance: ",path," t= ",t, flo,"bedge= ",bottleNeckEdgeLevels)
