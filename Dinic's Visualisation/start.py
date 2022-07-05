@@ -1,5 +1,6 @@
 import Dinic
-import showGraph
+# import showGraph
+import initShowGraph
 import ErrorExit
 from tkinter import *
 from tkinter import filedialog
@@ -72,7 +73,7 @@ def openInp():
     L = [[0] * len(C) for i in range(len(C))]
     g_no="../inp_grp"
     level=[]
-    showGraph.makeGraph(level, F,L,g_no,C,0,0,True)
+    initShowGraph.makeGraph(level, F,L,g_no,C,0,0,True)
     
     DimHeight=int(screen_height*0.60556)
     imgResIm = (PIL.Image.open('imgs/inp_grp.png'))
