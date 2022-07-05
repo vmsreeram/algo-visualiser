@@ -26,9 +26,9 @@ If graphviz is not properly installed, try
   ```zsh
   python3 start.py
   ```
-3. Click on ```Choose input graph``` and choose the text file having valid input in space-separated adjacency matrix format. Verify whether the label shows the path to the selected file.
+3. Click on ```Choose input graph``` or press the Enter key and choose the text file having valid input in space-separated adjacency matrix format. Verify whether the label shows the path to the selected file.
 4. Default valid index values of source and sink vertices will be automatically filled in the textbox. If it is to be modified, write two modified space-separated integers. 
-5. Click on ```Proceed```.
+5. Click on ```Proceed``` or press the Enter key on your keyboard.
 6. Wait for algorithm to work in background. On completion, a new window will open.
 7. Use "Next" and "Prev" buttons to move through the generated images. Right/Left arrow keys on keyboard is also supported.
 
@@ -45,9 +45,9 @@ Eight sample inputs are given in the same folder.
   ```zsh
   python3 start.py
   ```
-3. Click on ```Choose input graph``` and choose the text file having valid input in space-separated adjacency matrix format. Verify whether the label shows the path to the selected file.
+3. Click on ```Choose input graph``` or press the Enter key and choose the text file having valid input in space-separated adjacency matrix format. Verify whether the label shows the path to the selected file.
 4. Default valid index values of source and sink vertices will be automatically filled in the textbox. If it is to be modified, write two modified space-separated integers. 
-5. Click on ```Proceed```.
+5. Click on ```Proceed``` or press the Enter key on your keyboard.
 6. Wait for algorithm to work in background. On completion, a new window will open.
 7. Use "Next" and "Prev" buttons to move through the generated images. Right/Left arrow keys on keyboard is also supported.
 
