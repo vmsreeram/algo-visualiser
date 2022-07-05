@@ -14,19 +14,19 @@ def Bfs(C, F, s, t):  # C is the capacity matrix
     global ctr
     global levelGraph
     levelGraph = [n*[0] for i in range(n)]
-    level = n * [-1]  # initialization
+    level = n * [0]  # initialization
     level[s] = 1  
     while queue:
         k = queue.pop(0)
         for i in range(n):
-            if (F[k][i] < C[k][i]) and ((level[i] == -1) or (level[i] == level[k] + 1)): # not visited
+            if (F[k][i] < C[k][i]) and ((level[i] == 0) or (level[i] == level[k] + 1)): # not visited
                 levelGraph[k][i] = C[k][i] - F[k][i]
                 level[i] = level[k] + 1
                 queue.append(i)
     #function call {pass parameter levelGraph}
     global Source,Sink
     
-    if(level[t]!=-1):
+    if(level[t]!=0):
         showGraph.makeGraph(level, F,levelGraph,str(ctr),C,Source,Sink, False, "Level graph - New Phase; s-t path length="+str(level[t]-1), "Flow graph")
     else:
         showGraph.makeGraph(level, F,levelGraph,str(ctr),C,Source,Sink, False, "Level graph - New Phase; no s-t path", "Flow graph")
