@@ -35,7 +35,7 @@ If graphviz is not properly installed, try
 The generated graph images will be stored in ```imgs``` folder. Also, for any integer $n$, ```imgs/flow/flowGraph{n}.png``` will be the flow graph image of the $n^{th}$ step. And, ```imgs/resi/residualGraph{n}.png``` will be the residual graph image of the $n^{th}$ step.
 
 The input file should be adjacency matrix with entry at  i, j position is ```C[i][j]``` representing the capacity of the edge from i to j.
-Eight sample inputs are given in the same folder.
+Nine sample inputs are given in the same folder.
 </details>
 <details>
    <summary>Dinic's</summary>
@@ -54,5 +54,5 @@ Eight sample inputs are given in the same folder.
 The generated graph images will be stored in ```imgs``` folder. Also, for any integer $n$, ```imgs/flow/{n}.png``` will be the flow graph image of the $n^{th}$ step. And, ```imgs/level/{n}.png``` will be the level graph image of the $n^{th}$ step.
 
 The input file should be adjacency matrix with entry at  i, j position is ```C[i][j]``` representing the capacity of the edge from i to j.
-Eight sample inputs are given in the same folder.
+Nine sample inputs are given in the same folder.
 </details>
