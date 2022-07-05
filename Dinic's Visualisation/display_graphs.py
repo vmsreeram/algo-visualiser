@@ -55,6 +55,7 @@ def displayAllGraphs(max_flow_value, s, t):
     frm_legend = Frame(win, width=screen_width*0.41666, height=screen_width*0.41666)
     frm_legend.place(anchor='nw', relx = 0.5-(DimWidth1/screen_width), rely=0.9)
     lbllegend = Label(frm_legend, text='•  C/F on edges represent capacity C and flow value F\n•  Zero capacity edges are not shown\n•  Source-Red; Sink-Blue', font="arial 19", fg="white", bg='#204934',justify= LEFT)
+    lbllegend.configure(text='•  C/F on edges represent capacity C and flow value F   •  Cyan bordered node represent the last node in the current path\n•  Zero capacity edges are not shown\n•  Source-Red; Sink-Blue')
     lbllegend.pack()
 
     global curr
@@ -199,19 +200,19 @@ def displayAllGraphs(max_flow_value, s, t):
     nextButton.pack(side=TOP, anchor=NE)
     exitButton.place(rely=1.0, relx=1.0, anchor=SE)
     def leftKey(event):
-        print ("Left key pressed")  #comment out
+        # print ("Left key pressed")  #comment out
         if(prevButton.winfo_viewable()):
             showPrevImg()
         else:
-            print ("Left key ignored")  #comment out
+            # print ("Left key ignored")  #comment out
             pass
 
     def rightKey(event):
-        print ("Right key pressed") #comment out
+        # print ("Right key pressed") #comment out
         if(nextButton.winfo_viewable()):
             showImg()
         else:
-            print ("Right key ignored") #comment out
+            # print ("Right key ignored") #comment out
             pass
         
     def escpress(event):
