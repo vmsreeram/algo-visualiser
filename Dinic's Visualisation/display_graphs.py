@@ -199,21 +199,16 @@ def displayAllGraphs(max_flow_value, s, t):
 
     nextButton.pack(side=TOP, anchor=NE)
     exitButton.place(rely=1.0, relx=1.0, anchor=SE)
+
     def leftKey(event):
-        # print ("Left key pressed")  #comment out
+        # print ("Left key pressed")  
         if(prevButton.winfo_viewable()):
             showPrevImg()
-        else:
-            # print ("Left key ignored")  #comment out
-            pass
 
     def rightKey(event):
-        # print ("Right key pressed") #comment out
+        # print ("Right key pressed") 
         if(nextButton.winfo_viewable()):
             showImg()
-        else:
-            # print ("Right key ignored") #comment out
-            pass
         
     def escpress(event):
         exit()

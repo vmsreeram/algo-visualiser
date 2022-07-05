@@ -128,15 +128,13 @@ proceedBtn = Button(frame,
                    fg="blue",
                    font="arial 20",
                    command=done)
+
 def retpress(event):
-    print ("return key pressed") #comment out
     if(browseBtn.winfo_viewable()):
         openInp()
     elif(proceedBtn.winfo_viewable()):
         done()
-    else:
-        print ("return key ignored") #comment out
-        pass
+
 def escpress(event):
     exit()
 
