@@ -124,7 +124,23 @@ proceedBtn = Button(frame,
                    fg="blue",
                    font="arial 20",
                    command=done)
+     
+#Adding key bindings
+         
+def retpress(event):
+    if(browseBtn.winfo_viewable()):
+        openInp()
+    elif(proceedBtn.winfo_viewable()):
+        done()
+
+def escpress(event):
+    exit()
+
+framee = Frame(root, width=0, height=0)
+framee.bind('<Return>', retpress)
+framee.bind('<Escape>', escpress)
+framee.focus_set()
+framee.pack()     
                    
-                   
-C1 = Checkbutton(frm_inp, text = "Hide zero capacity edges with non-zero flow values in visualisation", variable = CheckVar1, height=2, width = 75,font="arial 15")
+#C1 = Checkbutton(frm_inp, text = "Hide zero capacity edges with non-zero flow values in visualisation", variable = CheckVar1, height=2, width = 75,font="arial 15")
 root.mainloop()
