@@ -1,2 +1,5 @@
-Dinic's Visualisation/imgs
-Dinic's Visualisation/__pycache__
+# all .pyc files
+*.pyc
+
+# all .png files
+*.png
