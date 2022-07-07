@@ -24,7 +24,6 @@ def makeAugmentGraph (level, C,F,path,L,bottleNeckCapacity,g_no,source,sink, lbl
         my_node = pydot.Node(str(i),fontcolor="white",color="white")
         graph1.add_node(my_node)
 
-    #print("g")
     subgs = []
     dicT=defaultdict(list)
     for i in range(max(level)+2):
