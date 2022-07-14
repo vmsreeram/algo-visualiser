@@ -1,7 +1,7 @@
 import pydot
 from collections import defaultdict
 
-def makeGraph(level,F,L,g_no,C,source,sink,initDisp=False, lbltxtlvl="", lbltxtflo=""):
+def makeGraph(level,F,L,g_no,C,source,sink,initDisp=False, lbltxtlvl="", lbltxtflo="",levelOrRecidual = 0):
     n = len(F)
 
     # graph = pydot.Dot("my_graph", graph_type="digraph", bgcolor="#204934",fontcolor="white",sep=3, nodesep=0.9, labelloc="t", label=lbltxtflo)
@@ -14,7 +14,7 @@ def makeGraph(level,F,L,g_no,C,source,sink,initDisp=False, lbltxtlvl="", lbltxtf
         graph.add_node(my_node)
     # Add nodes
     for i in range(n):
-        if not initDisp:
+        if (not initDisp) and (levelOrRecidual==0):
             my_node = pydot.Node(str(i),fontcolor="white",color="white", xlabel="l="+str(level[i]))
         else:
             my_node = pydot.Node(str(i),fontcolor="white",color="white")
@@ -65,7 +65,7 @@ def makeGraph(level,F,L,g_no,C,source,sink,initDisp=False, lbltxtlvl="", lbltxtf
         graph.get_node(str(sink))[0].set_fillcolor("blue4")
         graph.get_node(str(source))[0].set_style("filled")
         graph.get_node(str(sink))[0].set_style("filled")
-    # add edges
+    # add edges flow graph
     if not initDisp:
         for i in range(n):
             for j in range(n):
@@ -90,14 +90,19 @@ def makeGraph(level,F,L,g_no,C,source,sink,initDisp=False, lbltxtlvl="", lbltxtf
         graph1.get_node(str(sink))[0].set_fillcolor("blue4")
         graph1.get_node(str(source))[0].set_style("filled")
         graph1.get_node(str(sink))[0].set_style("filled")
-    # add edges
-    for i in range(n):
-        for j in range(n):
-            if(L[i][j]>0):
-                graph1.add_edge( pydot.Edge(str(i), str(j), label= str(L[i][j]),color = "white",fontsize="20.0",penwidth=1.5,fontcolor="orange",constraint=False) )
-            # else:
-            #     graph1.add_edge( pydot.Edge(str(i), str(j), label= str(L[i][j]),color = "white",fontsize="20.0",penwidth=1.5,fontcolor="orange",style="invis",constraint=False) )
-
+    # add edges level graph
+    if(levelOrRecidual==0):
+        for i in range(n):
+            for j in range(n):
+                if(L[i][j]>0):
+                    graph1.add_edge( pydot.Edge(str(i), str(j), label= str(L[i][j]),color = "white",fontsize="20.0",penwidth=1.5,fontcolor="orange",constraint=False) )
+                # else:
+                #     graph1.add_edge( pydot.Edge(str(i), str(j), label= str(L[i][j]),color = "white",fontsize="20.0",penwidth=1.5,fontcolor="orange",style="invis",constraint=False) )
+    elif(levelOrRecidual==1):
+        for i in range(n):
+            for j in range(n):
+                if(C[i][j]-F[i][j]>0):
+                    graph1.add_edge( pydot.Edge(str(i), str(j), label= str(C[i][j]-F[i][j]),color = "white",fontsize="20.0",penwidth=1.5,fontcolor="orange",constraint=False) )
     #TODO:Fix nodes' positions
     # graph.write("imgs/flow/"+g_no+".png", prog='fdp', format='png')
     # if not initDisp:

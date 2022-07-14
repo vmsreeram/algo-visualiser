@@ -29,13 +29,13 @@ def Bfs(C, F, s, t):  # C is the capacity matrix
     if(level[t]!=0):
         resiIndices.append(ctr)
         # new stage for showing residual graph
-        newPhaseGraph.makeGraph(level, F,levelGraph,str(ctr),C,Source,Sink, False, "New Phase; s-t Path length="+str(level[t]-1),"\n")
+        newPhaseGraph.makeGraph(level, F,levelGraph,str(ctr),C,Source,Sink, False, "New Phase; s-t Path length="+str(level[t]-1),"\n",1)
         ctr+=1
         newPhaseGraph.makeGraph(level, F,levelGraph,str(ctr),C,Source,Sink, False, "New Phase; s-t Path length="+str(level[t]-1),"\n")
     else:
         resiIndices.append(ctr)
         # new stage for showing residual graph
-        newPhaseGraph.makeGraph(level, F,levelGraph,str(ctr),C,Source,Sink, False, "New Phase; No s-t path","\n")
+        newPhaseGraph.makeGraph(level, F,levelGraph,str(ctr),C,Source,Sink, False, "New Phase; No s-t path","\n",1)
     ctr+=1
     return level[t] > 0
 
