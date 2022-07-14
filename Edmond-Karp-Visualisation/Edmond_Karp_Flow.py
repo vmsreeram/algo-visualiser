@@ -1,6 +1,6 @@
 import pydot
 
-def makeGraph(C, F, s, t, fGraphName, hide0cp=False, initdisp=False, lastStg=False):
+def makeGraph(C, F, s, t, fGraphName, hide0cp=False, initdisp=False, lastStg=False,path=[]):
     n = len(C)  
     if lastStg:
         graph = pydot.Dot("my_graph", graph_type="digraph", bgcolor="#204934",fontcolor="white", label="Red - Source, Blue - Sink\nRed edges form min-cut", sep=3, nodesep=0.9)
@@ -30,6 +30,16 @@ def makeGraph(C, F, s, t, fGraphName, hide0cp=False, initdisp=False, lastStg=Fal
                     reachable.append(v)
                     paths[v] = paths[u]+[(u,v)]
                     queue.append(v)    
+        for i in range(n):
+            if (i in reachable) and (path is None or path == []):
+                my_node = pydot.Node(str(i),style = 'filled', fillcolor = 'red4',fontcolor="white",color="white")
+                graph.add_node(my_node)
+            elif (i not in reachable) and (path is None or path == []):
+                my_node = pydot.Node(str(i),style = 'filled', fillcolor = 'blue4',fontcolor="white",color="white")
+                graph.add_node(my_node)
+            else:
+                my_node = pydot.Node(str(i),fontcolor="white",color="white")
+                graph.add_node(my_node)
 
     if lastStg:
         for i in range(n):
