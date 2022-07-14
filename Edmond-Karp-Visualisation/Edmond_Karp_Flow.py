@@ -3,21 +3,23 @@ import pydot
 def makeGraph(C, F, s, t, fGraphName,path=[], hide0cp=False, initdisp=False, lastStg=False):
     n = len(C)  
     if lastStg:
-        graph = pydot.Dot("my_graph", graph_type="digraph", bgcolor="#204934",fontcolor="white", label="Red - Source, Blue - Sink\nRed edges form min-cut", sep=3, nodesep=0.9)
+        graph = pydot.Dot("my_graph", graph_type="digraph", bgcolor="#204934",fontcolor="white", label="Borders of the source and sink nodes are thicker\nRed edges form min-cut", sep=3, nodesep=0.9)
     elif not initdisp:
         graph = pydot.Dot("my_graph", graph_type="digraph", bgcolor="#204934",fontcolor="white", label="Red - Source\nBlue - Sink", sep=3, nodesep=0.9)
     else:
         graph = pydot.Dot("my_graph", graph_type="digraph", bgcolor="#204934",fontcolor="white", sep=3, nodesep=0.9)
 
     # Add nodes
-    for i in range(n):
-        my_node = pydot.Node(str(i),fontcolor="white",color="white")
-        graph.add_node(my_node)
-    if not initdisp:
+    if not lastStg:
+        for i in range(n):
+            my_node = pydot.Node(str(i),fontcolor="white",color="white")
+            graph.add_node(my_node)
+    if not initdisp and not lastStg:
         graph.get_node(str(s))[0].set_fillcolor("red4")
         graph.get_node(str(t))[0].set_fillcolor("blue4")
         graph.get_node(str(s))[0].set_style("filled")
         graph.get_node(str(t))[0].set_style("filled")
+
 
     reachable=[s]
     if lastStg:
@@ -41,6 +43,15 @@ def makeGraph(C, F, s, t, fGraphName,path=[], hide0cp=False, initdisp=False, las
                 my_node = pydot.Node(str(i),fontcolor="white",color="white")
                 graph.add_node(my_node)
 
+    if lastStg:
+        graph.get_node(str(s))[0].set_fillcolor("red4")
+        graph.get_node(str(t))[0].set_fillcolor("blue4")
+        graph.get_node(str(s))[0].set_style("filled")
+        graph.get_node(str(t))[0].set_style("filled")
+        graph.get_node(str(s))[0].set_penwidth("3")
+        graph.get_node(str(t))[0].set_penwidth("3")
+        graph.get_node(str(s))[0].set_color("#EB1D36")
+        graph.get_node(str(t))[0].set_color("#0078AA")
     if lastStg:
         for i in range(n):
             for j in range(n):

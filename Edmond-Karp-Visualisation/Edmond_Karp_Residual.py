@@ -32,10 +32,20 @@ def makeGraph(C, F, path, flow, s, t, rGraphName):
             my_node = pydot.Node(str(i),fontcolor="white",color="white")
             graph.add_node(my_node)
 
-    graph.get_node(str(s))[0].set_fillcolor("red4")
-    graph.get_node(str(t))[0].set_fillcolor("blue4")
-    graph.get_node(str(s))[0].set_style("filled")
-    graph.get_node(str(t))[0].set_style("filled")
+    if path is None or path == []:
+        graph.get_node(str(s))[0].set_fillcolor("red4")
+        graph.get_node(str(t))[0].set_fillcolor("blue4")
+        graph.get_node(str(s))[0].set_style("filled")
+        graph.get_node(str(t))[0].set_style("filled")
+        graph.get_node(str(s))[0].set_penwidth("3")
+        graph.get_node(str(t))[0].set_penwidth("3")
+        graph.get_node(str(s))[0].set_color("#EB1D36")
+        graph.get_node(str(t))[0].set_color("#0078AA")
+    else:
+        graph.get_node(str(s))[0].set_fillcolor("red4")
+        graph.get_node(str(t))[0].set_fillcolor("blue4")
+        graph.get_node(str(s))[0].set_style("filled")
+        graph.get_node(str(t))[0].set_style("filled")
 
     # add edges
     for i in range(n):
