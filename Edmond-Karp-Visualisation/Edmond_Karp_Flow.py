@@ -1,6 +1,6 @@
 import pydot
 
-def makeGraph(C, F, s, t, fGraphName, hide0cp=False, initdisp=False, lastStg=False,path=[]):
+def makeGraph(C, F, s, t, fGraphName,path=[], hide0cp=False, initdisp=False, lastStg=False):
     n = len(C)  
     if lastStg:
         graph = pydot.Dot("my_graph", graph_type="digraph", bgcolor="#204934",fontcolor="white", label="Red - Source, Blue - Sink\nRed edges form min-cut", sep=3, nodesep=0.9)

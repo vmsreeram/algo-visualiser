@@ -69,7 +69,7 @@ def openInp():
     
 
     F = [[0] * len(C) for i in range(len(C))]
-    Edmond_Karp_Flow.makeGraph(C, F, 0, (len(C)-1), 'imgs/inp_grp.png', True, True)
+    Edmond_Karp_Flow.makeGraph(C, F, 0, (len(C)-1), 'imgs/inp_grp.png', [],True, True)
     
     DimHeight=int(screen_height*0.60556)           #FIXME: change this. Use screen info.    # resize forcing this to be image height, keeping aspect ratio (nearly) the same
     imgResIm = (PIL.Image.open('imgs/inp_grp.png'))
