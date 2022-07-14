@@ -36,8 +36,6 @@ def Bfs(C, F, s, t):  # C is the capacity matrix
         resiIndices.append(ctr)
         # new stage for showing residual graph
         newPhaseGraph.makeGraph(level, F,levelGraph,str(ctr),C,Source,Sink, False, "New Phase; No s-t path","\n")
-        # ctr+=1
-        # newPhaseGraph.makeGraph(level, F,levelGraph,str(ctr),C,Source,Sink, False, "New Phase; No s-t path","\n")
     ctr+=1
     return level[t] > 0
 
@@ -112,6 +110,7 @@ def augment(C,path,t,F,flo):
         global Source,Sink
         newStageGraph.makeAugmentGraph(level, C,F,path,levelGraph,bottleNeckCapacity,str(ctr),Source,Sink,"After ADVANCING from "+str(path[-2]),"\n")
         ctr+=1
+        flowPath = path.copy()
         for i in range(pathSize-1):
             levelGraph[path[i]][path[i+1]] -= bottleNeckCapacity
             F[path[i]][path[i+1]] += bottleNeckCapacity
@@ -119,7 +118,7 @@ def augment(C,path,t,F,flo):
         flo += bottleNeckCapacity
         del path[bottleNeckEdgeLevels[1]:pathSize]
         
-        newStageGraph.makeAugmentGraph(level, C,F,path,levelGraph,0,str(ctr),Source,Sink,"After AUGMENTING","\n")
+        newStageGraph.makeAugmentGraph(level, C,F,path,levelGraph,0,str(ctr),Source,Sink,"After AUGMENTING","\n",flowPath)
         
         ctr+=1
         # print("advance: ",path," t= ",t, flo,"bedge= ",bottleNeckEdgeLevels)

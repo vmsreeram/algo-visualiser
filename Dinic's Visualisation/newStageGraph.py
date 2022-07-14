@@ -1,7 +1,7 @@
 import pydot
 from collections import defaultdict
 
-def makeAugmentGraph (level, C,F,path,L,bottleNeckCapacity,g_no,source,sink, lbltxtlvl="", lbltxtflo=""):
+def makeAugmentGraph (level, C,F,path,L,bottleNeckCapacity,g_no,source,sink, lbltxtlvl="", lbltxtflo="",flowPath = []):
     n = len(C)
     last_node = path[-1]
     
@@ -85,10 +85,19 @@ def makeAugmentGraph (level, C,F,path,L,bottleNeckCapacity,g_no,source,sink, lbl
     graph1.get_node(str(source))[0].set_style("filled")
     graph1.get_node(str(sink))[0].set_style("filled")
     # add edges
+    pathAsListOfEdges = []
+    for i in range(len(flowPath)-1):
+        pathAsListOfEdges.append((flowPath[i],flowPath[i+1]))
+
     for i in range(n):
         for j in range(n):
-            if(C[i][j]>0):
+            if((C[i][j]>0) and (lbltxtlvl!="After AUGMENTING")):
                 graph1.add_edge( pydot.Edge(str(i), str(j), label= (str(C[i][j]) + "/" + str(F[i][j])),color = "white",fontsize="20.0",penwidth=1.5,fontcolor="orange",constraint=False) )
+            elif((C[i][j]>0) and (lbltxtlvl=="After AUGMENTING")):
+                if((i,j) in pathAsListOfEdges):
+                    graph1.add_edge( pydot.Edge(str(i), str(j), label= (str(C[i][j]) + "/" + str(F[i][j])),color = "red",fontsize="20.0",penwidth=1.5,fontcolor="orange",constraint=False) )
+                else:
+                    graph1.add_edge( pydot.Edge(str(i), str(j), label= (str(C[i][j]) + "/" + str(F[i][j])),color = "white",fontsize="20.0",penwidth=1.5,fontcolor="orange",constraint=False) )
             # else:
             #     graph1.add_edge( pydot.Edge(str(i), str(j), label= (str(C[i][j]) + "/" + str(F[i][j])),color = "white",fontsize="20.0",penwidth=1.5,fontcolor="orange",style="invis",constraint=False) )
 
