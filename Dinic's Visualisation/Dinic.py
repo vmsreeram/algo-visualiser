@@ -27,10 +27,16 @@ def Bfs(C, F, s, t):  # C is the capacity matrix
     global Source,Sink
     
     if(level[t]!=0):
+        resiIndices.append(ctr)
         # new stage for showing residual graph
         newPhaseGraph.makeGraph(level, F,levelGraph,str(ctr),C,Source,Sink, False, "New Phase; s-t Path length="+str(level[t]-1),"\n")
+        ctr+=1
+        newPhaseGraph.makeGraph(level, F,levelGraph,str(ctr),C,Source,Sink, False, "New Phase; s-t Path length="+str(level[t]-1),"\n")
     else:
+        resiIndices.append(ctr)
         # new stage for showing residual graph
+        newPhaseGraph.makeGraph(level, F,levelGraph,str(ctr),C,Source,Sink, False, "New Phase; No s-t path","\n")
+        ctr+=1
         newPhaseGraph.makeGraph(level, F,levelGraph,str(ctr),C,Source,Sink, False, "New Phase; No s-t path","\n")
     ctr+=1
     return level[t] > 0
@@ -167,8 +173,9 @@ def Main(C, source, sink, booln=False):
     levelGraph = [n*[0] for i in range(n)] # initialization of level graph
     path = len(levelGraph)*[0]
 
-    global ctr
+    global ctr,resiIndices
     ctr=0
+    resiIndices=[]
     max_flow_value = MaxFlow(C, source, sink)
     #print ("max_flow_value is", max_flow_value)
-    display_graphs.displayAllGraphs(max_flow_value,source,sink)
+    display_graphs.displayAllGraphs(max_flow_value,source,sink, resiIndices)

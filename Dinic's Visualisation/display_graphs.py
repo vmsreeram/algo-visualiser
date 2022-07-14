@@ -4,7 +4,7 @@ from tkinter import *
 import PIL.Image
 mul = 0.47
 
-def displayAllGraphs(max_flow_value, s, t):
+def displayAllGraphs(max_flow_value, s, t, resiIndices):
     win = Tk()
     screen_width = win.winfo_screenwidth()
     screen_height = win.winfo_screenheight()
@@ -114,7 +114,10 @@ def displayAllGraphs(max_flow_value, s, t):
         for widgets in frm_residImg.winfo_children():
             widgets.destroy()
         resiImg_lbl = Label(frm_residImg, image=imgRes)
-        resiImg_txt_lbl = Label(frm_residImg, text='Level Graph', font="arial 25")
+        if curr not in resiIndices:
+            resiImg_txt_lbl = Label(frm_residImg, text='Level Graph', font="arial 25")
+        else:
+            resiImg_txt_lbl = Label(frm_residImg, text='Residual Graph', font="arial 25")
         resiImg_txt_lbl.pack()
         resiImg_lbl.pack() 
         win.mainloop()
@@ -175,7 +178,10 @@ def displayAllGraphs(max_flow_value, s, t):
         for widgets in frm_residImg.winfo_children():
             widgets.destroy()
         resiImg_lbl = Label(frm_residImg, image=imgRes)
-        resiImg_txt_lbl = Label(frm_residImg, text='Level Graph', font="arial 25")
+        if curr not in resiIndices:
+            resiImg_txt_lbl = Label(frm_residImg, text='Level Graph', font="arial 25")
+        else:
+            resiImg_txt_lbl = Label(frm_residImg, text='Residual Graph', font="arial 25")
         resiImg_txt_lbl.pack()
         resiImg_lbl.pack() 
         win.mainloop()
