@@ -21,14 +21,16 @@ def makeGraph(level,F,L,g_no,C,source,sink,initDisp=False, lbltxtlvl="", lbltxtf
         graph1.add_node(my_node)
 
     #coloring vertices according to the cut red for nodes reachable from source and blue for rest
-
     if (level[sink]==0):
         for i in range(n):
             if(level[i]==0):
                 graph1.get_node(str(i))[0].set_fillcolor("blue4")
+                graph.get_node(str(i))[0].set_fillcolor("blue4")
             else: 
                 graph1.get_node(str(i))[0].set_fillcolor("red4")
+                graph.get_node(str(i))[0].set_fillcolor("red4")
             graph1.get_node(str(i))[0].set_style("filled")
+            graph.get_node(str(i))[0].set_style("filled")
 
 
     if not initDisp:
@@ -83,6 +85,11 @@ def makeGraph(level,F,L,g_no,C,source,sink,initDisp=False, lbltxtlvl="", lbltxtf
         graph1.get_node(str(source))[0].set_color("red2")
         graph1.get_node(str(sink))[0].set_penwidth(4)
         graph1.get_node(str(source))[0].set_penwidth(4)
+
+        graph.get_node(str(sink))[0].set_color("#2263e5")
+        graph.get_node(str(source))[0].set_color("red2")
+        graph.get_node(str(sink))[0].set_penwidth(4)
+        graph.get_node(str(source))[0].set_penwidth(4)
     
     
     # add edges flow graph
@@ -90,7 +97,7 @@ def makeGraph(level,F,L,g_no,C,source,sink,initDisp=False, lbltxtlvl="", lbltxtf
         for i in range(n):
             for j in range(n):
                 if(C[i][j]>0):
-                    if(level[sink] ==0 and ((level[i]>0 and level[j]==0) or (level[i]==0 and level[j]>0)) ):
+                    if(level[sink] ==0 and (level[i]>0 and level[j]==0) ):   #if(level[sink] ==0 and ((level[i]>0 and level[j]==0) or (level[i]==0 and level[j]>0)) ):
                         graph.add_edge( pydot.Edge(str(i), str(j), label= (str(C[i][j]) + "/" + str(F[i][j])),color = "red",fontsize="20.0",penwidth=1.5,fontcolor="orange",constraint=False) )
                     else:
                         graph.add_edge( pydot.Edge(str(i), str(j), label= (str(C[i][j]) + "/" + str(F[i][j])),color = "white",fontsize="20.0",penwidth=1.5,fontcolor="orange",constraint=False) )
