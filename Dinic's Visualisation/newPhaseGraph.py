@@ -8,17 +8,28 @@ def makeGraph(level,F,L,g_no,C,source,sink,initDisp=False, lbltxtlvl="", lbltxtf
     graph = pydot.Dot("my_graph", graph_type="digraph", bgcolor="#204934",fontcolor="white",labelloc="t", label=lbltxtflo,rankdir="TB",sep=3, nodesep=0.9)
     graph1 = pydot.Dot("my_graph", graph_type="digraph", bgcolor="#204934",fontcolor="white",labelloc="t", label=lbltxtlvl,rankdir="TB",sep=3, nodesep=0.9)
 
-    # Add nodes
+    # Add nodes - flow graph
     for i in range(n):
         my_node = pydot.Node(str(i),fontcolor="white",color="white")
         graph.add_node(my_node)
-    # Add nodes
+    # Add nodes - level/residual graph
     for i in range(n):
         if (not initDisp) and (levelOrRecidual==0):
             my_node = pydot.Node(str(i),fontcolor="white",color="white", xlabel="l="+str(level[i]))
         else:
             my_node = pydot.Node(str(i),fontcolor="white",color="white")
         graph1.add_node(my_node)
+
+    #coloring vertices according to the cut red for nodes reachable from source and blue for rest
+
+    if (level[sink]==0):
+        for i in range(n):
+            if(level[i]==0):
+                graph1.get_node(str(i))[0].set_fillcolor("blue4")
+            else: 
+                graph1.get_node(str(i))[0].set_fillcolor("red4")
+            graph1.get_node(str(i))[0].set_style("filled")
+
 
     if not initDisp:
         #print("graph="+str(g_no))
@@ -65,12 +76,24 @@ def makeGraph(level,F,L,g_no,C,source,sink,initDisp=False, lbltxtlvl="", lbltxtf
         graph.get_node(str(sink))[0].set_fillcolor("blue4")
         graph.get_node(str(source))[0].set_style("filled")
         graph.get_node(str(sink))[0].set_style("filled")
+    
+    # changing the node thickness/color of sink and source vertex
+    if(level[sink]==0):
+        graph1.get_node(str(sink))[0].set_color("#2263e5")
+        graph1.get_node(str(source))[0].set_color("red2")
+        graph1.get_node(str(sink))[0].set_penwidth(4)
+        graph1.get_node(str(source))[0].set_penwidth(4)
+    
+    
     # add edges flow graph
     if not initDisp:
         for i in range(n):
             for j in range(n):
                 if(C[i][j]>0):
-                    graph.add_edge( pydot.Edge(str(i), str(j), label= (str(C[i][j]) + "/" + str(F[i][j])),color = "white",fontsize="20.0",penwidth=1.5,fontcolor="orange",constraint=False) )
+                    if(level[sink] ==0 and ((level[i]>0 and level[j]==0) or (level[i]==0 and level[j]>0)) ):
+                        graph.add_edge( pydot.Edge(str(i), str(j), label= (str(C[i][j]) + "/" + str(F[i][j])),color = "red",fontsize="20.0",penwidth=1.5,fontcolor="orange",constraint=False) )
+                    else:
+                        graph.add_edge( pydot.Edge(str(i), str(j), label= (str(C[i][j]) + "/" + str(F[i][j])),color = "white",fontsize="20.0",penwidth=1.5,fontcolor="orange",constraint=False) )
                 # else:
                 #     graph.add_edge( pydot.Edge(str(i), str(j), label= (str(C[i][j]) + "/" + str(F[i][j])),color = "white",fontsize="20.0",penwidth=1.5,fontcolor="orange",style="invis",constraint=False) )
     else:
