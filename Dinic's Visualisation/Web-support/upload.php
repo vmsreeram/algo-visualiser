@@ -16,7 +16,9 @@
   <br/>
   <input type="submit" value="Upload" name="submit">
   <br/>
-  <input type="submit" value="Start" name="start">
+  Enter space separated source and sink vertex indices : <input type=text name="textbox1">
+  <br/>
+  <input type="submit" value="Proceed" name="proceed">
 </form>
 
 <?php
@@ -59,16 +61,23 @@ if(isset($_POST["submit"])) {
               die;
           }
           else {
-              echo "<img src='imgs/inp_grp.png' >"; 
+              echo "<img src='imgs/inp_grp.png' width=500 height=500 >"; 
           } 
         } else {
           echo "Sorry, there was an error uploading your file.";
         }
       }
   }
-if(isset($_POST["start"]))
+if(isset($_POST["proceed"]))
 {
-  echo "start pressed";
+  echo "Proceed pressed <br/>";
+  $a=$_POST['textbox1'];
+  // echo "got input as".$a ." <br/>";
+  $caller='python Dinic.py';
+  $caller.=' ';
+  $caller.=$a;
+  echo $caller."<br/>";
+  exec($caller);
 }
 ?>
 

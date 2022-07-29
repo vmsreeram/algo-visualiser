@@ -1,5 +1,6 @@
 import os
 import shutil
+import sys
 import newPhaseGraph
 import newStageGraph
 import display_graphs
@@ -178,3 +179,29 @@ def Main(C, source, sink, booln=False):
     max_flow_value = MaxFlow(C, source, sink)
     #print ("max_flow_value is", max_flow_value)
     display_graphs.displayAllGraphs(max_flow_value,source,sink, resiIndices)
+
+if __name__ == "__main__":
+    C=[]
+    filename='uploads/inputUp.txt'
+
+    try:
+        with open(filename) as textFile:
+            Cx = [line.split() for line in textFile]
+    except:
+        print("Invalid input file contents")
+        exit()
+    C=[]
+
+    for lst in C:
+        if len(lst) is not len(Cx[0]):
+            print("Invalid input file contents")
+            exit()
+    try:
+        for i in range(len(Cx[0])):
+            C.append([int(j) for j in Cx[i]])
+    except:
+        print("Invalid input file contents")
+        exit()
+    source=int(sys.argv[1])
+    sink=int(sys.argv[2])
+    Main(C, source, sink)
