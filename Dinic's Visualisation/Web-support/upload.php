@@ -79,7 +79,7 @@ if(isset($_POST["proceed"]))
   $delimiter = ' ';
   $words = explode($delimiter, $tb1);
   $cnt = 0;
-  // $sourcein = -1;
+  $sourcein = -1;
   $validsrcsnk = true;
   foreach($words as $word)
   {
