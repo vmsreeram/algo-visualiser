@@ -70,14 +70,52 @@ if(isset($_POST["submit"])) {
   }
 if(isset($_POST["proceed"]))
 {
-  echo "Proceed pressed <br/>";
-  $a=$_POST['textbox1'];
+  // echo "Proceed pressed <br/>";
+  $tb1=$_POST['textbox1'];
   // echo "got input as".$a ." <br/>";
+
+  $nlines = count(file($target_file));
+  $numLines = intval($nlines);
+  $delimiter = ' ';
+  $words = explode($delimiter, $tb1);
+  $cnt = 0;
+  // $sourcein = -1;
+  $validsrcsnk = true;
+  foreach($words as $word)
+  {
+    $cnt+=1;
+    if(intval($word)<0 || intval($word)>=$numLines)
+    {
+      $validsrcsnk=false;
+    }
+    if($sourcein==-1)
+    {
+      $sourcein=intval($word);
+    }
+    else if(intval($word) == $sourcein)
+    {
+      $validsrcsnk=false; // src != sink is essential
+    }
+  }
+  if($cnt != 2)
+  {
+    $validsrcsnk=false;
+  }
+
+
+  if($validsrcsnk)
+  {
   $caller='python Dinic.py';
   $caller.=' ';
-  $caller.=$a;
+  $caller.=$tb1;
   echo $caller."<br/>";
   exec($caller);
+  }
+  else
+  {
+    
+    echo "Invalid input of source/sink.<br/>";
+  }
 }
 ?>
 
