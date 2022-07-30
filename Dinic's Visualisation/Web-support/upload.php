@@ -5,11 +5,59 @@
       Dinic's Visualisation
     </title>
   </head>
+  <style>
+input[type=text], select {
+  /* width: 100%; */
+  font-family:'Courier New', Courier, monospace;
+  font-weight: bold;
+  padding: 8px 10px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+input[type=file] {
+  /* width: 100%; */
+  font-size: medium;
+  font-family: 'Times New Roman', Times, serif;
+  color: black;
+  padding: 10px 16px;
+  margin: 8px 0px;
+  border: none;
+  border-radius: 4px;
+}
+input[type=submit] {
+  /* width: 100%; */
+  font-size: medium;
+  font-family: 'Times New Roman', Times, serif;
+  background-color: #4CAF50;
+  color: white;
+  padding: 8px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+input[type=submit]:hover {
+  background-color: #45a049;
+}
+
+div {
+  width: 50%;
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  /* margin-left: 10px; */
+  padding: 8px 20px;
+}
+</style>
 <body>
  
 <h1>Select input </h1>
 
-
+<div>
 <form action="upload.php" method="post" enctype="multipart/form-data">
   Select input graph (.txt only):
   <input type="file" name="fileToUpload" id="fileToUpload">
@@ -20,6 +68,7 @@
   <br/>
   <input type="submit" value="Proceed" name="proceed">
 </form>
+</div>
 
 <?php
 $target_dir = "uploads/";
@@ -84,7 +133,7 @@ if(isset($_POST["proceed"]))
   foreach($words as $word)
   {
     $cnt+=1;
-    if(intval($word)<0 || intval($word)>=$numLines)
+    if(intval($word)<0 || intval($word)>=$numLines || intval($word)!=floatval($word))
     {
       $validsrcsnk=false;
     }
