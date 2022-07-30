@@ -6,6 +6,7 @@
     </title>
   </head>
   <style>
+h1 {text-align: center;}
 input[type=text], select {
   /* width: 100%; */
   font-family:'Courier New', Courier, monospace;
@@ -46,6 +47,8 @@ input[type=submit]:hover {
 }
 
 div {
+  display: flex;
+  justify-content: center;
   width: 50%;
   border-radius: 5px;
   background-color: #f2f2f2;
@@ -55,11 +58,11 @@ div {
 </style>
 <body>
  
-<h1>Select input </h1>
+<h1>Dinic's Visualiser </h1>
 
 <div>
 <form action="upload.php" method="post" enctype="multipart/form-data">
-  Select input graph (.txt only):
+  Choose input graph (.txt only):
   <input type="file" name="fileToUpload" id="fileToUpload">
   <br/>
   <input type="submit" value="Upload" name="submit">
@@ -98,8 +101,9 @@ if(isset($_POST["submit"])) {
         echo "Sorry, your file was not uploaded.";
       } else {
         if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
-          echo "The file ". htmlspecialchars( basename( $_FILES["fileToUpload"]["name"])). " has been uploaded as uploads/inputUp.txt \n"."<br/>";
+          //echo "The file ". htmlspecialchars( basename( $_FILES["fileToUpload"]["name"])). " has been uploaded as uploads/inputUp.txt \n"."<br/>";
           // echo "calling python";
+          echo "<br><br><center>The input graph is shown below</center><br>";
           exec('python start.py');
           // echo "<br/>". is_readable('../imgs/inp_grp.png')."<br/>";
           $srcpath = '../imgs/inp_grp.png';
@@ -110,7 +114,7 @@ if(isset($_POST["submit"])) {
               die;
           }
           else {
-              echo "<img src='imgs/inp_grp.png' width=500 height=500 >"; 
+              echo "<center><img src='imgs/inp_grp.png' width=500 height=500 ></center>"; 
           } 
         } else {
           echo "Sorry, there was an error uploading your file.";
@@ -157,7 +161,7 @@ if(isset($_POST["proceed"]))
   $caller='python Dinic.py';
   $caller.=' ';
   $caller.=$tb1;
-  echo $caller."<br/>";
+  //echo $caller."<br/>";
   exec($caller);
   }
   else
