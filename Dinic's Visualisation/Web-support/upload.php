@@ -49,11 +49,11 @@ input[type=submit]:hover {
 div {
   display: flex;
   justify-content: center;
-  width: 50%;
+  margin-left:auto;
+  margin-right:auto;
+  width: 40%;
   border-radius: 5px;
   background-color: #f2f2f2;
-  /* margin-left: 10px; */
-  padding: 8px 20px;
 }
 </style>
 <body>
@@ -89,21 +89,21 @@ if(isset($_POST["submit"])) {
       }
 
       if ($_FILES["fileToUpload"]["size"] > 500000) {
-        echo "Sorry, your file is too large.";
+        echo "File is too large. ";
         $uploadOk = 0;
       }
 
       if($txtFileType != "txt" ) {
-        echo "Sorry, only TXT files are allowed.";
+        echo "Only TXT files are allowed. ";
         $uploadOk = 0;
       }
       if ($uploadOk == 0) {
-        echo "Sorry, your file was not uploaded.";
+        echo "Your file was not uploaded. ";
       } else {
         if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
           //echo "The file ". htmlspecialchars( basename( $_FILES["fileToUpload"]["name"])). " has been uploaded as uploads/inputUp.txt \n"."<br/>";
           // echo "calling python";
-          echo "<br><br><center>The input graph is shown below</center><br>";
+          echo "<br><center>The input graph is shown below</center><br>";
           exec('python start.py');
           // echo "<br/>". is_readable('../imgs/inp_grp.png')."<br/>";
           $srcpath = '../imgs/inp_grp.png';
@@ -117,7 +117,7 @@ if(isset($_POST["submit"])) {
               echo "<center><img src='imgs/inp_grp.png' width=500 height=500 ></center>"; 
           } 
         } else {
-          echo "Sorry, there was an error uploading your file.";
+          echo "There was an unexpected error in uploading your file.";
         }
       }
   }
