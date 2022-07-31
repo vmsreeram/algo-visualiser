@@ -5,11 +5,11 @@
         <style>
             .leftimg{
                 top:15%;
-                left:10%;
-                float:left;
-                /* width:49.5%; */
+                left:52.5%;
+                float:right;
                 position:absolute;
                 height:75%;
+                max-width:45vw;
             }
             .leftlbl{
                 /* background-color: #110011; */
@@ -22,11 +22,11 @@
             }
             .rightimg{
                 top:15%;
-                right:10%;
-                float:right;
-                /* width:49.5%; */
+                right:52.5%;
+                float:left;
                 position:absolute;
                 height:75%;
+                max-width:45vw;
             }
             .buttonl {
                 /* width: 100%; */
