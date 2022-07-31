@@ -81,7 +81,7 @@
             $nlines = count(glob($target_dir . "*"));
             $numLines = intval($nlines);
 
-            $labelLft = 'imgs/labels/'.($sno).'.txt';
+            $labelLft= 'imgs/labels/lb.png';
         ?>
 
         <script >
@@ -111,7 +111,7 @@
             // document.getElementById("testing1").innerHTML=imageLft;
             imageLft='imgs/flow/'+(sno)+'.png'; 
             imageRgt='imgs/level/'+(sno)+'.png'; 
-            labelLft='imgs/labels/'+(sno)+'.txt';
+            labelLft= 'imgs/labels/lb.png';
 
             document.getElementById('lftimgfrm').src=imageLft;
             document.getElementById('rgttimgfrm').src=imageRgt;
@@ -135,7 +135,7 @@
             // document.getElementById("testing1").innerHTML=imageLft;
             imageLft='imgs/flow/'+(sno)+'.png'; 
             imageRgt='imgs/level/'+(sno)+'.png'; 
-            labelLft='imgs/labels/'+(sno)+'.txt';
+            labelLft= 'imgs/labels/lb.png';
 
             document.getElementById('lftimgfrm').src=imageLft;
             document.getElementById('rgttimgfrm').src=imageRgt;
@@ -143,8 +143,8 @@
         }
         </script>
 
-        <button class="buttonl" id="C1" onclick="prev()" hidden> << </button>
-        <button class="buttonr" id="C2" onclick="next()"> >> </button>
+        <button class="buttonl" id="C1" onclick="prev()" hidden> Prev </button>
+        <button class="buttonr" id="C2" onclick="next()"> Next </button>
         <!-- <p id="testing"></p>
         <p id="testing1"></p> -->
         <img id="lftimgfrm" class="leftimg" src="<?php echo $imageLft; ?>">
