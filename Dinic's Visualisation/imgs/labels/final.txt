@@ -1,1 +1,0 @@
-The max 0-6 flow value is 5Nodes reachable from source- Red; Other nodes- BlueSource and sink are marked in thick border
