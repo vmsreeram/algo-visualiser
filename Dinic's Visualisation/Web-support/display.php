@@ -81,7 +81,7 @@
             $nlines = count(glob($target_dir . "*"));
             $numLines = intval($nlines);
 
-            $labelLft= 'imgs/labels/lb.png';
+            $labelLft= 'imgs/labels/lb.txt';
         ?>
 
         <script >
@@ -111,14 +111,20 @@
             // document.getElementById("testing1").innerHTML=imageLft;
             imageLft='imgs/flow/'+(sno)+'.png'; 
             imageRgt='imgs/level/'+(sno)+'.png'; 
-            labelLft= 'imgs/labels/lb.png';
-
+            if(sno!=numLines-1)
+            {
+                labelLft= 'imgs/labels/lb.txt'; //Try lb.png instead
+            }
+            else
+            {
+                labelLft= 'imgs/labels/final.txt';
+            }
             document.getElementById('lftimgfrm').src=imageLft;
             document.getElementById('rgttimgfrm').src=imageRgt;
             document.getElementById('lftlbl').src=labelLft;
         }
         function prev(){
-            if(sno-1>-1)
+            if(sno>0)
             {
                 sno=sno-1;
             }
@@ -135,7 +141,7 @@
             // document.getElementById("testing1").innerHTML=imageLft;
             imageLft='imgs/flow/'+(sno)+'.png'; 
             imageRgt='imgs/level/'+(sno)+'.png'; 
-            labelLft= 'imgs/labels/lb.png';
+            labelLft= 'imgs/labels/lb.txt';
 
             document.getElementById('lftimgfrm').src=imageLft;
             document.getElementById('rgttimgfrm').src=imageRgt;

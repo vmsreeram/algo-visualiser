@@ -1,0 +1,4 @@
+• C/F on edges represent capacity C and flow value F
+• Zero capacity edges are not shown
+• Source-Red; Sink-Blue
+• Cyan bordered node is the current node

@@ -177,6 +177,10 @@ def Main(C, source, sink, booln=False):
     ctr=0
     resiIndices=[]
     max_flow_value = MaxFlow(C, source, sink)
+    ending = '• The max '+str(source)+'-'+str(sink)+' flow value is '+str(max_flow_value)
+    conclude = [ending,'\n','• Nodes reachable from source- Red; Other nodes- Blue','\n','• Source and sink are marked in thick border']
+    with open('imgs/labels/final.txt','w') as fptr:
+        fptr.writelines(conclude)
     #print ("max_flow_value is", max_flow_value)
     # display_graphs.displayAllGraphs(max_flow_value,source,sink, resiIndices)
 
