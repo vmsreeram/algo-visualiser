@@ -74,6 +74,15 @@
             {
                 sno=sno+1;
             }
+            if(sno==numLines-1)
+            {
+                document.getElementById('C2').style.display='none';
+            }
+            else if(sno<numLines-1)
+            {
+                document.getElementById('C1').style.display='block';
+                document.getElementById('C2').style.display='block';
+            }
             
             // document.getElementById("testing").innerHTML=labelLft;
             // document.getElementById("testing1").innerHTML=imageLft;
@@ -90,7 +99,15 @@
             {
                 sno=sno-1;
             }
-            
+            if(sno==0)
+            {
+                document.getElementById('C1').style.display='none';
+            }
+            else if(sno>0)
+            {
+                document.getElementById('C1').style.display='block';
+                document.getElementById('C2').style.display='block';
+            }
             // document.getElementById("testing").innerHTML=labelLft;
             // document.getElementById("testing1").innerHTML=imageLft;
             imageLft='imgs/flow/'+(sno)+'.png'; 
