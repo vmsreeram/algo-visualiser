@@ -31,11 +31,12 @@
             .buttonl {
                 /* width: 100%; */
                 font-weight: bolder;
-                font-family: 'Times New Roman', Times, serif;
+                /* font-family: 'Times New Roman', Times, serif; */
                 background-color: #4CAF50;
                 color: white;
                 margin-left: 45%;
-                padding: 8px 20px;
+                /* padding: 8px 20px; */
+                padding: 0.55% 1.5%;
                 border: none;
                 border-radius: 5px;
                 cursor: pointer;
@@ -50,11 +51,12 @@
             .buttonr {
                 /* width: 100%; */
                 font-weight: bolder;
-                font-family: 'Times New Roman', Times, serif;
+                /* font-family: 'Times New Roman', Times, serif; */
                 background-color: #4CAF50;
                 color: white;
                 margin-right: 45%;
-                padding: 8px 20px;
+                /* padding: 8px 20px; */
+                padding: 0.55% 1.5%;
                 border: none;
                 border-radius: 5px;
                 cursor: pointer;
@@ -68,7 +70,7 @@
     </head>
     
     <body>
-        <h1>Dinic's Visualiser</h1>
+        <!-- <h1>Dinic's Visualiser</h1> -->
         
         <?php 
             $sno=0;
