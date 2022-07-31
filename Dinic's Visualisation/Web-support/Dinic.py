@@ -178,7 +178,7 @@ def Main(C, source, sink, booln=False):
     resiIndices=[]
     max_flow_value = MaxFlow(C, source, sink)
     #print ("max_flow_value is", max_flow_value)
-    display_graphs.displayAllGraphs(max_flow_value,source,sink, resiIndices)
+    # display_graphs.displayAllGraphs(max_flow_value,source,sink, resiIndices)
 
 if __name__ == "__main__":
     C=[]

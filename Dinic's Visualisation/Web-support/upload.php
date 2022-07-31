@@ -72,7 +72,7 @@ div {
   <br/>
   <input type="submit" value="Proceed" name="proceed">
   <br/>
-  <input type="submit" value="Sample" name="sample">
+  <input type="submit" value="Visualise" name="sample">
 </form>
 </div>
 
@@ -177,7 +177,8 @@ if(isset($_POST["sample"]))
 {
   ?>
   <script type=text/javascript>
-window.open('test.php','_blank');
+// window.open('test.php','_blank');
+window.open('display.php','_blank');
 </script>
 
 <?php } ?>
