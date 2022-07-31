@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Hello</title>
+        <title>Dinic's visualization</title>
         <style>
             .leftimg{
                 top:15%;
-                left:0;
+                left:10%;
                 float:left;
-                width:49.5%;
+                /* width:49.5%; */
                 position:absolute;
                 height:75%;
             }
@@ -22,9 +22,9 @@
             }
             .rightimg{
                 top:15%;
-                right:0;
+                right:10%;
                 float:right;
-                width:49.5%;
+                /* width:49.5%; */
                 position:absolute;
                 height:75%;
             }
@@ -145,8 +145,8 @@
         <button class="buttonr" id="C2" onclick="next()"> >> </button>
         <!-- <p id="testing"></p>
         <p id="testing1"></p> -->
-        <iframe id="lftimgfrm" class="leftimg" src="<?php echo $imageLft; ?>"> </iframe>
-        <iframe id="rgttimgfrm" class="rightimg" src="<?php echo $imageRgt; ?>"> </iframe>
+        <img id="lftimgfrm" class="leftimg" src="<?php echo $imageLft; ?>">
+        <img id="rgttimgfrm" class="rightimg" src="<?php echo $imageRgt; ?>">
         <iframe id="lftlbl" class="leftlbl" src="<?php echo $labelLft; ?>"> </iframe>
 
 </body>
