@@ -47,11 +47,12 @@ input[type=submit]:hover {
 }
 
 div {
+  padding: 15px;
   display: flex;
   justify-content: center;
   margin-left:auto;
   margin-right:auto;
-  width: 40%;
+  width: fit-content;
   border-radius: 5px;
   background-color: #f2f2f2;
 }
