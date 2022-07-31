@@ -71,6 +71,8 @@ div {
   Enter space separated source and sink vertex indices : <input type=text name="textbox1">
   <br/>
   <input type="submit" value="Proceed" name="proceed">
+  <br/>
+  <input type="submit" value="Sample" name="sample">
 </form>
 </div>
 
@@ -171,7 +173,14 @@ if(isset($_POST["proceed"]))
     echo "Invalid input of source/sink.<br/>";
   }
 }
-?>
+if(isset($_POST["sample"]))
+{
+  ?>
+  <script type=text/javascript>
+window.open('test.php','_blank');
+</script>
+
+<?php } ?>
 
 </body>
 </html>
