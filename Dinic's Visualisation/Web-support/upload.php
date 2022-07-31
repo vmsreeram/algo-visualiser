@@ -73,6 +73,7 @@ div {
   <input type="submit" value="Proceed" name="proceed">
   <br/>
   <!-- <input type="submit" value="Visualise" name="sample"> -->
+  <center>Popups should not be blocked in the browser</center>
 </form>
 </div>
 

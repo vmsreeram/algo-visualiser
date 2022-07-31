@@ -4,11 +4,11 @@
         <title>Dinic's visualization</title>
         <style>
             .leftimg{
-                top:15%;
+                top:10%;
                 left:52.5%;
                 float:right;
                 position:absolute;
-                height:75%;
+                height:80%;
                 max-width:45vw;
             }
             .leftlbl{
@@ -21,11 +21,11 @@
                 height:8%;
             }
             .rightimg{
-                top:15%;
+                top:10%;
                 right:52.5%;
                 float:left;
                 position:absolute;
-                height:75%;
+                height:80%;
                 max-width:45vw;
             }
             .buttonl {
