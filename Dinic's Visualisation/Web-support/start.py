@@ -4,8 +4,6 @@ import initShowGraph
 import ErrorExit
 # from tkinter import *
 # from tkinter import filedialog
-import PIL.Image
-from PIL import ImageTk
 
 # def openInp():
 C=[]

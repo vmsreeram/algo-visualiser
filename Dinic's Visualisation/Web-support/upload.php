@@ -77,7 +77,7 @@ div {
 </div>
 
 <?php
-// error_reporting(E_ALL ^ E_WARNING);
+error_reporting(E_ALL ^ E_WARNING);
 
 $target_dir = "uploads/";
 $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
@@ -106,11 +106,8 @@ if(isset($_POST["submit"])) {
         echo "Your file was not uploaded. ";
       } else {
         if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
-          //echo "The file ". htmlspecialchars( basename( $_FILES["fileToUpload"]["name"])). " has been uploaded as uploads/inputUp.txt \n"."<br/>";
-          // echo "calling python";
           echo "<br><center>The input graph is shown below</center><br>";
           exec('python start.py');
-          // echo "<br/>". is_readable('../imgs/inp_grp.png')."<br/>";
           $srcpath = '../imgs/inp_grp.png';
           if ( !is_readable($srcpath) ) {
               echo "file not found 404";
@@ -128,9 +125,7 @@ if(isset($_POST["submit"])) {
   }
 if(isset($_POST["proceed"]))
 {
-  // echo "Proceed pressed <br/>";
   $tb1=$_POST['textbox1'];
-  // echo "got input as".$a ." <br/>";
 
   $nlines = count(file($target_file));
   $numLines = intval($nlines);
@@ -166,12 +161,10 @@ if(isset($_POST["proceed"]))
   $caller='python Dinic.py';
   $caller.=' ';
   $caller.=$tb1;
-  //echo $caller."<br/>";
   exec($caller);
 
   ?>
   <script type=text/javascript>
-// window.open('test.php','_blank');
 window.open('display.php','_blank');
 </script>
 

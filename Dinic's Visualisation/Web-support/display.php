@@ -28,11 +28,26 @@
                 position:absolute;
                 height:75%;
             }
+            .button {
+                /* width: 100%; */
+                font-weight: bolder;
+                font-family: 'Times New Roman', Times, serif;
+                background-color: #4CAF50;
+                color: white;
+                padding: 8px 20px;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+                }
+
+            .button:hover {
+                background-color: #45a049;
+            }
         </style>
     </head>
     
     <body>
-        <h1>Visualiser</h1>
+        <h1>Dinic's Visualiser</h1>
         
         <?php 
             $sno=0;
@@ -88,10 +103,10 @@
         }
         </script>
 
-        <button id="C1" onclick="prev()"> << </button>
-        <button id="C2" onclick="next()"> >> </button>
-        <p id="testing"></p>
-        <p id="testing1"></p>
+        <button class="button" id="C1" onclick="prev()"> << </button>
+        <button class="button" id="C2" onclick="next()"> >> </button>
+        <!-- <p id="testing"></p>
+        <p id="testing1"></p> -->
         <iframe id="lftimgfrm" class="leftimg" src="<?php echo $imageLft; ?>"> </iframe>
         <iframe id="rgttimgfrm" class="rightimg" src="<?php echo $imageRgt; ?>"> </iframe>
         <iframe id="lftlbl" class="leftlbl" src="<?php echo $labelLft; ?>"> </iframe>
