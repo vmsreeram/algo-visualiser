@@ -28,19 +28,40 @@
                 position:absolute;
                 height:75%;
             }
-            .button {
+            .buttonl {
                 /* width: 100%; */
                 font-weight: bolder;
                 font-family: 'Times New Roman', Times, serif;
                 background-color: #4CAF50;
                 color: white;
+                margin-left: 45%;
                 padding: 8px 20px;
                 border: none;
                 border-radius: 5px;
                 cursor: pointer;
+                float: left;
+                
+            }
+
+            .buttonl:hover {
+                background-color: #45a049;
+            }
+
+            .buttonr {
+                /* width: 100%; */
+                font-weight: bolder;
+                font-family: 'Times New Roman', Times, serif;
+                background-color: #4CAF50;
+                color: white;
+                margin-right: 45%;
+                padding: 8px 20px;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+                float: right;
                 }
 
-            .button:hover {
+            .buttonr:hover {
                 background-color: #45a049;
             }
         </style>
@@ -120,8 +141,8 @@
         }
         </script>
 
-        <button class="button" id="C1" onclick="prev()"> << </button>
-        <button class="button" id="C2" onclick="next()"> >> </button>
+        <button class="buttonl" id="C1" onclick="prev()" hidden> << </button>
+        <button class="buttonr" id="C2" onclick="next()"> >> </button>
         <!-- <p id="testing"></p>
         <p id="testing1"></p> -->
         <iframe id="lftimgfrm" class="leftimg" src="<?php echo $imageLft; ?>"> </iframe>
