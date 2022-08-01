@@ -32,11 +32,17 @@ def Bfs(C, F, s, t):  # C is the capacity matrix
         # new stage for showing residual graph
         newPhaseGraph.makeGraph(level, F,levelGraph,str(ctr),C,Source,Sink, False, "New Phase; s-t Path length="+str(level[t]-1),"\n",1)
         ctr+=1
+        with open('imgs/labels/'+str(ctr)+'.txt','w') as fptr:
+            fptr.write('Residual Graph')
         newPhaseGraph.makeGraph(level, F,levelGraph,str(ctr),C,Source,Sink, False, "New Phase; s-t Path length="+str(level[t]-1),"\n")
+        with open('imgs/labels/'+str(ctr+1)+'.txt','w') as fptr:
+            fptr.write('Level Graph')
     else:
         resiIndices.append(ctr)
         # new stage for showing residual graph
         newPhaseGraph.makeGraph(level, F,levelGraph,str(ctr),C,Source,Sink, False, "New Phase; No s-t path","\n",1)
+        with open('imgs/labels/'+str(ctr+1)+'.txt','w') as fptr:
+            fptr.write('Residual Graph')
     ctr+=1
     return level[t] > 0
 
@@ -75,6 +81,8 @@ def advance (C,path,t,F,flo):
     elif (path != []): # advance
         newStageGraph.makeAugmentGraph(level, C,F,path,levelGraph,0,str(ctr),Source,Sink,"After ADVANCING from "+str(k),"\n")
         ctr+=1
+        with open('imgs/labels/'+str(ctr)+'.txt','w') as fptr:
+            fptr.write('Level Graph')
         flo = advance(C,path,t,F,flo)
     return flo
 
@@ -92,6 +100,8 @@ def retreat (C,path,t,F,flo):
         # print("advance: ",path," t= ", t, flo)
         newStageGraph.makeAugmentGraph(level, C,F,path,levelGraph,0,str(ctr),Source,Sink,"After RETRACT from "+str(lastEle),"\n")
         ctr+=1
+        with open('imgs/labels/'+str(ctr)+'.txt','w') as fptr:
+            fptr.write('Level Graph')
         flo = advance(C,path,t,F,flo)
     return flo
 
@@ -111,6 +121,8 @@ def augment(C,path,t,F,flo):
         global Source,Sink
         newStageGraph.makeAugmentGraph(level, C,F,path,levelGraph,bottleNeckCapacity,str(ctr),Source,Sink,"After ADVANCING from "+str(path[-2]),"\n")
         ctr+=1
+        with open('imgs/labels/'+str(ctr)+'.txt','w') as fptr:
+            fptr.write('Level Graph')
         flowPath = path.copy()
         for i in range(pathSize-1):
             levelGraph[path[i]][path[i+1]] -= bottleNeckCapacity
@@ -122,6 +134,8 @@ def augment(C,path,t,F,flo):
         newStageGraph.makeAugmentGraph(level, C,F,path,levelGraph,0,str(ctr),Source,Sink,"After AUGMENTING","\n",flowPath)
         
         ctr+=1
+        with open('imgs/labels/'+str(ctr)+'.txt','w') as fptr:
+            fptr.write('Level Graph')
         # print("advance: ",path," t= ",t, flo,"bedge= ",bottleNeckEdgeLevels)
         flo = advance(C,path,t,F,flo)
     return flo
