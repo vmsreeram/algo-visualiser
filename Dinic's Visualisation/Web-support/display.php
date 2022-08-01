@@ -202,8 +202,8 @@
         }
         </script>
         <!-- <div> -->
-        <button class="buttonl" id="C1" onclick="prev()" hidden> Prev </button>
-        <button class="buttonr" id="C2" onclick="next()"> Next </button>
+        <button class="buttonl" id="C1" onclick="prev()" hidden accesskey="a"> Prev </button>
+        <button class="buttonr" id="C2" onclick="next()" accesskey="s"> Next </button>
         <!-- </div> -->
         <!-- <p id="testing"></p>leftlbl
         <p id="testing1"></p> -->

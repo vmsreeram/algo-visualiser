@@ -1,1 +1,1 @@
-Residual Graph
+Level Graph
