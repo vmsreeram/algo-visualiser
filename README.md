@@ -24,8 +24,8 @@ If graphviz is not properly installed, try
 1. Set the working directory in the terminal as ```Dinic's Visualisation/Web-support```.
 2. Execute the command
    ```zsh
-  php -S localhost:4000
-  ```
+   php -S localhost:4000
+   ```
 3. Minimise the terminal , go to your browser and type http://localhost:4000/upload.php
 </details>
 <details>
