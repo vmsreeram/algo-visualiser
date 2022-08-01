@@ -19,6 +19,15 @@ If graphviz is not properly installed, try
 
 ## How to run?
 <details>
+   <summary>Hosting Dinic's Algorithm locally</summary>
+   
+1. Set the working directory in the terminal as ```Dinic's Visualisation/Web-support```.
+2. Execute the command
+   ```zsh
+  php -S localhost:4000
+  ```
+3. Minimise the terminal , go to your browser and type http://localhost:4000/upload.php
+<details>
    <summary>Edmond's</summary>
    
 1. Set the working directory in the terminal as ```Edmond-Karp-Visualisation```.
