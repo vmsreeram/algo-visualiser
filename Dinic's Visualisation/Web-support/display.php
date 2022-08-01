@@ -41,22 +41,22 @@
             }
 
             .anotherlbl{
-                bottom:11%;
-                right:51%;
-                float:right;
-                width:45%;
+                top:5%;
+                left:25%;
+                /* float:right; */
+                /* width:45%; */
                 position:absolute;
-                height:11%;
+                /* height:11%; */
                 border: none;
             }
 
             .albl{
-                bottom:11%;
-                left:51%;
-                float:left;
-                width:45%;
+                top:5%;
+                left:65%;
+                /* float:left; */
+                /* width:45%; */
                 position:absolute;
-                height:11%;
+                /* height:11%; */
                 border: none;
             }
 /* 
