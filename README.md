@@ -8,9 +8,11 @@
    
    ```conda install pydot```
    
-   ```conda install -c conda-forge tk```
+   ```conda install -c conda-forge tk``` (optional, required if not using web version)
    
    ```conda install pillow```
+   
+   ```sudo apt install php``` (optional, required if using web version)
 
 ### Note
 If graphviz is not properly installed, try 
