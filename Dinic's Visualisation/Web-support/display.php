@@ -3,6 +3,7 @@
     <head>
         <title>Dinic's visualization</title>
         <style>
+/*             
             .leftimg{
                 top:10%;
                 left:52.5%;
@@ -11,15 +12,34 @@
                 height:80%;
                 max-width:45vw;
             }
+*/
+            .leftimg{
+                top:10%;
+                right:51%;
+                float:right;
+                position:absolute;
+                height:80%;
+                max-width:45vw;
+            }
+            .rightimg{
+                top:10%;
+                left:51%;
+                float:left;
+                position:absolute;
+                height:80%;
+                max-width:45vw;
+            }
             .leftlbl{
                 /* background-color: #110011; */
                 bottom:0;
-                left:0;
+                left:2.5%;
                 float:left;
                 width:100%;
                 position:absolute;
-                height:8%;
+                height:11%;
+                border: none;
             }
+/* 
             .rightimg{
                 top:10%;
                 right:52.5%;
@@ -28,19 +48,21 @@
                 height:80%;
                 max-width:45vw;
             }
+             */
             .buttonl {
                 /* width: 100%; */
                 font-weight: bolder;
                 /* font-family: 'Times New Roman', Times, serif; */
                 background-color: #4CAF50;
                 color: white;
-                margin-left: 45%;
+                margin-right: 50.5%;
+                position:relative;
                 /* padding: 8px 20px; */
                 padding: 0.55% 1.5%;
                 border: none;
                 border-radius: 5px;
                 cursor: pointer;
-                float: left;
+                float: right;
                 
             }
 
@@ -54,13 +76,14 @@
                 /* font-family: 'Times New Roman', Times, serif; */
                 background-color: #4CAF50;
                 color: white;
-                margin-right: 45%;
+                margin-left: 50.5%;
+                position:absolute;
                 /* padding: 8px 20px; */
                 padding: 0.55% 1.5%;
                 border: none;
                 border-radius: 5px;
                 cursor: pointer;
-                float: right;
+                float: left;
                 }
 
             .buttonr:hover {
@@ -148,9 +171,10 @@
             document.getElementById('lftlbl').src=labelLft;
         }
         </script>
-
+        <!-- <div> -->
         <button class="buttonl" id="C1" onclick="prev()" hidden> Prev </button>
         <button class="buttonr" id="C2" onclick="next()"> Next </button>
+        <!-- </div> -->
         <!-- <p id="testing"></p>
         <p id="testing1"></p> -->
         <img id="lftimgfrm" class="leftimg" src="<?php echo $imageLft; ?>">
