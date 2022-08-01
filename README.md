@@ -26,7 +26,7 @@ If graphviz is not properly installed, try
    ```zsh
    php -S localhost:4000
    ```
-3. Minimise the terminal , go to your browser and type http://localhost:4000/upload.php
+3. Minimise the terminal, and visit http://localhost:4000/upload.php in your browser.
 </details>
 <details>
    <summary>Edmond's</summary>
