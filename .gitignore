@@ -3,3 +3,6 @@
 
 # all .png files
 *.png
+
+# all .sh files
+*.sh
