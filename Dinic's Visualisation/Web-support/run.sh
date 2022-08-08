@@ -8,7 +8,7 @@ python start1.py 6
 python start1.py 7
 python start1.py 8
 
-#expected output below
+#Expected output is given below
 
 # Dinic's Algorithm
 # max_flow_value is 12
