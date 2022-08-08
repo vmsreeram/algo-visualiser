@@ -8,9 +8,11 @@
    
    ```conda install pydot```
    
-   ```conda install -c conda-forge tk```
+   ```conda install -c conda-forge tk``` (optional, required if not using web version)
    
    ```conda install pillow```
+   
+   ```sudo apt install php``` (optional, required if using web version)
 
 ### Note
 If graphviz is not properly installed, try 
@@ -18,6 +20,16 @@ If graphviz is not properly installed, try
    ```sudo apt-get install graphviz```
 
 ## How to run?
+<details>
+   <summary>Hosting Dinic's Algorithm locally</summary>
+   
+1. Set the working directory in the terminal as ```Dinic's Visualisation/Web-support```.
+2. Execute the command
+   ```zsh
+   php -S localhost:4000
+   ```
+3. Minimise the terminal, and visit http://localhost:4000/upload.php in your browser.
+</details>
 <details>
    <summary>Edmond's</summary>
    
